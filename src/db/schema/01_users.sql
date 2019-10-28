@@ -6,5 +6,5 @@ CREATE TABLE users (
   name VARCHAR(255) NOT NULL,
   username VARCHAR(255) NOT NULL,
   password VARCHAR(60) NOT NULL,
-  karma int NOT NULL
+  karma int DEFAULT 0
 );
