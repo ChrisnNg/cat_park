@@ -9,24 +9,23 @@ var db *gorm.DB
 
 type User struct {
 	gorm.Model
-	Name string
+	Name     string
 	Username string
 	Password string
-	Karma int 
+	Karma    int
 }
 
-type Parkings struct {
+type Parking struct {
 	gorm.Model
-	longitude int
-	latitude int
-	rating int `gorm:"default:0"`
-	karma int `gorm:"default:0"`
-	photo_url string
+	Longitude int
+	Latitude  int
+	Rating    int
+	Karma     int
+	Photo_url string
 }
 
 func init() {
 	config.Connect()
 	db := config.GetDB()
-	db.AutoMigrate(&User{})
-	db.AutoMigrate(&Parkings{})
+	db.AutoMigrate(&User{}, &Parking{})
 }

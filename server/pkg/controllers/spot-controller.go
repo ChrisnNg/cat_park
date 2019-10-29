@@ -5,12 +5,13 @@ import (
 	// "fmt"
 	// "github.com/ChrisnNg/cat_park/server/pkg/helpers"
 	// "github.com/gorilla/mux"
-	"net/http"
-	"github.com/ChrisnNg/cat_park/server/pkg/models"
 	"fmt"
+	"net/http"
+
+	"github.com/ChrisnNg/cat_park/server/pkg/models"
 )
 
-var Spot models.Parkings
+var Spot models.Parking
 
 func NewSpot(w http.ResponseWriter, r *http.Request) {
 	return
