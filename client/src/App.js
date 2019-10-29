@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-
 import logo from "./logo.svg";
 import "./App.css";
 import Nav from "./components/Nav.js";
+import MaterialUiForm from "./components/Form.js";
+import FooterPage from "./components/Footer.js";
 
 class App extends Component {
   render() {
@@ -13,9 +14,12 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h2>Welcome to cat_park</h2>
         </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <div id="add-location-form">
+          <MaterialUiForm />
+        </div>
+        <div id="footer-id">
+          <FooterPage />
+        </div>
       </div>
     );
   }
