@@ -9,7 +9,9 @@
     "chalk": "^2.4.2",
     "dotenv": "^8.2.0",
     "jsx": "^0.9.89",
+    "material-ui": "^0.20.2",
     "material-ui-icons": "^1.0.0-beta.36",
+    "material-ui-popup-state": "^1.4.1",
     "pg": "^7.12.1",
     "react": "^16.11.0",
     "react-dom": "^16.11.0"
