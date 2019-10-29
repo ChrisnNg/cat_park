@@ -15,7 +15,7 @@ var (
 
 
 func Connect() {
-	d, err := gorm.Open("postgres", "host=localhost port=5432 user=vagrant dbname=cat_park password=123")
+	d, err := gorm.Open("postgres", "host=localhost port=5432 user=development dbname=cat_park_test password=development")
 	if err != nil {
 		panic(err)
 	}
