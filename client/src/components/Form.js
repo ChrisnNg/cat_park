@@ -40,7 +40,7 @@ export default function TextFields() {
     name: "Cat in the Hat",
     age: "",
     multiline: "Controlled",
-    currency: "EUR"
+    currency: ""
   });
 
   const handleChange = name => event => {
@@ -76,8 +76,10 @@ export default function TextFields() {
         helperText="Please select type of parking"
         margin="normal"
       >
-        {parking_type.map(option => (
-          <MenuItem value={option.value}>{option.label}</MenuItem>
+        {parking_type.map((option, index) => (
+          <MenuItem key={index} value={option.value}>
+            {option.label}
+          </MenuItem>
         ))}
       </TextField>
       <TextField
