@@ -11,6 +11,12 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormGroup from "@material-ui/core/FormGroup";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
+import Button from "@material-ui/core/Button";
+import {
+  usePopupState,
+  bindTrigger,
+  bindMenu
+} from "material-ui-popup-state/hooks";
 
 import three_cats from "../../public/three_cats.png";
 import "./Nav.css";
@@ -45,6 +51,34 @@ export default function Nav(props) {
     setAnchorEl(null);
   };
 
+  const TriggerMenu = () => {
+    const popupState = usePopupState({
+      variant: "popover",
+      popupId: "demoMenu"
+    });
+    return (
+      <div>
+        <Button
+          className="nav-menu"
+          variant="contained"
+          {...bindTrigger(popupState)}
+        >
+          Menu
+        </Button>
+        <Menu
+          {...bindMenu(popupState)}
+          getContentAnchorEl={null}
+          anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
+          transformOrigin={{ vertical: "top", horizontal: "left" }}
+        >
+          <MenuItem onClick={popupState.close}>Find Parking</MenuItem>
+          <MenuItem onClick={popupState.close}>Directions</MenuItem>
+          <MenuItem onClick={popupState.close}>About us</MenuItem>
+        </Menu>
+      </div>
+    );
+  };
+
   return (
     <div className={classes.root}>
       <FormGroup>
@@ -66,9 +100,10 @@ export default function Nav(props) {
             className={classes.menuButton}
             color="inherit"
             aria-label="menu"
-          >
-            <MenuIcon />
-          </IconButton>
+          ></IconButton>
+
+          <TriggerMenu />
+
           <Typography variant="h6" className={classes.title}>
             <div className="center-nav">
               <img src={three_cats} alt="cat_park_logo" className="catimg" />
