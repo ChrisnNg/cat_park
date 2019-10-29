@@ -63,7 +63,7 @@ export default function Nav(props) {
           variant="contained"
           {...bindTrigger(popupState)}
         >
-          Menu
+          <MenuIcon />
         </Button>
         <Menu
           {...bindMenu(popupState)}
