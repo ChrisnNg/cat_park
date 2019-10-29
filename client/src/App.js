@@ -10,10 +10,6 @@ class App extends Component {
     return (
       <div className="App">
         <Nav />
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to cat_park</h2>
-        </div>
         <div id="add-location-form">
           <MaterialUiForm />
         </div>
