@@ -1,21 +1,26 @@
 package controllers
 
 import (
-	"encoding/json"
-	"fmt"
-	"github.com/ChrisnNg/cat_park/client/pkg/helpers"
-	"github.com/gorilla/mux"
+	// "encoding/json"
+	// "fmt"
+	// "github.com/ChrisnNg/cat_park/server/pkg/helpers"
+	// "github.com/gorilla/mux"
 	"net/http"
-	"strconv"
-	"github.com/ChrisnNg/cat_park/client/pkg/models"	
+	"github.com/ChrisnNg/cat_park/server/pkg/models"
+	"fmt"
 )
 
-var NewSpot models.Spot
+var Spot models.Parkings
 
-func NewSpot() {
-
+func NewSpot(w http.ResponseWriter, r *http.Request) {
+	return
 }
 
-func GetSpots() {
-	
+func GetSpots(w http.ResponseWriter, r *http.Request) {
+	return
+}
+
+func Home(w http.ResponseWriter, r *http.Request) {
+	fmt.Println("Hello!")
+	return
 }

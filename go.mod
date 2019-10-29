@@ -1,4 +1,4 @@
-module github.com/ThomasBogdanov/cat_park
+module github.com/ChrisnNg/cat_park
 
 go 1.13
 
