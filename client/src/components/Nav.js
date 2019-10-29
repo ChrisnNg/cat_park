@@ -12,6 +12,9 @@ import FormGroup from "@material-ui/core/FormGroup";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
 
+import three_cats from "../../public/three_cats.png";
+import "./Nav.css";
+
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1
@@ -67,7 +70,11 @@ export default function Nav(props) {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" className={classes.title}>
-            Photos
+            <div className="center-nav">
+              <img src={three_cats} alt="cat_park_logo" className="catimg" />
+              <div className="cattxt left">~Cat</div>
+              <div className="cattxt right">Park~</div>
+            </div>
           </Typography>
           {auth && (
             <div>

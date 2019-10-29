@@ -1,0 +1,33 @@
+.center-nav {
+  position: relative;
+  display: inline;
+}
+
+.catimg {
+  position: relative;
+  height: 75px;
+  width: 75px;
+  border-radius: 50%;
+}
+
+.cattxt {
+  position: relative;
+  z-index: 999;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  bottom: 100%; /* Adjust this value to move the positioned div up and down */
+  text-align: center;
+  width: 60%; /* Set the width of the positioned div */
+}
+
+.left {
+  position: absolute;
+  margin-right: 75px;
+}
+
+.right {
+  position: absolute;
+  margin-left: 75px;
+}
+/* style={{height: "75px", width: "75px"}} */
