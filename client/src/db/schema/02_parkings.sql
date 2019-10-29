@@ -7,5 +7,5 @@ CREATE TABLE parkings (
   latitude Decimal(9,6) NOT NULL,
   rating SMALLINT DEFAULT 0,
   karma int DEFAULT 0,
-  photo_url
+  photo_url VARCHAR(255)
 );
