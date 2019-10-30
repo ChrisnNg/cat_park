@@ -10,6 +10,7 @@ import (
 	"github.com/ChrisnNg/cat_park/server/pkg/config"
 	"github.com/ChrisnNg/cat_park/server/pkg/models"
 	"fmt"
+	"github.com/ChrisnNg/cat_park/server/pkg/seeds"
 )
 
 func main() {
@@ -31,6 +32,7 @@ func main() {
 		fmt.Println("Tables Dropped!")
 	case "SeedTables":
 		fmt.Println("Seeding Tables . . .")
+		userSeeds.SeedUsers()
 	case "Start":
 		fmt.Println("Starting Server . . .")
 		r := mux.NewRouter()
@@ -41,5 +43,4 @@ func main() {
 	default:
 		fmt.Println("Please enter a valid flag")
 	}
-
 }
