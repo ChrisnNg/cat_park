@@ -3,8 +3,8 @@ import "./About.css";
 
 const AboutPage = () => {
   return (
-    <section>
-      <header id="aboutUs">
+    <section id="aboutUs">
+      <header>
         <h1 className="aboutUsTitle text-center">About Us!</h1>
         <ul>
           <li> Cat Park </li>
@@ -85,19 +85,19 @@ const AboutPage = () => {
             {" "}
             <b>Thomas Bogdanov</b>
             <div className="socialMediaIcons">
-              <a href="">
+              <a href="https://www.facebook.com/thomas.bogdanov">
                 <img
                   src="https://github.com/ChrisnNg/cat_park/blob/features/about_us/client/public/fb-icon.png?raw=true"
                   alt="Thomas-fb"
                 />
               </a>
-              <a href="https://www.linkedin.com/in/anthony-zhu-3abb9b183/">
+              <a href="https://www.linkedin.com/in/thomas-bogdanov-a98004147/">
                 <img
                   src="https://github.com/ChrisnNg/cat_park/blob/features/about_us/client/public/linked-icon.png?raw=true"
                   alt="Thomas-linkedin"
                 />
               </a>
-              <a href="https://www.instagram.com/zhudriven/">
+              <a href="https://www.instagram.com/bulletsafety/">
                 <img
                   src="https://github.com/ChrisnNg/cat_park/blob/features/about_us/client/public/insta-icon.png?raw=true"
                   alt="Thomas-ig"
