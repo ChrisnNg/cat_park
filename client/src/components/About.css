@@ -24,3 +24,7 @@
 .socialMediaIcons a:hover img {
   transform: translateY(-10px);
 }
+
+.container {
+  color: black;
+}

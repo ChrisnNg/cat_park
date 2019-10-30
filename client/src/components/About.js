@@ -28,20 +28,44 @@ const AboutPage = () => {
 
       <div className="container text-center">
         <p>Follow us on social media to get our latest updates!</p>
-        <div className="socialMediaIcons a">
+        <div className="socialMediaIcons chris">
           <a href="https://www.facebook.com/christopher.ng.5203?ref=bookmarks">
-            <img src="https://github.com/ChrisnNg/cat_park/blob/features/about_us/client/public/fb-icon.png?raw=true" />
+            <img
+              src="https://github.com/ChrisnNg/cat_park/blob/features/about_us/client/public/fb-icon.png?raw=true"
+              alt="Chris-fb"
+            />
           </a>
           <a href="https://www.linkedin.com/in/christopherkyleng/">
             <img
-              src={
-                "https://github.com/ChrisnNg/cat_park/blob/features/about_us/client/public/linked-icon.png?raw=true"
-              }
+              src="https://github.com/ChrisnNg/cat_park/blob/features/about_us/client/public/linked-icon.png?raw=true"
               alt="Chris-linkedin"
             />
           </a>
           <a href="https://www.instagram.com/cristopherng/">
-            <img src="https://github.com/ChrisnNg/cat_park/blob/features/about_us/client/public/insta-icon.png?raw=true" />
+            <img
+              src="https://github.com/ChrisnNg/cat_park/blob/features/about_us/client/public/insta-icon.png?raw=true"
+              alt="Chris-ig"
+            />
+          </a>
+        </div>
+        <div className="socialMediaIcons anthony">
+          <a href="https://www.facebook.com/xoxobbq">
+            <img
+              src="https://github.com/ChrisnNg/cat_park/blob/features/about_us/client/public/fb-icon.png?raw=true"
+              alt="Anthony-fb"
+            />
+          </a>
+          <a href="https://www.linkedin.com/in/anthony-zhu-3abb9b183/">
+            <img
+              src="https://github.com/ChrisnNg/cat_park/blob/features/about_us/client/public/linked-icon.png?raw=true"
+              alt="Anthony-linkedin"
+            />
+          </a>
+          <a href="https://www.instagram.com/zhudriven/">
+            <img
+              src="https://github.com/ChrisnNg/cat_park/blob/features/about_us/client/public/insta-icon.png?raw=true"
+              alt="Anthony-ig"
+            />
           </a>
         </div>
       </div>
