@@ -14,7 +14,8 @@
     "material-ui-popup-state": "^1.4.1",
     "pg": "^7.12.1",
     "react": "^16.11.0",
-    "react-dom": "^16.11.0"
+    "react-dom": "^16.11.0",
+    "react-flexview": "^4.0.4"
   },
   "devDependencies": {
     "husky": "^3.0.9",

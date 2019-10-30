@@ -1,5 +1,6 @@
 import React from "react";
 import "./About.css";
+import FlexView from "react-flexview";
 
 const AboutPage = () => {
   return (
@@ -25,7 +26,9 @@ const AboutPage = () => {
           <li> Hosted on Heroku & Netlify </li>
         </ul>
       </header>
-
+      <FlexView vAlignContent="center" hAlignContent="center">
+        I'm vertically centered!
+      </FlexView>
       <div className="container text-center">
         <p>Follow us on social media to get our latest updates!</p>
         <div className="socialMediaIcons chris">
