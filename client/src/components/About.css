@@ -25,6 +25,43 @@
   transform: translateY(-10px);
 }
 
-.container {
+section {
   color: black;
+  border: 100px;
+}
+.leftName {
+  display: inline-flex !important;
+  position: absolute;
+  left: 0%;
+  margin-left: 30px;
+}
+.centerName {
+  display: inline-flex !important;
+}
+.rightName {
+  position: absolute;
+  display: inline-flex !important;
+  right: 0%;
+  margin-right: 30px;
+}
+
+.leftMedia {
+  display: inline-flex !important;
+  position: absolute;
+  left: 0%;
+  margin-top: 1%;
+  margin-bottom: 1%;
+}
+
+.centerMedia {
+  display: inline-flex !important;
+  position: absolute;
+  margin-top: 1%;
+  margin-bottom: 1%;
+}
+
+.rightMedia {
+  display: inline-flex !important;
+  position: absolute;
+  right: 0%;
 }
