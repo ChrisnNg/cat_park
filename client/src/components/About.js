@@ -1,6 +1,12 @@
 import React from "react";
 import "./About.css";
 
+let chrispfp =
+  "https://github.com/ChrisnNg/cat_park/blob/features/about_us/client/public/chrispfp.jpg?raw=true";
+let anthonypfp =
+  "https://github.com/ChrisnNg/cat_park/blob/features/about_us/client/public/anthonypfp.png?raw=true";
+let thomaspfp =
+  "https://github.com/ChrisnNg/cat_park/blob/features/about_us/client/public/thomaspfp.png?raw=true";
 const AboutPage = () => {
   return (
     <section id="aboutUs">
@@ -35,6 +41,9 @@ const AboutPage = () => {
         <div class="row">
           <div class="col-sm">
             {" "}
+            <div>
+              <img className="pfp" src={chrispfp} alt="chris-pfp" />
+            </div>
             <b>Christopher Ng</b>
             <div className="socialMediaIcons">
               <a href="https://www.facebook.com/christopher.ng.5203?ref=bookmarks">
@@ -59,6 +68,9 @@ const AboutPage = () => {
           </div>
           <div class="col-sm">
             {" "}
+            <div>
+              <img className="pfp" src={anthonypfp} alt="anthony-pfp" />
+            </div>
             <b>Anthony Zhu</b>
             <div className="socialMediaIcons">
               <a href="https://www.facebook.com/xoxobbq">
@@ -83,6 +95,9 @@ const AboutPage = () => {
           </div>
           <div class="col-sm">
             {" "}
+            <div>
+              <img className="pfp" src={thomaspfp} alt="thomas-pfp" />
+            </div>
             <b>Thomas Bogdanov</b>
             <div className="socialMediaIcons">
               <a href="https://www.facebook.com/thomas.bogdanov">
