@@ -10,7 +10,9 @@ import (
 	"github.com/ChrisnNg/cat_park/server/pkg/config"
 	"github.com/ChrisnNg/cat_park/server/pkg/models"
 	"fmt"
-	"github.com/ChrisnNg/cat_park/server/pkg/seeds"
+	"github.com/ChrisnNg/cat_park/server/pkg/seeds/crimeSeeds"
+	"github.com/ChrisnNg/cat_park/server/pkg/seeds/userSeeds"
+	"github.com/ChrisnNg/cat_park/server/pkg/seeds/locationSeeds"
 )
 
 func main() {
@@ -33,6 +35,8 @@ func main() {
 	case "SeedTables":
 		fmt.Println("Seeding Tables . . .")
 		userSeeds.SeedUsers()
+		crimeSeeds.SeedCrimes()
+		locationSeeds.SeedLocations()
 	case "Start":
 		fmt.Println("Starting Server . . .")
 		r := mux.NewRouter()
