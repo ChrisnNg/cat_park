@@ -106,9 +106,19 @@ export default function Nav(props) {
 
           <Typography variant="h6" className={classes.title}>
             <div className="center-nav">
-              <img src={three_cats} alt="cat_park_logo" className="catimg" />
-              <div className="cattxt left">~Cat</div>
-              <div className="cattxt right">Park~</div>
+              <img
+                src={
+                  "https://github.com/ChrisnNg/cat_park/blob/features/nav/client/public/cat_park.png?raw=true"
+                }
+                alt="cat_park_logo"
+                className="catimg"
+              />
+              <div className="cattxt left">
+                <b>~Cat</b>
+              </div>
+              <div className="cattxt right">
+                <b>Park~</b>
+              </div>
             </div>
           </Typography>
           {auth && (
