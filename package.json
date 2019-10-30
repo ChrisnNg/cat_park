@@ -6,6 +6,7 @@
     "@material-ui/core": "^4.5.1",
     "@material-ui/icons": "^4.5.1",
     "body-parser": "^1.19.0",
+    "bootstrap": "^3.4.1",
     "chalk": "^2.4.2",
     "dotenv": "^8.2.0",
     "jsx": "^0.9.89",
@@ -14,6 +15,7 @@
     "material-ui-popup-state": "^1.4.1",
     "pg": "^7.12.1",
     "react": "^16.11.0",
+    "react-bootstrap": "^1.0.0-beta.14",
     "react-dom": "^16.11.0",
     "react-flexview": "^4.0.4"
   },
