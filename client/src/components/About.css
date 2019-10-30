@@ -25,3 +25,12 @@
 .aboutUs ul {
   margin: 20px;
 }
+
+.socialMediaIcons img {
+  width: 60px;
+  transition: 0.5s;
+}
+
+.socialMediaIcons a:hover img {
+  transform: translateY(-10px);
+}
