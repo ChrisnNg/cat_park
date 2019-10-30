@@ -7,17 +7,26 @@ import (
 	"github.com/ChrisnNg/cat_park/server/pkg/router"
 	"github.com/gorilla/mux"
 	_ "github.com/jinzhu/gorm/dialects/postgres"
+	"github.com/ChrisnNg/cat_park/server/pkg/config"
+	"github.com/ChrisnNg/cat_park/server/pkg/models"
 	"fmt"
 )
 
 func main() {
+	config.Connect()
+	db := config.GetDB()
+
+
 	wordPtr := flag.String("task", "foo", "a string")
 	flag.Parse()
 
-	fmt.Println(myTypes.Users)
+	// u := models.Users{}
+	// fmt.Println(u)
 
-	if *wordPtr == "Migrate" {
+	if *wordPtr == "ResetDB" {
 		fmt.Println("Migrating from main . . .")
+		db.DropTableIfExists(models.Users{}, models.Parkings{}, models.Crimes{})
+		db.AutoMigrate(models.Users{}, models.Parkings{}, models.Crimes{})
 	}
 
 	r := mux.NewRouter()
