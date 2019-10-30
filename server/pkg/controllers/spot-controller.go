@@ -11,7 +11,7 @@ import (
 	"github.com/ChrisnNg/cat_park/server/pkg/models"
 )
 
-var Spot models.Parking
+var Spot models.Parkings
 
 func NewSpot(w http.ResponseWriter, r *http.Request) {
 	return
