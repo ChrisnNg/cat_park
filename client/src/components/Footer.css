@@ -10,19 +10,9 @@ html {
   background-color: #efefef;
 }
 
-/*-------------
-	Layout
---------------*/
-
 footer {
-  /* Just like the header, the footer will have a static height - it shouldn't grow or shrink.  */
-  /* 0 flex-grow, 0 flex-shrink, auto flex-basis */
   flex: 0 0 auto;
 }
-
-/*--------------------
-	Footer styles
---------------------*/
 
 footer {
   background-color: #292c2f;
@@ -44,8 +34,6 @@ footer .footer-left p {
   font-size: 14px;
   margin: 0;
 }
-
-/* Footer links */
 
 footer p.footer-links {
   font-size: 18px;
@@ -82,8 +70,6 @@ footer .footer-right a {
 
   margin-left: 3px;
 }
-
-/* If you don't want the footer to be responsive, remove these media queries */
 
 @media (max-width: 600px) {
   footer .footer-left,
