@@ -1,0 +1,38 @@
+#aboutUs {
+  background: #f8f9fa;
+  padding-bottom: 50px;
+  padding-top: 50px;
+  color: black;
+}
+
+.aboutUsTitle {
+  margin: 10px 0;
+  font-size: 30px;
+  font-family: sans-serif;
+  font-weight: 600;
+}
+
+#aboutUs ul li {
+  margin: 5 px;
+}
+
+.socialMediaIcons img {
+  width: 60px;
+  transition: 0.5s;
+  padding-bottom: 15px;
+}
+
+.socialMediaIcons a:hover img {
+  transform: translateY(-10px);
+}
+
+section {
+  color: black;
+  border: 100px;
+}
+
+.pfp {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+}
