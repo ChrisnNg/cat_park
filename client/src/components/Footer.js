@@ -14,7 +14,7 @@ const FooterPage = () => {
           </p>
           <br></br>
           <h5>
-            <a href="#">About us</a>
+            <a href="/about">About us</a>
           </h5>
         </div>
       </div>
