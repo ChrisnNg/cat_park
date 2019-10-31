@@ -13,9 +13,12 @@ import (
 	"github.com/ChrisnNg/cat_park/server/pkg/seeds/crimeSeeds"
 	"github.com/ChrisnNg/cat_park/server/pkg/seeds/userSeeds"
 	"github.com/ChrisnNg/cat_park/server/pkg/seeds/locationSeeds"
+	// _ "github.com/joho/godotenv/autoload"
+	// "os"
 )
 
 func main() {
+
 	config.Connect()
 	db := config.GetDB()
 
