@@ -5,6 +5,7 @@ import {
   GoogleMap,
   Marker
 } from "react-google-maps";
+import MapStyles from "./MapStyles";
 
 function Map() {
   const [selectedPark, setSelectedPark] = useState(null);
@@ -29,6 +30,7 @@ function Map() {
     <GoogleMap
       defaultZoom={10}
       defaultCenter={{ lat: 49.246292, lng: -123.116226 }}
+      defaultOptions={{ styles: MapStyles }}
       onClick={e => {
         setLat(e.latLng.lat());
         setLng(e.latLng.lng());
