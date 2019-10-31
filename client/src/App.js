@@ -5,6 +5,7 @@ import FooterPage from "./components/Footer.js";
 import AboutPage from "./components/About.js";
 import Mapping from "./components/Map.js";
 import Axios from "axios";
+import MyAccount from "./components/MyAccount.js";
 
 Axios.get(process.env.REACT_APP_URL);
 
@@ -20,8 +21,10 @@ class App extends Component {
           <Route path="/about">
             <AboutPage />
           </Route>
+          <Route path="/myaccount">
+            <MyAccount />
+          </Route>
           <Route path="/">
-            <Route path="/myaccount"></Route>
             <Nav />
             <div id="map">
               <Mapping />
