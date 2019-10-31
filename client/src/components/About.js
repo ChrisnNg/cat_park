@@ -1,5 +1,6 @@
 import React from "react";
 import "./About.css";
+import { Link } from "react-router-dom";
 
 let chrispfp =
   "https://github.com/ChrisnNg/cat_park/blob/features/about_us/client/public/chrispfp.jpg?raw=true";
@@ -10,6 +11,9 @@ let thomaspfp =
 const AboutPage = () => {
   return (
     <section id="aboutUs">
+      <Link className="btn btn-info" to="/">
+        Home
+      </Link>
       <header>
         <h1 className="aboutUsTitle text-center">About Us!</h1>
         <ul>

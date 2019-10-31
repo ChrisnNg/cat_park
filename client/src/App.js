@@ -1,15 +1,15 @@
 import React, { Component } from "react";
 import "./App.css";
 import Nav from "./components/Nav.js";
-import MaterialUiForm from "./components/Form.js";
 import FooterPage from "./components/Footer.js";
 import AboutPage from "./components/About.js";
 import Mapping from "./components/Map.js";
 import Axios from "axios";
+import MyAccount from "./components/MyAccount.js";
 
 Axios.get(process.env.REACT_APP_URL);
 
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 class App extends Component {
   render() {
@@ -20,6 +20,9 @@ class App extends Component {
         <Switch>
           <Route path="/about">
             <AboutPage />
+          </Route>
+          <Route path="/myaccount">
+            <MyAccount />
           </Route>
           <Route path="/">
             <Nav />
