@@ -6,7 +6,7 @@
 
 html {
   height: 100%;
-  color: #f3f4f5;
+  color: #333333;
   background-color: #efefef;
 }
 
@@ -15,7 +15,7 @@ footer {
 }
 
 footer {
-  background-color: #292c2f;
+  background: linear-gradient(#333333, #555555);
   box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
   width: 100%;
   text-align: left;
