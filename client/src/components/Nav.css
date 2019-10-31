@@ -9,31 +9,20 @@
   width: 75px;
   margin-top: 5px;
   margin-bottom: 5px;
-}
-
-.cattxt {
-  position: relative;
-  z-index: 999;
-  margin: 0 auto;
   left: 0;
-  right: 0;
-  top: 0%;
-  text-align: center;
-  width: 60%; /* Set the width of the positioned div */
-  font-size: 50px;
-}
-
-.left {
-  position: absolute;
-  margin-right: 75px;
-}
-
-.right {
-  position: absolute;
-  margin-left: 75px;
 }
 
 .nav-menu {
   background-color: white !important;
 }
 /* style={{height: "75px", width: "75px"}} */
+
+.nav-bar {
+  background: linear-gradient(to right, #111111, #999999) !important;
+}
+
+.nav-links {
+  color: white !important;
+  font: bold;
+  margin-right: 10px;
+}

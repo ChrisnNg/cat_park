@@ -6,22 +6,29 @@ import FooterPage from "./components/Footer.js";
 import AboutPage from "./components/About.js";
 import Mapping from "./components/Map.js";
 
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <Nav />
-        <AboutPage />
-        <div id="add-location-form">
-          <MaterialUiForm />
-        </div>
-        <div id="map">
-          <Mapping />
-        </div>
-        <div id="footer-id">
-          <FooterPage />
-        </div>
-      </div>
+      <Router>
+        {/* A <Switch> looks through its children <Route>s and
+            renders the first one that matches the current URL. */}
+        <Switch>
+          <Route path="/about">
+            <AboutPage />
+          </Route>
+          <Route path="/">
+            <Nav />
+            <div id="map">
+              <Mapping />
+            </div>
+            <div id="footer-id">
+              <FooterPage />
+            </div>
+          </Route>
+        </Switch>
+      </Router>
     );
   }
 }
