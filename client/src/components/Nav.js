@@ -119,6 +119,9 @@ export default function Nav(props) {
             <Link className="btn btn-info" to="/about">
               About
             </Link>
+            <Link className="btn btn-info" to="/myaccount">
+              Account
+            </Link>
           </div>
           <TriggerMenu />
           <Typography variant="h6" className={classes.title}></Typography>
