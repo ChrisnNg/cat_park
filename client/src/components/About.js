@@ -2,14 +2,14 @@ import React from "react";
 import "./About.css";
 import "../../public/three_cats.png";
 
-const chrispfp =
-  "https://github.com/ChrisnNg/cat_park/blob/features/about_us/client/public/chrispfp.jpg?raw=true";
-const anthonypfp =
-  "https://github.com/ChrisnNg/cat_park/blob/features/about_us/client/public/anthonypfp.png?raw=true";
-const thomaspfp =
-  "https://github.com/ChrisnNg/cat_park/blob/features/about_us/client/public/thomaspfp.png?raw=true";
-const three_cats =
-  "https://github.com/ChrisnNg/cat_park/blob/master/client/public/three_cats.png?raw=true";
+import chrispfp from "../../public/chrispfp.jpg";
+import anthonypfp from "../../public/anthonypfp.png";
+import thomaspfp from "../../public/thomaspfp.png";
+import three_cats from "../../public/three_cats.png";
+
+import ig_icon from "../../public/insta-icon.png";
+import fb_icon from "../../public/fb-icon.png";
+import li_icon from "../../public/linked-icon.png";
 
 const AboutPage = () => {
   return (
@@ -51,22 +51,13 @@ const AboutPage = () => {
             <b>Christopher Ng</b>
             <div className="socialMediaIcons">
               <a href="https://www.facebook.com/christopher.ng.5203?ref=bookmarks">
-                <img
-                  src="https://github.com/ChrisnNg/cat_park/blob/features/about_us/client/public/fb-icon.png?raw=true"
-                  alt="Chris-fb"
-                />
+                <img src={fb_icon} alt="Chris-fb" />
               </a>
               <a href="https://www.linkedin.com/in/christopherkyleng/">
-                <img
-                  src="https://github.com/ChrisnNg/cat_park/blob/features/about_us/client/public/linked-icon.png?raw=true"
-                  alt="Chris-linkedin"
-                />
+                <img src={li_icon} alt="Chris-linkedin" />
               </a>
               <a href="https://www.instagram.com/cristopherng/">
-                <img
-                  src="https://github.com/ChrisnNg/cat_park/blob/features/about_us/client/public/insta-icon.png?raw=true"
-                  alt="Chris-ig"
-                />
+                <img src={ig_icon} alt="Chris-ig" />
               </a>
             </div>
           </div>
@@ -78,22 +69,13 @@ const AboutPage = () => {
             <b>Anthony Zhu</b>
             <div className="socialMediaIcons">
               <a href="https://www.facebook.com/xoxobbq">
-                <img
-                  src="https://github.com/ChrisnNg/cat_park/blob/features/about_us/client/public/fb-icon.png?raw=true"
-                  alt="Anthony-fb"
-                />
+                <img src={fb_icon} alt="Anthony-fb" />
               </a>
               <a href="https://www.linkedin.com/in/anthony-zhu-3abb9b183/">
-                <img
-                  src="https://github.com/ChrisnNg/cat_park/blob/features/about_us/client/public/linked-icon.png?raw=true"
-                  alt="Anthony-linkedin"
-                />
+                <img src={li_icon} alt="Anthony-linkedin" />
               </a>
               <a href="https://www.instagram.com/zhudriven/">
-                <img
-                  src="https://github.com/ChrisnNg/cat_park/blob/features/about_us/client/public/insta-icon.png?raw=true"
-                  alt="Anthony-ig"
-                />
+                <img src={ig_icon} alt="Anthony-ig" />
               </a>
             </div>
           </div>
@@ -105,22 +87,13 @@ const AboutPage = () => {
             <b>Thomas Bogdanov</b>
             <div className="socialMediaIcons">
               <a href="https://www.facebook.com/thomas.bogdanov">
-                <img
-                  src="https://github.com/ChrisnNg/cat_park/blob/features/about_us/client/public/fb-icon.png?raw=true"
-                  alt="Thomas-fb"
-                />
+                <img src={fb_icon} alt="Thomas-fb" />
               </a>
               <a href="https://www.linkedin.com/in/thomas-bogdanov-a98004147/">
-                <img
-                  src="https://github.com/ChrisnNg/cat_park/blob/features/about_us/client/public/linked-icon.png?raw=true"
-                  alt="Thomas-linkedin"
-                />
+                <img src={li_icon} alt="Thomas-linkedin" />
               </a>
               <a href="https://www.instagram.com/bulletsafety/">
-                <img
-                  src="https://github.com/ChrisnNg/cat_park/blob/features/about_us/client/public/insta-icon.png?raw=true"
-                  alt="Thomas-ig"
-                />
+                <img src={ig_icon} alt="Thomas-ig" />
               </a>
             </div>
           </div>

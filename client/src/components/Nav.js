@@ -35,6 +35,8 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
+import cat_park from "../../public/cat_park.png";
+
 export default function Nav(props) {
   const classes = useStyles();
   const [auth, setAuth] = React.useState(true);
@@ -109,13 +111,7 @@ export default function Nav(props) {
           ></IconButton>
 
           <div className="center-nav">
-            <img
-              src={
-                "https://github.com/ChrisnNg/cat_park/blob/features/nav/client/public/cat_park.png?raw=true"
-              }
-              alt="cat_park_logo"
-              className="catimg"
-            />
+            <img src={cat_park} alt="cat_park_logo" className="catimg" />
             <b>~Cat Park~</b>
           </div>
           <div className="container">
@@ -129,13 +125,7 @@ export default function Nav(props) {
               <Modal.Header closeButton>
                 <Modal.Title className="aboutUsTitle">
                   {" "}
-                  <img
-                    src={
-                      "https://github.com/ChrisnNg/cat_park/blob/features/nav/client/public/cat_park.png?raw=true"
-                    }
-                    alt="cat_park_logo"
-                    className="catimg"
-                  />
+                  <img src={cat_park} alt="cat_park_logo" className="catimg" />
                   Cat Park
                 </Modal.Title>
               </Modal.Header>
