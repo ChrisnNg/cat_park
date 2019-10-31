@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -11,7 +11,8 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormGroup from "@material-ui/core/FormGroup";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
-import Button from "@material-ui/core/Button";
+import Modal from "react-bootstrap/Modal";
+import Button from "react-bootstrap/Button";
 import {
   usePopupState,
   bindTrigger,
@@ -20,6 +21,7 @@ import {
 
 import "./Nav.css";
 import { Link } from "react-router-dom";
+import AboutPage from "./About.js";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -38,6 +40,9 @@ export default function Nav(props) {
   const [auth, setAuth] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
+  const [show, setShow] = useState(false);
+
+  const handleShow = () => setShow(true);
 
   const handleChange = event => {
     setAuth(event.target.checked);
@@ -48,6 +53,7 @@ export default function Nav(props) {
   };
 
   const handleClose = () => {
+    setShow(false);
     setAnchorEl(null);
   };
 
@@ -116,9 +122,32 @@ export default function Nav(props) {
             <Link className="btn btn-info" to="/">
               Home
             </Link>
-            <Link className="btn btn-info" to="/about">
+            <Button className="btn btn-info" onClick={handleShow}>
               About
-            </Link>
+            </Button>
+            <Modal show={show} onHide={handleClose} size="xl" centered={true}>
+              <Modal.Header closeButton>
+                <Modal.Title className="aboutUsTitle">
+                  {" "}
+                  <img
+                    src={
+                      "https://github.com/ChrisnNg/cat_park/blob/features/nav/client/public/cat_park.png?raw=true"
+                    }
+                    alt="cat_park_logo"
+                    className="catimg"
+                  />
+                  Cat Park
+                </Modal.Title>
+              </Modal.Header>
+              <Modal.Body>
+                <AboutPage />
+              </Modal.Body>
+              <Modal.Footer>
+                <Button variant="secondary" onClick={handleClose}>
+                  Close
+                </Button>
+              </Modal.Footer>
+            </Modal>
             <Link className="btn btn-info" to="/myaccount">
               Account
             </Link>
