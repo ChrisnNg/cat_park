@@ -3,12 +3,8 @@ import {
   withGoogleMap,
   withScriptjs,
   GoogleMap,
-  Marker,
-  InfoWindow
+  Marker
 } from "react-google-maps";
-const {
-  MarkerClusterer
-} = require("react-google-maps/lib/components/addons/MarkerClusterer");
 
 function Map() {
   const [selectedPark, setSelectedPark] = useState(null);
@@ -29,13 +25,6 @@ function Map() {
   const [lat, setLat] = useState(49.246292);
   const [lng, setLng] = useState(-123.116226);
 
-  function handleClick(event) {
-    var lat = event.latLng.lat();
-    var lng = event.latLng.lng();
-    console.log("inside handleClick");
-    console.log(lat, lng);
-  }
-
   return (
     <GoogleMap
       defaultZoom={10}
@@ -54,7 +43,7 @@ const MapWrapped = withScriptjs(withGoogleMap(Map));
 
 export default function App() {
   return (
-    <div style={{ width: "100vw", height: "100vh" }}>
+    <div style={{ width: "100vw", height: "90vh" }}>
       <MapWrapped
         googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=AIzaSyDtxaSuJXHA5QJ7MMVxdQ-sQyLfaj01eJ4`}
         loadingElement={<div style={{ height: `100%` }} />}
