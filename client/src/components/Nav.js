@@ -18,8 +18,8 @@ import {
   bindMenu
 } from "material-ui-popup-state/hooks";
 
-import three_cats from "../../public/three_cats.png";
 import "./Nav.css";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -93,7 +93,7 @@ export default function Nav(props) {
           label={auth ? "Logout" : "Login"}
         />
       </FormGroup>
-      <AppBar position="static">
+      <AppBar className="nav-bar" position="static">
         <Toolbar>
           <IconButton
             edge="start"
@@ -102,15 +102,26 @@ export default function Nav(props) {
             aria-label="menu"
           ></IconButton>
 
+          <div className="center-nav">
+            <img
+              src={
+                "https://github.com/ChrisnNg/cat_park/blob/features/nav/client/public/cat_park.png?raw=true"
+              }
+              alt="cat_park_logo"
+              className="catimg"
+            />
+            <b>~Cat Park~</b>
+          </div>
+          <div className="container">
+            <Link className="btn btn-info" to="/">
+              Home
+            </Link>
+            <Link className="btn btn-info" to="/about">
+              About
+            </Link>
+          </div>
           <TriggerMenu />
-
-          <Typography variant="h6" className={classes.title}>
-            <div className="center-nav">
-              <img src={three_cats} alt="cat_park_logo" className="catimg" />
-              <div className="cattxt left">~Cat</div>
-              <div className="cattxt right">Park~</div>
-            </div>
-          </Typography>
+          <Typography variant="h6" className={classes.title}></Typography>
           {auth && (
             <div>
               <IconButton

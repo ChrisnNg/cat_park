@@ -37,9 +37,9 @@ const AboutPage = () => {
         </p>
       </div>
 
-      <div class="container">
-        <div class="row">
-          <div class="col-sm">
+      <div className="container">
+        <div className="row">
+          <div className="col-sm">
             {" "}
             <div>
               <img className="pfp" src={chrispfp} alt="chris-pfp" />
@@ -66,7 +66,7 @@ const AboutPage = () => {
               </a>
             </div>
           </div>
-          <div class="col-sm">
+          <div className="col-sm">
             {" "}
             <div>
               <img className="pfp" src={anthonypfp} alt="anthony-pfp" />
@@ -93,7 +93,7 @@ const AboutPage = () => {
               </a>
             </div>
           </div>
-          <div class="col-sm">
+          <div className="col-sm">
             {" "}
             <div>
               <img className="pfp" src={thomaspfp} alt="thomas-pfp" />
