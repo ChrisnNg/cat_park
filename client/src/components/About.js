@@ -1,39 +1,39 @@
 import React from "react";
 import "./About.css";
-import { Link } from "react-router-dom";
+import "../../public/three_cats.png";
 
-let chrispfp =
+const chrispfp =
   "https://github.com/ChrisnNg/cat_park/blob/features/about_us/client/public/chrispfp.jpg?raw=true";
-let anthonypfp =
+const anthonypfp =
   "https://github.com/ChrisnNg/cat_park/blob/features/about_us/client/public/anthonypfp.png?raw=true";
-let thomaspfp =
+const thomaspfp =
   "https://github.com/ChrisnNg/cat_park/blob/features/about_us/client/public/thomaspfp.png?raw=true";
+const three_cats =
+  "https://github.com/ChrisnNg/cat_park/blob/master/client/public/three_cats.png?raw=true";
+
 const AboutPage = () => {
   return (
     <section id="aboutUs">
-      <Link className="btn btn-info" to="/">
-        Home
-      </Link>
-      <header>
-        <h1 className="aboutUsTitle text-center">About Us!</h1>
-        <ul>
-          <li> Cat Park </li>
-          <li>
+      <header className="text-center">
+        <img src={three_cats} alt="three_cats" />
+        <h1 className="aboutUsTitle">About Us!</h1>
+        <div>
+          <p>
             {" "}
             Designed to help you find the closest free parking area available{" "}
-          </li>
-          <li>
+          </p>
+          <p>
             {" "}
             Uses a dataset from the Vancouver Police Department's crime API so
             you can gauge risk for where you park{" "}
-          </li>
-          <li>
+          </p>
+          <p>
             {" "}
             Created using Golang and ReactJS as part of a Lighthouse Labs final
             project{" "}
-          </li>
-          <li> Hosted on Heroku & Netlify </li>
-        </ul>
+          </p>
+          <p> Hosted on Heroku & Netlify </p>
+        </div>
       </header>
       <div>
         <p className="text-center">
@@ -41,7 +41,7 @@ const AboutPage = () => {
         </p>
       </div>
 
-      <div className="container">
+      <div className="container text-center">
         <div className="row">
           <div className="col-sm">
             {" "}

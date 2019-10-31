@@ -1,19 +1,18 @@
 #aboutUs {
-  background: #f8f9fa;
   padding-bottom: 50px;
   padding-top: 50px;
   color: black;
+  background-color: #b8b8b8;
+  background-image: url("https://www.transparenttextures.com/patterns/crossword.png");
 }
-
+#aboutUs header img {
+  border-radius: 50%;
+}
 .aboutUsTitle {
   margin: 10px 0;
   font-size: 30px;
   font-family: sans-serif;
   font-weight: 600;
-}
-
-#aboutUs ul li {
-  margin: 5 px;
 }
 
 .socialMediaIcons img {
@@ -35,4 +34,17 @@ section {
   width: 120px;
   height: 120px;
   border-radius: 50%;
+}
+
+.aboutUsTitle img {
+  filter: invert(100%);
+}
+
+.modal-header {
+  background: linear-gradient(to right, #b8b8b8, #333333);
+}
+
+.modal-content {
+  background-image: url("https://www.transparenttextures.com/patterns/45-degree-fabric-light.png");
+  background: linear-gradient(to right, #b8b8b8, #333333);
 }
