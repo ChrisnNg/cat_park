@@ -42,12 +42,13 @@ export default function Nav(props) {
   const [auth, setAuth] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
-  const [show, setShow] = useState(false);
+  const [showAbout, setShowAbout] = useState(false);
 
-  const handleShow = () => setShow(true);
+  const handleShow = () => setShowAbout(true);
 
   const handleChange = event => {
     setAuth(event.target.checked);
+    console.log("logged in or logged out");
   };
 
   const handleMenu = event => {
@@ -55,7 +56,7 @@ export default function Nav(props) {
   };
 
   const handleClose = () => {
-    setShow(false);
+    setShowAbout(false);
     setAnchorEl(null);
   };
 
@@ -121,7 +122,12 @@ export default function Nav(props) {
             <Button className="btn btn-info" onClick={handleShow}>
               About
             </Button>
-            <Modal show={show} onHide={handleClose} size="xl" centered={true}>
+            <Modal
+              show={showAbout}
+              onHide={handleClose}
+              size="xl"
+              centered={true}
+            >
               <Modal.Header closeButton>
                 <Modal.Title className="aboutUsTitle">
                   {" "}
