@@ -35,6 +35,10 @@ section {
   border-radius: 50%;
 }
 
-Modal.Title {
+.aboutUsTitle img {
   filter: invert(100%);
+}
+
+.modal-header {
+  background: linear-gradient(to right, white, black);
 }
