@@ -1,8 +1,9 @@
 #aboutUs {
-  background: #f8f9fa;
   padding-bottom: 50px;
   padding-top: 50px;
   color: black;
+  background-color: #b8b8b8;
+  background-image: url("https://www.transparenttextures.com/patterns/crossword.png");
 }
 #aboutUs header img {
   border-radius: 50%;
@@ -40,5 +41,10 @@ section {
 }
 
 .modal-header {
-  background: linear-gradient(to right, white, black);
+  background: linear-gradient(to right, #b8b8b8, #333333);
+}
+
+.modal-content {
+  background-image: url("https://www.transparenttextures.com/patterns/45-degree-fabric-light.png");
+  background: linear-gradient(to right, #b8b8b8, #333333);
 }
