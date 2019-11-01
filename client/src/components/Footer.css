@@ -1,13 +1,16 @@
-* {
+footer {
+  padding: 45px;
+  padding-bottom: 15px;
+  padding-top: 20px;
+  color: #8f9296;
+  background-image: url("https://www.transparenttextures.com/patterns/crossword.png");
+  background-color: #3f51b5;
+}
+
+/* * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
-
-html {
-  height: 100%;
-  color: #333333;
-  background-color: #efefef;
 }
 
 footer {
@@ -15,12 +18,11 @@ footer {
 }
 
 footer {
-  background: linear-gradient(#333333, #555555);
-  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+  background: linear-gradient(to right, #3f51b5, #555555);
+
   width: 100%;
   text-align: left;
   font: normal 16px sans-serif;
-
   padding: 45px 50px;
 }
 
@@ -30,7 +32,7 @@ footer .footer-limiter {
 }
 
 footer .footer-left p {
-  color: #8f9296;
+
   font-size: 14px;
   margin: 0;
 }
@@ -67,7 +69,6 @@ footer .footer-right a {
   color: #ffffff;
   text-align: center;
   line-height: 35px;
-
   margin-left: 3px;
 }
 
@@ -85,4 +86,4 @@ footer .footer-right a {
   footer .footer-left p.footer-links {
     line-height: 1.8;
   }
-}
+} */

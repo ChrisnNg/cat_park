@@ -15,10 +15,11 @@
 .nav-menu {
   background-color: white !important;
 }
-/* style={{height: "75px", width: "75px"}} */
 
 .nav-bar {
-  background: linear-gradient(to right, #111111, #999999) !important;
+  background-color: linear-gradient(to right, #111111, #999999);
+  background-color: #3f51b5;
+  background-image: url("https://www.transparenttextures.com/patterns/crossword.png");
 }
 
 .nav-links {

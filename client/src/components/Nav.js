@@ -26,6 +26,7 @@ import MyAccountEdit from "./MyAccountEdit.js";
 import "./Modal.css";
 import Login from "./Login.js";
 import Register from "./Register.js";
+
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1
