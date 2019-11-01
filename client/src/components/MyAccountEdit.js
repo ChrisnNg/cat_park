@@ -1,53 +1,120 @@
 import React from "react";
-import "./MyAccountEdit.css";
+import Avatar from "@material-ui/core/Avatar";
+import Button from "@material-ui/core/Button";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import TextField from "@material-ui/core/TextField";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import Checkbox from "@material-ui/core/Checkbox";
+import Link from "@material-ui/core/Link";
+import Grid from "@material-ui/core/Grid";
+import Box from "@material-ui/core/Box";
+import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
+import Typography from "@material-ui/core/Typography";
+import { makeStyles } from "@material-ui/core/styles";
+import Container from "@material-ui/core/Container";
+
+function Copyright() {
+  return (
+    <Typography variant="body2" color="textSecondary" align="center">
+      {"Copyright © "}
+      <Link color="inherit" href="#">
+        Cat Park
+      </Link>{" "}
+      {new Date().getFullYear()}
+      {"."}
+    </Typography>
+  );
+}
+
+const useStyles = makeStyles(theme => ({
+  "@global": {
+    body: {
+      backgroundColor: theme.palette.common.white
+    }
+  },
+  paper: {
+    marginTop: theme.spacing(2),
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center"
+  },
+  avatar: {
+    margin: theme.spacing(1),
+    backgroundColor: theme.palette.secondary.main
+  },
+  form: {
+    width: "100%", // Fix IE 11 issue.
+    marginTop: theme.spacing(1)
+  },
+  submit: {
+    margin: theme.spacing(3, 0, 0)
+  }
+}));
 
 const MyAccountEdit = props => {
+  const classes = useStyles();
+
   return (
-    <section>
-      <form className="editAccount">
-        <div className="form-group row">
-          <label htmlFor="currentPassword" className="col-sm-2 col-form-label">
-            Current Password
-          </label>
-          <div className="col-sm-10">
-            <input
-              type="password"
-              className="form-control"
-              id="currentPassword"
-              placeholder="Current Password"
-            />
-          </div>
-          <label htmlFor="newPassword" className="col-sm-2 col-form-label">
-            New Password
-          </label>
-          <div className="col-sm-10">
-            <input
-              type="password"
-              className="form-control"
-              id="newPassword"
-              placeholder="New Password"
-            />
-          </div>
-          <label
-            htmlFor="newPasswordConfirm"
-            className="col-sm-2 col-form-label"
+    <Container component="main" maxWidth="xs">
+      <CssBaseline />
+      <div className={classes.paper}>
+        <Avatar className={classes.avatar}>
+          <LockOutlinedIcon />
+        </Avatar>
+        <Typography component="h1" variant="h5">
+          Edit Password
+        </Typography>
+        <form className={classes.form} noValidate>
+          <TextField
+            variant="outlined"
+            margin="normal"
+            required
+            fullWidth
+            name="current-password"
+            label="Current Password"
+            type="current-password"
+            id="current-password"
+          />
+          <TextField
+            variant="outlined"
+            margin="normal"
+            required
+            fullWidth
+            name="new-password"
+            label="New Password"
+            type="new-password"
+            id="new-password"
+          />
+          <TextField
+            variant="outlined"
+            margin="normal"
+            required
+            fullWidth
+            name="confirm-password"
+            label="Confirm Password"
+            type="confirm-password"
+            id="confirm-password"
+          />
+
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            color="primary"
+            className={classes.submit}
           >
-            Confirm Password
-          </label>
-          <div className="col-sm-10">
-            <input
-              type="password"
-              className="form-control"
-              id="newPasswordConfirm"
-              placeholder="Confirm Password"
-            />
-          </div>
-        </div>
-        <button type="submit" className="btn btn-primary">
-          Submit
-        </button>
-      </form>
-    </section>
+            Submit
+          </Button>
+          <Grid container>
+            <Grid item xs></Grid>
+            <Grid item></Grid>
+          </Grid>
+        </form>
+      </div>
+      <Box mt={8}>
+        <Copyright />
+      </Box>
+    </Container>
   );
 };
 
