@@ -6,3 +6,8 @@
 .editAccount button {
   width: 100%;
 }
+
+.editAccount div label {
+  padding: 1.5%;
+  border-right: 1.5%;
+}
