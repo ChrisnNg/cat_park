@@ -22,7 +22,7 @@ import {
 import "./Nav.css";
 import { Link } from "react-router-dom";
 import AboutPage from "./About.js";
-import MyAccount from "./MyAccount.js";
+import MyAccountEdit from "./MyAccountEdit.js";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -46,7 +46,10 @@ export default function Nav(props) {
   const [showAbout, setShowAbout] = useState(false);
   const [showAccount, setShowAccount] = React.useState(false);
   const handleShowAbout = () => setShowAbout(true);
-  const handleShowAccount = () => setShowAccount(true);
+  const handleShowAccount = () => {
+    handleClose();
+    setShowAccount(true);
+  };
 
   const handleChange = event => {
     setAuth(event.target.checked);
@@ -116,10 +119,13 @@ export default function Nav(props) {
           {/* popup for my account */}
           <Modal show={showAccount} onHide={handleClose}>
             <Modal.Header closeButton>
-              <Modal.Title>Modal heading</Modal.Title>
+              <Modal.Title>
+                {" "}
+                <h1>My Account</h1>
+              </Modal.Title>
             </Modal.Header>
             <Modal.Body>
-              <MyAccount />
+              <MyAccountEdit />
             </Modal.Body>
             <Modal.Footer>
               <Button variant="secondary" onClick={handleClose}>
@@ -198,7 +204,7 @@ export default function Nav(props) {
                 onClose={handleClose}
               >
                 <MenuItem onClick={handleClose}>Profile</MenuItem>
-                <MenuItem onClick={handleClose}>My account</MenuItem>
+                <MenuItem onClick={handleShowAccount}>My account</MenuItem>
               </Menu>
             </div>
           )}
