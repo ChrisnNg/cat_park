@@ -278,7 +278,7 @@ export default function Nav(props) {
               >
                 <MenuItem onClick={handleClose}>Profile</MenuItem>
                 <MenuItem onClick={handleShowAccountEdit}>
-                  Edit My account
+                  Edit Account
                 </MenuItem>
               </Menu>
             </div>
