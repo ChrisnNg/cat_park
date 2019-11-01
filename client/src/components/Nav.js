@@ -20,13 +20,12 @@ import {
 } from "material-ui-popup-state/hooks";
 
 import "./Nav.css";
-import { Link } from "react-router-dom";
+
 import AboutPage from "./About.js";
 import MyAccountEdit from "./MyAccountEdit.js";
 import "./Modal.css";
 
-import Register from "./Register.js";
-import SignIn from "./SignIn.js";
+import Register from "./SignIn.js";
 import SignUp from "./SignUp.js";
 
 const useStyles = makeStyles(theme => ({
@@ -230,7 +229,7 @@ export default function Nav(props) {
                 </Modal.Title>
               </Modal.Header>
               <Modal.Body>
-                <SignIn />
+                <Register />
               </Modal.Body>
               <Modal.Footer>
                 <Button variant="secondary" onClick={handleClose}>
