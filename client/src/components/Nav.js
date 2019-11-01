@@ -23,7 +23,7 @@ import "./Nav.css";
 import { Link } from "react-router-dom";
 import AboutPage from "./About.js";
 import MyAccountEdit from "./MyAccountEdit.js";
-
+import "./Modal.css";
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1
@@ -121,24 +121,27 @@ export default function Nav(props) {
             <Modal.Header closeButton>
               <Modal.Title>
                 {" "}
-                <h1>My Account</h1>
+                <h1>
+                  <img
+                    src={cat_park}
+                    alt="cat_park_logo"
+                    className="catimg modaltitle"
+                  />
+                  <b>My Account</b>
+                </h1>
               </Modal.Title>
             </Modal.Header>
             <Modal.Body>
               <MyAccountEdit />
             </Modal.Body>
-            <Modal.Footer>
-              <Button variant="secondary" onClick={handleClose}>
-                Close
-              </Button>
-              <Button variant="primary" onClick={handleClose}>
-                Save Changes
-              </Button>
-            </Modal.Footer>
           </Modal>
 
           <div className="center-nav">
-            <img src={cat_park} alt="cat_park_logo" className="catimg" />
+            <img
+              src={cat_park}
+              alt="cat_park_logo"
+              className="catimg modaltitle"
+            />
             <b>~Cat Park~</b>
           </div>
           <div className="container">

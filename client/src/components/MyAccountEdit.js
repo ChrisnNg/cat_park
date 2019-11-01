@@ -11,7 +11,7 @@ const MyAccountEdit = props => {
           <label for="inputPassword3" className="col-sm-2 col-form-label">
             Current Password
           </label>
-          <div class="col-sm-10">
+          <div className="col-sm-10">
             <input
               type="password"
               className="form-control"
@@ -22,7 +22,7 @@ const MyAccountEdit = props => {
           <label for="inputPassword3" className="col-sm-2 col-form-label">
             New Password
           </label>
-          <div class="col-sm-10">
+          <div className="col-sm-10">
             <input
               type="password"
               className="form-control"
@@ -33,7 +33,7 @@ const MyAccountEdit = props => {
           <label for="inputPassword3" className="col-sm-2 col-form-label">
             Confirm Password
           </label>
-          <div class="col-sm-10">
+          <div className="col-sm-10">
             <input
               type="password"
               className="form-control"
