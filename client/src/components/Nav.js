@@ -174,7 +174,7 @@ export default function Nav(props) {
               alt="cat_park_logo"
               className="catimg modaltitle"
             />
-            <b>~Cat Park~</b>
+            <b>~Cat_Park~</b>
           </div>
           <div className="container">
             <Link className="btn btn-info" to="/">

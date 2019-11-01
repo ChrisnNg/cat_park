@@ -5,7 +5,7 @@ const FooterPage = () => {
   return (
     <footer>
       <div className="footer">
-        <h3>CAT Park © 2019</h3>
+        <h4>CAT Park © 2019</h4>
         <p>
           Designed to help you find the closest free parking area available.
           Uses a dataset from the Vancouver Police Department's crime API so you
