@@ -22,6 +22,7 @@ import {
 import "./Nav.css";
 import { Link } from "react-router-dom";
 import AboutPage from "./About.js";
+import MyAccount from "./MyAccount.js";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -43,8 +44,9 @@ export default function Nav(props) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const [showAbout, setShowAbout] = useState(false);
-
-  const handleShow = () => setShowAbout(true);
+  const [showAccount, setShowAccount] = React.useState(false);
+  const handleShowAbout = () => setShowAbout(true);
+  const handleShowAccount = () => setShowAccount(true);
 
   const handleChange = event => {
     setAuth(event.target.checked);
@@ -58,6 +60,7 @@ export default function Nav(props) {
   const handleClose = () => {
     setShowAbout(false);
     setAnchorEl(null);
+    setShowAccount(false);
   };
 
   const TriggerMenu = () => {
@@ -110,6 +113,23 @@ export default function Nav(props) {
             color="inherit"
             aria-label="menu"
           ></IconButton>
+          {/* popup for my account */}
+          <Modal show={showAccount} onHide={handleClose}>
+            <Modal.Header closeButton>
+              <Modal.Title>Modal heading</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              <MyAccount />
+            </Modal.Body>
+            <Modal.Footer>
+              <Button variant="secondary" onClick={handleClose}>
+                Close
+              </Button>
+              <Button variant="primary" onClick={handleClose}>
+                Save Changes
+              </Button>
+            </Modal.Footer>
+          </Modal>
 
           <div className="center-nav">
             <img src={cat_park} alt="cat_park_logo" className="catimg" />
@@ -119,9 +139,10 @@ export default function Nav(props) {
             <Link className="btn btn-info" to="/">
               Home
             </Link>
-            <Button className="btn btn-info" onClick={handleShow}>
+            <Button className="btn btn-info" onClick={handleShowAbout}>
               About
             </Button>
+            {/* popup for About page */}
             <Modal
               show={showAbout}
               onHide={handleClose}
@@ -144,9 +165,9 @@ export default function Nav(props) {
                 </Button>
               </Modal.Footer>
             </Modal>
-            <Link className="btn btn-info" to="/myaccount">
+            <Button onClick={handleShowAccount} className="btn btn-info">
               Account
-            </Link>
+            </Button>
           </div>
           <TriggerMenu />
           <Typography variant="h6" className={classes.title}></Typography>
