@@ -51,11 +51,13 @@ export default function Nav(props) {
   const [showAccountEdit, setShowAccountEdit] = React.useState(false);
   const [showLogin, setShowLogin] = React.useState(false);
   const [showRegister, setShowRegister] = React.useState(false);
+  const [showButtons, setShowButton] = React.useState({ visibility: "hidden" });
 
   const open = Boolean(anchorEl);
 
   const handleChange = event => {
     setAuth(event.target.checked);
+    setShowButton({ visibility: "visible" });
     console.log("logged in or logged out");
   };
 
@@ -230,7 +232,7 @@ export default function Nav(props) {
               </Modal.Footer>
             </Modal>
 
-            <div className="float-right">
+            <div className="float-right" style={showButtons}>
               <Button onClick={handleShowLogin} className="btn btn-info">
                 Login
               </Button>
