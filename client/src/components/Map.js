@@ -8,20 +8,10 @@ import {
 import MapStyles from "./MapStyles";
 
 function Map() {
-  const [selectedPark, setSelectedPark] = useState(null);
-
-  useEffect(() => {
-    const listener = e => {
-      if (e.key === "Escape") {
-        setSelectedPark(null);
-      }
-    };
-    window.addEventListener("keydown", listener);
-
-    return () => {
-      window.removeEventListener("keydown", listener);
-    };
-  }, []);
+  let current = navigator.geolocation.getCurrentPosition(position => {
+    console.log(position.coords.longitude);
+    console.log(position.coords.latitude);
+  });
 
   const [lat, setLat] = useState(49.246292);
   const [lng, setLng] = useState(-123.116226);
@@ -29,9 +19,10 @@ function Map() {
   return (
     <GoogleMap
       defaultZoom={10}
-      defaultCenter={{ lat: 49.246292, lng: -123.116226 }}
+      defaultCenter={{ lat: position.coords.latitude, lng: -123.116226 }}
       defaultOptions={{ styles: MapStyles }}
       onClick={e => {
+        console.log(current);
         setLat(e.latLng.lat());
         setLng(e.latLng.lng());
       }}

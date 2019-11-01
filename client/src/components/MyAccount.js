@@ -2,8 +2,6 @@ import React from "react";
 import "./MyAccount.css";
 import { Link } from "react-router-dom";
 
-const thumpsUp = "client/public/thumbs-up.png";
-
 const MyAccount = () => {
   return (
     <section id="MyAccount">
@@ -33,7 +31,7 @@ const MyAccount = () => {
               placeholder="Confirm Password"
               id="passThree"
             />
-            <input class="btn btn-primary" type="submit" value="Submit"></input>
+            <input class="btn btn-info" type="submit" value="Submit"></input>
           </div>
         </form>
       </div>
