@@ -27,6 +27,7 @@ import "./Modal.css";
 
 import Register from "./Register.js";
 import SignIn from "./SignIn.js";
+import SignUp from "./SignUp.js";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -167,8 +168,13 @@ export default function Nav(props) {
               </Modal.Title>
             </Modal.Header>
             <Modal.Body>
-              <Register />
+              <SignUp />
             </Modal.Body>
+            <Modal.Footer>
+              <Button variant="secondary" onClick={handleClose}>
+                Close
+              </Button>
+            </Modal.Footer>
           </Modal>
           {/* trigger menu */}
           <TriggerMenu />
