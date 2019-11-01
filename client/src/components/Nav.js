@@ -45,11 +45,6 @@ export default function Nav(props) {
   const open = Boolean(anchorEl);
   const [showAbout, setShowAbout] = useState(false);
   const [showAccount, setShowAccount] = React.useState(false);
-  const handleShowAbout = () => setShowAbout(true);
-  const handleShowAccount = () => {
-    handleClose();
-    setShowAccount(true);
-  };
 
   const handleChange = event => {
     setAuth(event.target.checked);
@@ -64,6 +59,11 @@ export default function Nav(props) {
     setShowAbout(false);
     setAnchorEl(null);
     setShowAccount(false);
+  };
+  const handleShowAbout = () => setShowAbout(true);
+  const handleShowAccount = () => {
+    handleClose();
+    setShowAccount(true);
   };
 
   const TriggerMenu = () => {

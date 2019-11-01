@@ -2,10 +2,8 @@ import React, { Component } from "react";
 import "./App.css";
 import Nav from "./components/Nav.js";
 import FooterPage from "./components/Footer.js";
-import AboutPage from "./components/About.js";
 import Mapping from "./components/Map.js";
 import Axios from "axios";
-import MyAccountEdit from "./components/MyAccountEdit.js";
 
 Axios.get(process.env.REACT_APP_URL);
 

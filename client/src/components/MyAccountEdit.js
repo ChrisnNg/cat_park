@@ -8,7 +8,7 @@ const MyAccountEdit = props => {
     <section>
       <form className="editAccount">
         <div className="form-group row">
-          <label for="inputPassword3" className="col-sm-2 col-form-label">
+          <label htmlFor="inputPassword3" className="col-sm-2 col-form-label">
             Current Password
           </label>
           <div className="col-sm-10">
@@ -19,7 +19,7 @@ const MyAccountEdit = props => {
               placeholder="Current Password"
             />
           </div>
-          <label for="inputPassword3" className="col-sm-2 col-form-label">
+          <label htmlFor="inputPassword3" className="col-sm-2 col-form-label">
             New Password
           </label>
           <div className="col-sm-10">
@@ -30,7 +30,7 @@ const MyAccountEdit = props => {
               placeholder="New Password"
             />
           </div>
-          <label for="inputPassword3" className="col-sm-2 col-form-label">
+          <label htmlFor="inputPassword3" className="col-sm-2 col-form-label">
             Confirm Password
           </label>
           <div className="col-sm-10">
