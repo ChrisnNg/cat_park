@@ -167,6 +167,8 @@ export default function Nav(props) {
               <Register />
             </Modal.Body>
           </Modal>
+          {/* trigger menu */}
+          <TriggerMenu />
           {/* Nav Logo */}
           <div className="center-nav">
             <img
@@ -177,9 +179,6 @@ export default function Nav(props) {
             <b>~Cat_Park~</b>
           </div>
           <div className="container">
-            <Link className="btn btn-info" to="/">
-              Home
-            </Link>
             <Button className="btn btn-info" onClick={handleShowAbout}>
               About
             </Button>
@@ -230,14 +229,17 @@ export default function Nav(props) {
                 </Button>
               </Modal.Footer>
             </Modal>
-            <Button onClick={handleShowRegister} className="btn btn-info">
-              Register
-            </Button>
-            <Button onClick={handleShowLogin} className="btn btn-info">
-              Login
-            </Button>
+
+            <div className="float-right">
+              <Button onClick={handleShowLogin} className="btn btn-info">
+                Login
+              </Button>
+              <Button onClick={handleShowRegister} className="btn btn-info">
+                Register
+              </Button>
+            </div>
           </div>
-          <TriggerMenu />
+
           <Typography variant="h6" className={classes.title}></Typography>
           {auth && (
             <div>
