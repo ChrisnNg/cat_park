@@ -44,12 +44,3 @@ section {
 .aboutUsTitle img {
   filter: invert(100%);
 }
-
-.modal-header {
-  background: linear-gradient(to right, #b8b8b8, #333333);
-}
-
-.modal-content {
-  background-image: url("https://www.transparenttextures.com/patterns/45-degree-fabric-light.png");
-  background: linear-gradient(to right, #b8b8b8, #333333);
-}
