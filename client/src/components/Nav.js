@@ -24,6 +24,8 @@ import { Link } from "react-router-dom";
 import AboutPage from "./About.js";
 import MyAccountEdit from "./MyAccountEdit.js";
 import "./Modal.css";
+import Login from "./Login.js";
+
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1
@@ -45,7 +47,7 @@ export default function Nav(props) {
   const open = Boolean(anchorEl);
   const [showAbout, setShowAbout] = useState(false);
   const [showAccount, setShowAccount] = React.useState(false);
-
+  const [showLogin, setShowLogin] = React.useState(false);
   const handleChange = event => {
     setAuth(event.target.checked);
     console.log("logged in or logged out");
@@ -56,16 +58,18 @@ export default function Nav(props) {
   };
 
   const handleClose = () => {
-    setShowAbout(false);
     setAnchorEl(null);
+    setShowAbout(false);
     setShowAccount(false);
+    setShowLogin(false);
   };
+
   const handleShowAbout = () => setShowAbout(true);
   const handleShowAccount = () => {
     handleClose();
     setShowAccount(true);
   };
-
+  const handleShowLogin = () => setShowLogin(true);
   const TriggerMenu = () => {
     const popupState = usePopupState({
       variant: "popover",
@@ -174,8 +178,26 @@ export default function Nav(props) {
                 </Button>
               </Modal.Footer>
             </Modal>
-            <Button onClick={handleShowAccount} className="btn btn-info">
-              Account
+            {/* popup for Login */}
+            <Modal show={showLogin} onHide={handleClose} centered={true}>
+              <Modal.Header closeButton>
+                <Modal.Title className="aboutUsTitle">
+                  {" "}
+                  <img src={cat_park} alt="cat_park_logo" className="catimg" />
+                  Login
+                </Modal.Title>
+              </Modal.Header>
+              <Modal.Body>
+                <Login />
+              </Modal.Body>
+              <Modal.Footer>
+                <Button variant="secondary" onClick={handleClose}>
+                  Close
+                </Button>
+              </Modal.Footer>
+            </Modal>
+            <Button onClick={handleShowLogin} className="btn btn-info">
+              Login
             </Button>
           </div>
           <TriggerMenu />
