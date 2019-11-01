@@ -42,12 +42,17 @@ import cat_park from "../../public/cat_park.png";
 
 export default function Nav(props) {
   const classes = useStyles();
-  const [auth, setAuth] = React.useState(true);
+
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const open = Boolean(anchorEl);
+  const [auth, setAuth] = React.useState(true);
+
   const [showAbout, setShowAbout] = useState(false);
-  const [showAccount, setShowAccount] = React.useState(false);
+  const [showAccountEdit, setShowAccountEdit] = React.useState(false);
   const [showLogin, setShowLogin] = React.useState(false);
+  const [showRegister, setShowRegister] = React.useState(false);
+
+  const open = Boolean(anchorEl);
+
   const handleChange = event => {
     setAuth(event.target.checked);
     console.log("logged in or logged out");
@@ -60,16 +65,19 @@ export default function Nav(props) {
   const handleClose = () => {
     setAnchorEl(null);
     setShowAbout(false);
-    setShowAccount(false);
+    setShowAccountEdit(false);
     setShowLogin(false);
+    setShowRegister(false);
   };
 
   const handleShowAbout = () => setShowAbout(true);
-  const handleShowAccount = () => {
+  const handleShowAccountEdit = () => {
     handleClose();
-    setShowAccount(true);
+    setShowAccountEdit(true);
   };
   const handleShowLogin = () => setShowLogin(true);
+  const handleShowRegister = () => setShowRegister(true);
+
   const TriggerMenu = () => {
     const popupState = usePopupState({
       variant: "popover",
@@ -120,8 +128,8 @@ export default function Nav(props) {
             color="inherit"
             aria-label="menu"
           ></IconButton>
-          {/* popup for my account */}
-          <Modal show={showAccount} onHide={handleClose}>
+          {/* popup for my accountEdit */}
+          <Modal show={showAccountEdit} onHide={handleClose}>
             <Modal.Header closeButton>
               <Modal.Title>
                 {" "}
@@ -131,7 +139,7 @@ export default function Nav(props) {
                     alt="cat_park_logo"
                     className="catimg modaltitle"
                   />
-                  <b>My Account</b>
+                  <b>Change Password</b>
                 </h1>
               </Modal.Title>
             </Modal.Header>
@@ -229,7 +237,9 @@ export default function Nav(props) {
                 onClose={handleClose}
               >
                 <MenuItem onClick={handleClose}>Profile</MenuItem>
-                <MenuItem onClick={handleShowAccount}>My account</MenuItem>
+                <MenuItem onClick={handleShowAccountEdit}>
+                  Edit My account
+                </MenuItem>
               </Menu>
             </div>
           )}
