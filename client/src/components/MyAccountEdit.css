@@ -1,0 +1,13 @@
+.editAccount {
+  background-image: url("https://www.transparenttextures.com/patterns/crossword.png");
+  padding: 5%;
+}
+
+.editAccount button {
+  width: 100%;
+}
+
+.editAccount div label {
+  padding: 1.5%;
+  border-right: 1.5%;
+}

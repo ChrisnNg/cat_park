@@ -10,12 +10,16 @@ import three_cats from "../../public/three_cats.png";
 import ig_icon from "../../public/insta-icon.png";
 import fb_icon from "../../public/fb-icon.png";
 import li_icon from "../../public/linked-icon.png";
+import Image from "react-bootstrap/Image";
 
 const AboutPage = () => {
   return (
     <section id="aboutUs">
       <header className="text-center">
-        <img src={three_cats} alt="three_cats" />
+        <div className="three_cats container">
+          <Image fluid src={three_cats} alt="three_cats" />
+        </div>
+
         <h1 className="aboutUsTitle">About Us!</h1>
         <div>
           <p>

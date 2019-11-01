@@ -16,6 +16,7 @@
 }
 
 .socialMediaIcons img {
+  padding-top: 3%;
   width: 60px;
   transition: 0.5s;
   padding-bottom: 15px;
@@ -24,7 +25,11 @@
 .socialMediaIcons a:hover img {
   transform: translateY(-10px);
 }
-
+.threecats img {
+  max-width: 100%;
+  height: auto;
+  width: auto; /* ie8 */
+}
 section {
   color: black;
   border: 100px;
