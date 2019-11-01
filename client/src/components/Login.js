@@ -32,7 +32,7 @@ const Login = props => {
           </div>
         </div>
         <button type="submit" className="btn btn-primary">
-          Submit
+          Login
         </button>
       </form>
     </section>
