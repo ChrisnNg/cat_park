@@ -24,8 +24,9 @@ import { Link } from "react-router-dom";
 import AboutPage from "./About.js";
 import MyAccountEdit from "./MyAccountEdit.js";
 import "./Modal.css";
-import Login from "./Login.js";
+
 import Register from "./Register.js";
+import SignIn from "./SignIn.js";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -223,7 +224,7 @@ export default function Nav(props) {
                 </Modal.Title>
               </Modal.Header>
               <Modal.Body>
-                <Login />
+                <SignIn />
               </Modal.Body>
               <Modal.Footer>
                 <Button variant="secondary" onClick={handleClose}>

@@ -1,13 +1,9 @@
-.modaltitle {
-  margin-right: 20px;
-}
-
 .modal-content {
   -webkit-border-radius: 5% !important;
   -moz-border-radius: 5% !important;
   border-radius: 5% !important;
   background-image: url("https://www.transparenttextures.com/patterns/45-degree-fabric-light.png");
-  background: linear-gradient(to right, #b8b8b8, #333333);
+  background: whitesmoke;
 }
 
 .modal-footer {
@@ -17,4 +13,23 @@
 .login-title span {
   font-weight: 500;
   margin-left: 5%;
+}
+
+.modal-body {
+  background: linear-gradient(to right, #b8b8b8, #333333);
+  background-image: url("https://www.transparenttextures.com/patterns/crossword.png");
+
+  margin: 1em;
+  -webkit-border-radius: 5% !important;
+  -moz-border-radius: 5% !important;
+  border-radius: 5% !important;
+}
+
+.modal-header {
+  background-color: #3f51b5;
+  background-image: url("https://www.transparenttextures.com/patterns/crossword.png");
+  -webkit-border-radius: 5% !important;
+  -moz-border-radius: 5% !important;
+  border-radius: 5% !important;
+  margin: -0.3%;
 }
