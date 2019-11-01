@@ -1,12 +1,10 @@
 import React from "react";
-import "./MyAccountEdit.css";
-
-const thumpsUp = "client/public/thumbs-up.png";
+import "./Login.css";
 
 const Login = props => {
   return (
     <section>
-      <form className="editAccount">
+      <form className="Login">
         <div className="form-group row">
           <label htmlFor="Username" className="col-sm-2 col-form-label">
             Username

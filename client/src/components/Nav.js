@@ -25,7 +25,7 @@ import AboutPage from "./About.js";
 import MyAccountEdit from "./MyAccountEdit.js";
 import "./Modal.css";
 import Login from "./Login.js";
-
+import Register from "./Register.js";
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1
@@ -128,7 +128,7 @@ export default function Nav(props) {
             color="inherit"
             aria-label="menu"
           ></IconButton>
-          {/* popup for my accountEdit */}
+          {/* popup for register */}
           <Modal show={showAccountEdit} onHide={handleClose}>
             <Modal.Header closeButton>
               <Modal.Title>
@@ -147,7 +147,26 @@ export default function Nav(props) {
               <MyAccountEdit />
             </Modal.Body>
           </Modal>
-
+          {/* popup for my accountEdit */}
+          <Modal show={showRegister} onHide={handleClose}>
+            <Modal.Header closeButton>
+              <Modal.Title>
+                {" "}
+                <h1>
+                  <img
+                    src={cat_park}
+                    alt="cat_park_logo"
+                    className="catimg modaltitle"
+                  />
+                  <b>Register</b>
+                </h1>
+              </Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              <Register />
+            </Modal.Body>
+          </Modal>
+          {/* Nav Logo */}
           <div className="center-nav">
             <img
               src={cat_park}
@@ -204,6 +223,9 @@ export default function Nav(props) {
                 </Button>
               </Modal.Footer>
             </Modal>
+            <Button onClick={handleShowRegister} className="btn btn-info">
+              Register
+            </Button>
             <Button onClick={handleShowLogin} className="btn btn-info">
               Login
             </Button>

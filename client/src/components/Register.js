@@ -1,31 +1,44 @@
 import React from "react";
-import "./MyAccountEdit.css";
+import "./Register.css";
 
-const MyAccountEdit = props => {
+const Register = props => {
   return (
     <section>
-      <form className="editAccount">
+      <form className="Register">
         <div className="form-group row">
-          <label htmlFor="currentPassword" className="col-sm-2 col-form-label">
-            Current Password
+          <label htmlFor="Name" className="col-sm-2 col-form-label">
+            Name
           </label>
           <div className="col-sm-10">
             <input
-              type="password"
+              type="text"
               className="form-control"
-              id="currentPassword"
-              placeholder="Current Password"
+              id="Name"
+              placeholder="Name"
             />
           </div>
-          <label htmlFor="newPassword" className="col-sm-2 col-form-label">
-            New Password
+
+          <label htmlFor="Userame" className="col-sm-2 col-form-label">
+            Username
+          </label>
+          <div className="col-sm-10">
+            <input
+              type="text"
+              className="form-control"
+              id="Username"
+              placeholder="Username"
+            />
+          </div>
+
+          <label htmlFor="Password" className="col-sm-2 col-form-label">
+            Password
           </label>
           <div className="col-sm-10">
             <input
               type="password"
               className="form-control"
-              id="newPassword"
-              placeholder="New Password"
+              id="Password"
+              placeholder="Password"
             />
           </div>
           <label
@@ -51,4 +64,4 @@ const MyAccountEdit = props => {
   );
 };
 
-export default MyAccountEdit;
+export default Register;
