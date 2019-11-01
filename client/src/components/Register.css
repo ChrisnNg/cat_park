@@ -2,6 +2,8 @@
   margin: auto;
   padding: 1em;
   background-image: url("https://www.transparenttextures.com/patterns/crossword.png");
+  padding-bottom: 3em;
+  border-radius: 5% !important;
 }
 
 .Register div {

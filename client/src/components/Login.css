@@ -1,4 +1,6 @@
 .Login {
   background-image: url("https://www.transparenttextures.com/patterns/crossword.png");
   padding: 1em;
+  padding-bottom: 3em;
+  border-radius: 5% !important;
 }

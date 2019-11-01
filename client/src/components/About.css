@@ -4,6 +4,7 @@
   color: black;
   background-color: #b8b8b8;
   background-image: url("https://www.transparenttextures.com/patterns/crossword.png");
+  border-radius: 5% !important;
 }
 #aboutUs header img {
   border-radius: 50%;

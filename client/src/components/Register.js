@@ -56,7 +56,7 @@ const Register = props => {
             />
           </div>
         </div>
-        <button type="submit" className="btn btn-primary">
+        <button type="submit" className="btn btn-primary float-right">
           Submit
         </button>
       </form>
