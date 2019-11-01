@@ -2,5 +2,7 @@
   background-image: url("https://www.transparenttextures.com/patterns/crossword.png");
   padding: 1em;
   padding-bottom: 3em;
+  -webkit-border-radius: 5% !important;
+  -moz-border-radius: 5% !important;
   border-radius: 5% !important;
 }

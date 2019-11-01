@@ -128,26 +128,26 @@ export default function Nav(props) {
             color="inherit"
             aria-label="menu"
           ></IconButton>
-          {/* popup for register */}
+          {/* popup for my accountEdit */}
           <Modal show={showAccountEdit} onHide={handleClose}>
             <Modal.Header closeButton>
               <Modal.Title>
                 {" "}
-                <h1>
+                <h2>
                   <img
                     src={cat_park}
                     alt="cat_park_logo"
                     className="catimg modaltitle"
                   />
                   <b>Change Password</b>
-                </h1>
+                </h2>
               </Modal.Title>
             </Modal.Header>
             <Modal.Body>
               <MyAccountEdit />
             </Modal.Body>
           </Modal>
-          {/* popup for my accountEdit */}
+          {/* popup for register */}
           <Modal show={showRegister} onHide={handleClose}>
             <Modal.Header closeButton>
               <Modal.Title>
@@ -208,10 +208,16 @@ export default function Nav(props) {
             {/* popup for Login */}
             <Modal show={showLogin} onHide={handleClose} centered={true}>
               <Modal.Header closeButton>
-                <Modal.Title className="aboutUsTitle">
+                <Modal.Title>
                   {" "}
-                  <img src={cat_park} alt="cat_park_logo" className="catimg" />
-                  Login
+                  <h1>
+                    <img
+                      src={cat_park}
+                      alt="cat_park_logo"
+                      className="catimg modaltitle"
+                    />
+                    <b>Login</b>
+                  </h1>
                 </Modal.Title>
               </Modal.Header>
               <Modal.Body>

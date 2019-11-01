@@ -13,3 +13,8 @@
 .modal-footer {
   margin-right: 1em;
 }
+
+.login-title span {
+  font-weight: 500;
+  margin-left: 5%;
+}
