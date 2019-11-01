@@ -58,9 +58,9 @@ export default function Nav(props) {
   const handleChange = event => {
     setAuth(event.target.checked);
     setShowButton({ visibility: "visible" });
-    console.log("logged in or logged out");
   };
 
+  // create a logout function that clears cookies and also sets login/register button to visible again
   const handleMenu = event => {
     setAnchorEl(event.currentTarget);
   };
