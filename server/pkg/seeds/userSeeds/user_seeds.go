@@ -9,9 +9,9 @@ import (
 func SeedUsers () {
 
 	var AllUsers []models.Users = []models.Users{
-		models.Users{Name: "Ricky", Username: "Sydney", Password: "RickyRox", Karma: 0},
-		models.Users{Name: "Thomas", Username: "TomBog", Password: "TomFTW", Karma: 0},
-		models.Users{Name: "Chris", Username: "Turnip", Password: "LoLisGreat", Karma: 0},
+		models.Users{FirstName: "Ricky", LastName: "Rick", Email: "Sydney@gmail.com", Password: "RickyRox", Karma: 0},
+		models.Users{FirstName: "Thomas", LastName: "Tom", Email: "TomBog@gmail.com", Password: "TomFTW", Karma: 0},
+		models.Users{FirstName: "Chris", LastName: "Cris", Email: "Turnip@gmail.com", Password: "LoLisGreat", Karma: 0},
 	 }
 
 	 

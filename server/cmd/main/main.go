@@ -15,12 +15,31 @@ import (
 	"github.com/ChrisnNg/cat_park/server/pkg/seeds/locationSeeds"
 	// _ "github.com/joho/godotenv/autoload"
 	// "os"
+	// "github.com/cridenour/go-postgis"
+	// "github.com/dewski/spatial"
+
 )
 
 func main() {
 
 	config.Connect()
 	db := config.GetDB()
+
+	// path := []spatial.Point{}
+  // err := db.
+  // 	Select("geo").
+  // 	From("crimes").
+	// 	QueryStructs(&path)
+	// 	if err != nil {
+	// 		panic(err)
+	// 	}
+
+		// // Encode the path with .000000 level of precision
+		// polyline := spatial.Encode(path, 6)
+		// fmt.Println(polyline) // _p~iF~ps|U_ulLnnqC_mqNvxq`@
+	
+		// points := spatial.Decode(polyline, 6)
+		// fmt.Println(polyline) // make(map[]spatial.Point, 2)
 
 	wordPtr := flag.String("task", "foo", "a string")
 	flag.Parse()

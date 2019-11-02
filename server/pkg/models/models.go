@@ -2,18 +2,19 @@ package models
 
 import (
 	// "fmt"
-	"time"
-
 	// "github.com/ChrisnNg/cat_park/server/pkg/config"
 	"github.com/jinzhu/gorm"
+
+	// "github.com/cridenour/go-postgis"
 )
 
 var db *gorm.DB
 
 type Users struct {
 	ID       uint `gorm:"primary_key"`
-	Name     string
-	Username string
+	FirstName     string
+	LastName string
+	Email string
 	Password string
 	Karma    int
 }
@@ -28,11 +29,9 @@ type Parkings struct {
 }
 
 type Crimes struct {
-	ID          uint `gorm:"primary_key"`
 	Type        string
-	Approx_time time.Time
-	Longitude   float64 `gorm:"type:decimal(10,8)"`
-	Latitude    float64 `gorm:"type:decimal(11,8)"`
+	X   float64 `gorm:"type:decimal(17,0)"`
+	Y    float64 `gorm:"type:decimal(17,0)"`
 }
 
 
