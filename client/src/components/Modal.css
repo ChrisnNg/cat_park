@@ -1,3 +1,20 @@
 .modaltitle {
   margin-right: 20px;
 }
+
+.modal-content {
+  -webkit-border-radius: 5% !important;
+  -moz-border-radius: 5% !important;
+  border-radius: 5% !important;
+  background-image: url("https://www.transparenttextures.com/patterns/45-degree-fabric-light.png");
+  background: linear-gradient(to right, #b8b8b8, #333333);
+}
+
+.modal-footer {
+  margin-right: 1em;
+}
+
+.login-title span {
+  font-weight: 500;
+  margin-left: 5%;
+}

@@ -25,6 +25,7 @@ import AboutPage from "./About.js";
 import MyAccountEdit from "./MyAccountEdit.js";
 import "./Modal.css";
 import Login from "./Login.js";
+import Register from "./Register.js";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -42,17 +43,24 @@ import cat_park from "../../public/cat_park.png";
 
 export default function Nav(props) {
   const classes = useStyles();
-  const [auth, setAuth] = React.useState(true);
+
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const open = Boolean(anchorEl);
+  const [auth, setAuth] = React.useState(true);
+
   const [showAbout, setShowAbout] = useState(false);
-  const [showAccount, setShowAccount] = React.useState(false);
+  const [showAccountEdit, setShowAccountEdit] = React.useState(false);
   const [showLogin, setShowLogin] = React.useState(false);
+  const [showRegister, setShowRegister] = React.useState(false);
+  const [showButtons, setShowButton] = React.useState({ visibility: "hidden" });
+
+  const open = Boolean(anchorEl);
+
   const handleChange = event => {
     setAuth(event.target.checked);
-    console.log("logged in or logged out");
+    setShowButton({ visibility: "visible" });
   };
 
+  // create a logout function that clears cookies and also sets login/register button to visible again
   const handleMenu = event => {
     setAnchorEl(event.currentTarget);
   };
@@ -60,16 +68,19 @@ export default function Nav(props) {
   const handleClose = () => {
     setAnchorEl(null);
     setShowAbout(false);
-    setShowAccount(false);
+    setShowAccountEdit(false);
     setShowLogin(false);
+    setShowRegister(false);
   };
 
   const handleShowAbout = () => setShowAbout(true);
-  const handleShowAccount = () => {
+  const handleShowAccountEdit = () => {
     handleClose();
-    setShowAccount(true);
+    setShowAccountEdit(true);
   };
   const handleShowLogin = () => setShowLogin(true);
+  const handleShowRegister = () => setShowRegister(true);
+
   const TriggerMenu = () => {
     const popupState = usePopupState({
       variant: "popover",
@@ -120,8 +131,27 @@ export default function Nav(props) {
             color="inherit"
             aria-label="menu"
           ></IconButton>
-          {/* popup for my account */}
-          <Modal show={showAccount} onHide={handleClose}>
+          {/* popup for my accountEdit */}
+          <Modal show={showAccountEdit} onHide={handleClose}>
+            <Modal.Header closeButton>
+              <Modal.Title>
+                {" "}
+                <h2>
+                  <img
+                    src={cat_park}
+                    alt="cat_park_logo"
+                    className="catimg modaltitle"
+                  />
+                  <b>Change Password</b>
+                </h2>
+              </Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              <MyAccountEdit />
+            </Modal.Body>
+          </Modal>
+          {/* popup for register */}
+          <Modal show={showRegister} onHide={handleClose}>
             <Modal.Header closeButton>
               <Modal.Title>
                 {" "}
@@ -131,27 +161,26 @@ export default function Nav(props) {
                     alt="cat_park_logo"
                     className="catimg modaltitle"
                   />
-                  <b>My Account</b>
+                  <b>Register</b>
                 </h1>
               </Modal.Title>
             </Modal.Header>
             <Modal.Body>
-              <MyAccountEdit />
+              <Register />
             </Modal.Body>
           </Modal>
-
+          {/* trigger menu */}
+          <TriggerMenu />
+          {/* Nav Logo */}
           <div className="center-nav">
             <img
               src={cat_park}
               alt="cat_park_logo"
               className="catimg modaltitle"
             />
-            <b>~Cat Park~</b>
+            <b>~Cat_Park~</b>
           </div>
           <div className="container">
-            <Link className="btn btn-info" to="/">
-              Home
-            </Link>
             <Button className="btn btn-info" onClick={handleShowAbout}>
               About
             </Button>
@@ -181,10 +210,16 @@ export default function Nav(props) {
             {/* popup for Login */}
             <Modal show={showLogin} onHide={handleClose} centered={true}>
               <Modal.Header closeButton>
-                <Modal.Title className="aboutUsTitle">
+                <Modal.Title>
                   {" "}
-                  <img src={cat_park} alt="cat_park_logo" className="catimg" />
-                  Login
+                  <h1>
+                    <img
+                      src={cat_park}
+                      alt="cat_park_logo"
+                      className="catimg modaltitle"
+                    />
+                    <b>Login</b>
+                  </h1>
                 </Modal.Title>
               </Modal.Header>
               <Modal.Body>
@@ -196,11 +231,17 @@ export default function Nav(props) {
                 </Button>
               </Modal.Footer>
             </Modal>
-            <Button onClick={handleShowLogin} className="btn btn-info">
-              Login
-            </Button>
+
+            <div className="float-right" style={showButtons}>
+              <Button onClick={handleShowLogin} className="btn btn-info">
+                Login
+              </Button>
+              <Button onClick={handleShowRegister} className="btn btn-info">
+                Register
+              </Button>
+            </div>
           </div>
-          <TriggerMenu />
+
           <Typography variant="h6" className={classes.title}></Typography>
           {auth && (
             <div>
@@ -229,7 +270,9 @@ export default function Nav(props) {
                 onClose={handleClose}
               >
                 <MenuItem onClick={handleClose}>Profile</MenuItem>
-                <MenuItem onClick={handleShowAccount}>My account</MenuItem>
+                <MenuItem onClick={handleShowAccountEdit}>
+                  Edit My account
+                </MenuItem>
               </Menu>
             </div>
           )}

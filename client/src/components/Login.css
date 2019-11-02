@@ -1,16 +1,8 @@
-.editAccount {
+.Login {
   background-image: url("https://www.transparenttextures.com/patterns/crossword.png");
-  padding: 5%;
+  padding: 1em;
+  padding-bottom: 3em;
   -webkit-border-radius: 5% !important;
   -moz-border-radius: 5% !important;
   border-radius: 5% !important;
-}
-
-.editAccount button {
-  width: 100%;
-}
-
-.editAccount div label {
-  padding: 1.5%;
-  border-right: 1.5%;
 }

@@ -1,0 +1,16 @@
+.Register {
+  margin: auto;
+  padding: 1em;
+  background-image: url("https://www.transparenttextures.com/patterns/crossword.png");
+  padding-bottom: 3em;
+  border-radius: 5% !important;
+}
+
+.Register div {
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
+
+.Register div label {
+  margin-right: auto;
+}
