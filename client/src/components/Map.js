@@ -3,41 +3,61 @@ import {
   withGoogleMap,
   withScriptjs,
   GoogleMap,
-  Marker
+  Marker,
+  InfoWindow
 } from "react-google-maps";
 import MapStyles from "./MapStyles";
 
 function Map() {
-  const [selectedPark, setSelectedPark] = useState(null);
+  const [latLng, setLatLng] = useState(null);
 
   useEffect(() => {
-    const listener = e => {
-      if (e.key === "Escape") {
-        setSelectedPark(null);
-      }
-    };
-    window.addEventListener("keydown", listener);
-
-    return () => {
-      window.removeEventListener("keydown", listener);
-    };
+    navigator.geolocation.getCurrentPosition(position => {
+      const { latitude, longitude } = position.coords;
+      console.log("longitfsfdsfsude", navigator.geolocation);
+      console.log("latitude", latitude);
+      setLatLng({ lat: latitude, lng: longitude });
+    });
   }, []);
 
-  const [lat, setLat] = useState(49.246292);
-  const [lng, setLng] = useState(-123.116226);
-
+  console.log("current latlng", latLng);
+  let coords = latLng;
   return (
-    <GoogleMap
-      defaultZoom={10}
-      defaultCenter={{ lat: 49.246292, lng: -123.116226 }}
-      defaultOptions={{ styles: MapStyles }}
-      onClick={e => {
-        setLat(e.latLng.lat());
-        setLng(e.latLng.lng());
-      }}
-    >
-      <Marker position={{ lat: lat, lng: lng }} />
-    </GoogleMap>
+    <div>
+      {latLng ? (
+        <GoogleMap
+          defaultZoom={15}
+          defaultCenter={latLng}
+          defaultOptions={{ styles: MapStyles }}
+          onClick={e => {
+            const { lat, lng } = e.latLng;
+            console.log("current", e);
+            setLatLng({ lat: lat(), lng: lng() });
+          }}
+        >
+          <Marker position={latLng}>
+            <InfoWindow
+              defaultPosition={latLng}
+              options={{ closeBoxURL: ``, enableEventPropagation: true }}
+            >
+              <div
+                style={{
+                  backgroundColor: `white`,
+                  opacity: 0.75,
+                  padding: `12px`
+                }}
+              >
+                <div style={{ fontSize: `16px`, fontColor: `#08233B` }}>
+                  Current Location: {coords.lng}, {coords.lat}
+                </div>
+              </div>
+            </InfoWindow>
+          </Marker>
+        </GoogleMap>
+      ) : (
+        <h1>Loading...</h1>
+      )}
+    </div>
   );
 }
 
