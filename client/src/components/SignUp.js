@@ -33,7 +33,7 @@ const useStyles = makeStyles(theme => ({
     }
   },
   paper: {
-    marginTop: theme.spacing(2),
+    marginTop: theme.spacing(3),
     display: "flex",
     flexDirection: "column",
     alignItems: "center"
@@ -44,14 +44,14 @@ const useStyles = makeStyles(theme => ({
   },
   form: {
     width: "100%", // Fix IE 11 issue.
-    marginTop: theme.spacing(1)
+    marginTop: theme.spacing(3)
   },
   submit: {
-    margin: theme.spacing(3, 0, 0)
+    margin: theme.spacing(3, 0, 2)
   }
 }));
 
-const MyAccountEdit = props => {
+export default function SignUp() {
   const classes = useStyles();
 
   return (
@@ -62,40 +62,57 @@ const MyAccountEdit = props => {
           <LockOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
-          Edit Password
+          Sign up
         </Typography>
         <form className={classes.form} noValidate>
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            name="current-password"
-            label="Current Password"
-            type="current-password"
-            id="current-password"
-          />
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            name="new-password"
-            label="New Password"
-            type="new-password"
-            id="new-password"
-          />
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            name="confirm-password"
-            label="Confirm Password"
-            type="confirm-password"
-            id="confirm-password"
-          />
-
+          <Grid container spacing={2}>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                autoComplete="fname"
+                name="firstName"
+                variant="outlined"
+                required
+                fullWidth
+                id="firstName"
+                label="First Name"
+                autoFocus
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                variant="outlined"
+                required
+                fullWidth
+                id="lastName"
+                label="Last Name"
+                name="lastName"
+                autoComplete="lname"
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                variant="outlined"
+                required
+                fullWidth
+                id="email"
+                label="Email Address"
+                name="email"
+                autoComplete="email"
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                variant="outlined"
+                required
+                fullWidth
+                name="password"
+                label="Password"
+                type="password"
+                id="password"
+                autoComplete="current-password"
+              />
+            </Grid>
+          </Grid>
           <Button
             type="submit"
             fullWidth
@@ -103,19 +120,13 @@ const MyAccountEdit = props => {
             color="primary"
             className={classes.submit}
           >
-            Submit
+            Sign Up
           </Button>
-          <Grid container>
-            <Grid item xs></Grid>
-            <Grid item></Grid>
-          </Grid>
         </form>
       </div>
-      <Box mt={8}>
+      <Box mt={5}>
         <Copyright />
       </Box>
     </Container>
   );
-};
-
-export default MyAccountEdit;
+}

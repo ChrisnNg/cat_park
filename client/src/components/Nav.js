@@ -20,12 +20,13 @@ import {
 } from "material-ui-popup-state/hooks";
 
 import "./Nav.css";
-import { Link } from "react-router-dom";
+
 import AboutPage from "./About.js";
 import MyAccountEdit from "./MyAccountEdit.js";
 import "./Modal.css";
-import Login from "./Login.js";
-import Register from "./Register.js";
+
+import Register from "./SignIn.js";
+import SignUp from "./SignUp.js";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -166,8 +167,13 @@ export default function Nav(props) {
               </Modal.Title>
             </Modal.Header>
             <Modal.Body>
-              <Register />
+              <SignUp />
             </Modal.Body>
+            <Modal.Footer>
+              <Button variant="secondary" onClick={handleClose}>
+                Close
+              </Button>
+            </Modal.Footer>
           </Modal>
           {/* trigger menu */}
           <TriggerMenu />
@@ -223,7 +229,7 @@ export default function Nav(props) {
                 </Modal.Title>
               </Modal.Header>
               <Modal.Body>
-                <Login />
+                <Register />
               </Modal.Body>
               <Modal.Footer>
                 <Button variant="secondary" onClick={handleClose}>
@@ -271,7 +277,7 @@ export default function Nav(props) {
               >
                 <MenuItem onClick={handleClose}>Profile</MenuItem>
                 <MenuItem onClick={handleShowAccountEdit}>
-                  Edit My account
+                  Edit Account
                 </MenuItem>
               </Menu>
             </div>
