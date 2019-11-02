@@ -8,27 +8,38 @@ import {
 import MapStyles from "./MapStyles";
 
 function Map() {
-  let current = navigator.geolocation.getCurrentPosition(position => {
-    console.log(position.coords.longitude);
-    console.log(position.coords.latitude);
-  });
+  const [latLng, setLatLng] = useState(null);
 
-  const [lat, setLat] = useState(49.246292);
-  const [lng, setLng] = useState(-123.116226);
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(position => {
+      const { latitude, longitude } = position.coords;
+      console.log("longitude", longitude);
+      console.log("latitude", latitude);
+      setLatLng({ lat: latitude, lng: longitude });
+    });
+  }, []);
+
+  console.log("current latlng", latLng);
 
   return (
-    <GoogleMap
-      defaultZoom={10}
-      defaultCenter={{ lat: position.coords.latitude, lng: -123.116226 }}
-      defaultOptions={{ styles: MapStyles }}
-      onClick={e => {
-        console.log(current);
-        setLat(e.latLng.lat());
-        setLng(e.latLng.lng());
-      }}
-    >
-      <Marker position={{ lat: lat, lng: lng }} />
-    </GoogleMap>
+    <div>
+      {latLng ? (
+        <GoogleMap
+          defaultZoom={10}
+          defaultCenter={latLng}
+          defaultOptions={{ styles: MapStyles }}
+          onClick={e => {
+            const { lat, lng } = e.latLng;
+            console.log("current", e);
+            setLatLng({ lat: lat(), lng: lng() });
+          }}
+        >
+          <Marker position={latLng} />
+        </GoogleMap>
+      ) : (
+        <h1>Loading...</h1>
+      )}
+    </div>
   );
 }
 

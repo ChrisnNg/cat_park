@@ -1,8 +1,6 @@
 import React from "react";
 import "./MyAccountEdit.css";
 
-const thumpsUp = "client/public/thumbs-up.png";
-
 const Login = props => {
   return (
     <section>
