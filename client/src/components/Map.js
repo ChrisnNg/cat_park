@@ -3,7 +3,8 @@ import {
   withGoogleMap,
   withScriptjs,
   GoogleMap,
-  Marker
+  Marker,
+  InfoWindow
 } from "react-google-maps";
 import MapStyles from "./MapStyles";
 
@@ -13,19 +14,19 @@ function Map() {
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(position => {
       const { latitude, longitude } = position.coords;
-      console.log("longitude", longitude);
+      console.log("longitfsfdsfsude", navigator.geolocation);
       console.log("latitude", latitude);
       setLatLng({ lat: latitude, lng: longitude });
     });
   }, []);
 
   console.log("current latlng", latLng);
-
+  let coords = latLng;
   return (
     <div>
       {latLng ? (
         <GoogleMap
-          defaultZoom={10}
+          defaultZoom={15}
           defaultCenter={latLng}
           defaultOptions={{ styles: MapStyles }}
           onClick={e => {
@@ -34,7 +35,24 @@ function Map() {
             setLatLng({ lat: lat(), lng: lng() });
           }}
         >
-          <Marker position={latLng} />
+          <Marker position={latLng}>
+            <InfoWindow
+              defaultPosition={latLng}
+              options={{ closeBoxURL: ``, enableEventPropagation: true }}
+            >
+              <div
+                style={{
+                  backgroundColor: `white`,
+                  opacity: 0.75,
+                  padding: `12px`
+                }}
+              >
+                <div style={{ fontSize: `16px`, fontColor: `#08233B` }}>
+                  Current Location: {coords.lng}, {coords.lat}
+                </div>
+              </div>
+            </InfoWindow>
+          </Marker>
         </GoogleMap>
       ) : (
         <h1>Loading...</h1>
