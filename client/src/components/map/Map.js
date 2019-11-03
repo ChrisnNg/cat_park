@@ -1,59 +1,47 @@
 import React, { Component } from "react";
-import { Map, GoogleApiWrapper, InfoWindow, Marker } from "google-maps-react";
+import { Map, HeatMap, GoogleApiWrapper } from "google-maps-react";
 
-const mapStyles = {
-  width: "100%",
-  height: "100%"
-};
-import CurrentLocation from "./CurrentLocation.js";
+const gradient = [
+  "rgba(0, 255, 255, 0)",
+  "rgba(0, 255, 255, 1)",
+  "rgba(0, 191, 255, 1)",
+  "rgba(0, 127, 255, 1)",
+  "rgba(0, 63, 255, 1)",
+  "rgba(0, 0, 255, 1)",
+  "rgba(0, 0, 223, 1)",
+  "rgba(0, 0, 191, 1)",
+  "rgba(0, 0, 159, 1)",
+  "rgba(0, 0, 127, 1)",
+  "rgba(63, 0, 91, 1)",
+  "rgba(127, 0, 63, 1)",
+  "rgba(191, 0, 31, 1)",
+  "rgba(255, 0, 0, 1)"
+];
 
-export class MapContainer extends Component {
-  state = {
-    showingInfoWindow: false,
-    activeMarker: {},
-    selectedPlace: {}
-  };
-
-  onMarkerClick = (props, marker, e) =>
-    this.setState({
-      selectedPlace: props,
-      activeMarker: marker,
-      showingInfoWindow: true
-    });
-
-  onClose = props => {
-    if (this.state.showingInfoWindow) {
-      this.setState({
-        showingInfoWindow: false,
-        activeMarker: null
-      });
-    }
-  };
-
+class MapContainer extends React.Component {
   render() {
     return (
-      <CurrentLocation centerAroundCurrentLocation google={this.props.google}>
-        <Marker onClick={this.onMarkerClick} name={"current location"} />
-        <Marker
-          onClick={this.onMarkerClick}
-          title={"The marker`s title will appear as a tooltip."}
-          name={"Thomas look at my new marker!"}
-          position={{ lat: 49.278738, lng: -123.100434 }}
-        />
-
-        <InfoWindow
-          marker={this.state.activeMarker}
-          visible={this.state.showingInfoWindow}
-          onClose={this.onClose}
+      <div className="map-container">
+        <Map
+          google={this.props.google}
+          className={"map"}
+          zoom={this.props.zoom}
+          initialCenter={this.props.center}
+          onReady={this.handleMapReady}
         >
-          <div>
-            <h4>{this.state.selectedPlace.name}</h4>
-          </div>
-        </InfoWindow>
-      </CurrentLocation>
+          <HeatMap
+            gradient={gradient}
+            positions={this.props.positions}
+            opacity={1}
+            radius={20}
+          />
+        </Map>
+      </div>
     );
   }
 }
+
 export default GoogleApiWrapper({
-  apiKey: "AIzaSyBwQh_n8MYTnuJxA3ZGCDtvbWwjaXoIYKo"
+  apiKey: "AIzaSyBwQh_n8MYTnuJxA3ZGCDtvbWwjaXoIYKo",
+  libraries: ["visualization"]
 })(MapContainer);
