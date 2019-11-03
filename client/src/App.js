@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import "./App.css";
 import Nav from "./components/Nav.js";
 import FooterPage from "./components/Footer.js";
-import Mapping from "./components/Map.js";
+import Map from "./components/map/Map.js";
+// import Mapping from "./components/Map.js";
 // import Axios from "axios";
 
 // Axios.get(process.env.REACT_APP_URL);
@@ -19,7 +20,7 @@ class App extends Component {
           <Route path="/">
             <Nav />
             <div id="map">
-              <Mapping
+              <Map
               // defaultCenter={this.state.defaultCenter}
               />
             </div>
