@@ -34,6 +34,13 @@ export class MapContainer extends Component {
     return (
       <CurrentLocation centerAroundCurrentLocation google={this.props.google}>
         <Marker onClick={this.onMarkerClick} name={"current location"} />
+        <Marker
+          onClick={this.onMarkerClick}
+          title={"The marker`s title will appear as a tooltip."}
+          name={"Thomas look at my new marker!"}
+          position={{ lat: 49.278738, lng: -123.100434 }}
+        />
+
         <InfoWindow
           marker={this.state.activeMarker}
           visible={this.state.showingInfoWindow}
