@@ -7,8 +7,10 @@ import (
 
 var RegisterParkingSpotRoutes = func(router *mux.Router) {
 	router.HandleFunc("/", controllers.Home).Methods("GET")
-	router.HandleFunc("/ParkingSpots/", controllers.NewSpot).Methods("POST")
-	router.HandleFunc("/ParkingSpots/", controllers.GetSpots).Methods("GET")
 	router.HandleFunc("/Users/", controllers.AddUser).Methods("POST")
 	router.HandleFunc("/Users/", controllers.FindUser).Methods("GET")
+	router.HandleFunc("/Users/", controllers.UpdateUser).Methods("UPDATE")
+	router.HandleFunc("Data/Crime/", controllers.AllCrimeData).Methods("GET")
+	router.HandleFunc("Data/Parking/", controllers.AllParkingData).Methods("GET")
+	router.HandleFunc("Data/Parking/", controllers.AddParkingSpot).Methods("POST")
 }
