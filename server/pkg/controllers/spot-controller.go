@@ -25,3 +25,13 @@ func Home(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("Hello!")
 	return
 }
+
+func AddUser(w http.ResponseWriter, r *http.Request) {
+	fmt.Println("Added User to database!")
+	return
+}
+
+func FindUser(w http.ResponseWriter, r *http.Request) {
+	fmt.Println("Incorrect Info / Logged in!")
+	return
+}

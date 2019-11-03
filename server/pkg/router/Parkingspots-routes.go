@@ -9,4 +9,6 @@ var RegisterParkingSpotRoutes = func(router *mux.Router) {
 	router.HandleFunc("/", controllers.Home).Methods("GET")
 	router.HandleFunc("/ParkingSpots/", controllers.NewSpot).Methods("POST")
 	router.HandleFunc("/ParkingSpots/", controllers.GetSpots).Methods("GET")
+	router.HandleFunc("/Users/", controllers.AddUser).Methods("POST")
+	router.HandleFunc("/Users/", controllers.FindUser).Methods("GET")
 }
