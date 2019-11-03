@@ -4,7 +4,8 @@ import {
   withScriptjs,
   GoogleMap,
   Marker,
-  InfoWindow
+  InfoWindow,
+  HeatmapLayer
 } from "react-google-maps";
 import MapStyles from "./MapStyles";
 
