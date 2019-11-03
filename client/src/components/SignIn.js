@@ -3,6 +3,8 @@ import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import Checkbox from "@material-ui/core/Checkbox";
 import Link from "@material-ui/core/Link";
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
@@ -49,7 +51,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const MyAccountEdit = props => {
+export default function Register() {
   const classes = useStyles();
 
   return (
@@ -60,7 +62,7 @@ const MyAccountEdit = props => {
           <LockOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
-          Edit Password
+          Sign in
         </Typography>
         <form className={classes.form} noValidate>
           <TextField
@@ -68,32 +70,27 @@ const MyAccountEdit = props => {
             margin="normal"
             required
             fullWidth
-            name="current-password"
-            label="Current Password"
-            type="current-password"
-            id="current-password"
+            id="email"
+            label="Email Address"
+            name="email"
+            autoComplete="email"
+            autoFocus
           />
           <TextField
             variant="outlined"
             margin="normal"
             required
             fullWidth
-            name="new-password"
-            label="New Password"
-            type="new-password"
-            id="new-password"
+            name="password"
+            label="Password"
+            type="password"
+            id="password"
+            autoComplete="current-password"
           />
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            name="confirm-password"
-            label="Confirm Password"
-            type="confirm-password"
-            id="confirm-password"
+          <FormControlLabel
+            control={<Checkbox value="remember" color="primary" />}
+            label="Remember me"
           />
-
           <Button
             type="submit"
             fullWidth
@@ -101,7 +98,7 @@ const MyAccountEdit = props => {
             color="primary"
             className={classes.submit}
           >
-            Submit
+            Sign In
           </Button>
           <Grid container>
             <Grid item xs></Grid>
@@ -114,6 +111,4 @@ const MyAccountEdit = props => {
       </Box>
     </Container>
   );
-};
-
-export default MyAccountEdit;
+}

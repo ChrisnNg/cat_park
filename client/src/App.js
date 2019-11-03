@@ -19,7 +19,9 @@ class App extends Component {
           <Route path="/">
             <Nav />
             <div id="map">
-              <Mapping />
+              <Mapping
+              // defaultCenter={this.state.defaultCenter}
+              />
             </div>
             <div id="footer-id">
               <FooterPage />
