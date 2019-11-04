@@ -7,6 +7,7 @@ import {
 } from "google-maps-react";
 
 import CurrentLocation from "./CurrentLocation";
+import three_cats from "../../../public/three_cats_icon.png";
 
 const gradient = [
   "rgba(0, 255, 255, 0)",
@@ -48,11 +49,28 @@ export class MapContainer extends React.Component {
     }
   };
 
+  fetchPlaces(mapProps, map) {
+    const { google } = mapProps;
+    const service = new google.maps.places.PlacesService(map);
+  }
+
   render() {
     return (
       <div className="map-container">
         <CurrentLocation centerAroundCurrentLocation google={this.props.google}>
-          <Marker onClick={this.onMarkerClick} name={"current location"} />
+          <Marker
+            onClick={this.onMarkerClick}
+            name={"Current Location"}
+            icon={{
+              url: three_cats
+            }}
+          />
+          <Marker
+            name={"Test Marker"}
+            position={{ lat: 49.280385, lng: -123.096307 }}
+            onClick={this.onMarkerClick}
+          />
+
           <InfoWindow
             marker={this.state.activeMarker}
             visible={this.state.showingInfoWindow}
