@@ -35,7 +35,7 @@
 }
 section {
   color: black;
-  border: 100px;
+  border: 15px;
 }
 
 .pfp {
@@ -46,4 +46,13 @@ section {
 
 .aboutUsTitle img {
   filter: invert(100%);
+}
+
+.project {
+  border-style: groove;
+  margin-bottom: 10px;
+  border-color: #17a2b8;
+  padding-top: 10px;
+  margin-left: 25%;
+  margin-right: 25%;
 }

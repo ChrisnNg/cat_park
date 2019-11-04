@@ -30,24 +30,27 @@ const AboutPage = () => {
             draw a heat map over Vancouver for vehicular crimes commited in the
             area.
           </p>
-          <p>Created as Lighthouse Labs final project</p>
-          <p>
-            <b>Languages:</b>
-          </p>
-          <p>ReactJS</p>
-          <p>Golang</p>
-          <p>
-            <b>Frameworks:</b>
-          </p>
-          <p>React Bootstrap</p>
-          <p>Material-ui</p>
-          <p>Axios</p>
-          <p>
-            <b>Database:</b>
-          </p>
-          <p>
-            Postgres with <i>PostGIS</i>
-          </p>
+          <section className="project">
+            <p>Created as Lighthouse Labs final project</p>
+            <p>
+              <b>Languages:</b>
+            </p>
+            <p>ReactJS</p>
+            <p>Golang</p>
+            <p>
+              <b>Frameworks:</b>
+            </p>
+            <p>React Bootstrap</p>
+            <p>Material-ui</p>
+            <p>Axios</p>
+            <p>
+              <b>Database:</b>
+            </p>
+            <p>
+              Postgres with <i>PostGIS</i>
+            </p>
+          </section>
+
           <p> Hosted on Heroku & Netlify </p>
         </div>
       </header>
