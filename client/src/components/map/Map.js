@@ -7,7 +7,7 @@ import {
 } from "google-maps-react";
 
 import CurrentLocation from "./CurrentLocation";
-import three_cats from "../../../public/three_cats_icon.png";
+import cat_park_icon from "../../../public/cat_park_icon.png";
 import kitty_icon from "../../../public/kitty_icon.png";
 
 const gradient = [
@@ -63,7 +63,7 @@ export class MapContainer extends React.Component {
             onClick={this.onMarkerClick}
             name={"Current Location"}
             icon={{
-              url: three_cats
+              url: cat_park_icon
             }}
           />
           <Marker
