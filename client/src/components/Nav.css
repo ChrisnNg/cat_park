@@ -20,6 +20,8 @@
   background-color: linear-gradient(to right, #111111, #999999);
   background-color: #3f51b5;
   background-image: url("https://www.transparenttextures.com/patterns/crossword.png");
+  height: 10%;
+  position: relative;
 }
 
 .nav-links {
@@ -32,4 +34,13 @@
   .container {
     max-width: 100%;
   }
+}
+
+.MuiFormGroup-root {
+  position: relative;
+  background: whitesmoke;
+  width: 100%;
+}
+.MuiFormControlLabel-root {
+  margin-bottom: 0%;
 }

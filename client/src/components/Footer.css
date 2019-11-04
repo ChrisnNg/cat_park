@@ -5,6 +5,9 @@ footer {
   color: #8f9296;
   background-image: url("https://www.transparenttextures.com/patterns/crossword.png");
   background-color: #3f51b5;
+  position: absolute;
+  bottom: 0%;
+  width: 100%;
 }
 
 /* * {

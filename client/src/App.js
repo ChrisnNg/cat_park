@@ -535,16 +535,10 @@ class App extends Component {
   render() {
     return (
       <Router>
-        {/* A <Switch> looks through its children <Route>s and
-            renders the first one that matches the current URL. */}
         <Route path="/">
           <Nav />
-          <div id="map">
-            <Map positions={data} />
-          </div>
-          <div id="footer-id">
-            <FooterPage />
-          </div>
+          <Map positions={data} />
+          <FooterPage />
         </Route>
       </Router>
     );
