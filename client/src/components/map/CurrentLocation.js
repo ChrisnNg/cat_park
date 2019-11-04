@@ -4,7 +4,7 @@ import ReactDOM from "react-dom";
 const mapStyles = {
   map: {
     width: "100vw",
-    height: "80vh",
+    height: "85vh",
     margin: "auto",
     padding: "auto"
   }
