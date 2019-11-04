@@ -23,18 +23,30 @@ const AboutPage = () => {
         <h1 className="aboutUsTitle">About Us!</h1>
         <div>
           <p>
-            {" "}
             Designed to help you find the closest free parking area available{" "}
           </p>
           <p>
-            {" "}
-            Uses a dataset from the Vancouver Police Department's crime API so
-            you can gauge risk for where you park{" "}
+            Uses a open data from the Vancouver Police Department's crime API to
+            draw a heat map over Vancouver for vehicular crimes commited in the
+            area.
+          </p>
+          <p>Created as Lighthouse Labs final project</p>
+          <p>
+            <b>Languages:</b>
+          </p>
+          <p>ReactJS</p>
+          <p>Golang</p>
+          <p>
+            <b>Frameworks:</b>
+          </p>
+          <p>React Bootstrap</p>
+          <p>Material-ui</p>
+          <p>Axios</p>
+          <p>
+            <b>Database:</b>
           </p>
           <p>
-            {" "}
-            Created using Golang and ReactJS as part of a Lighthouse Labs final
-            project{" "}
+            Postgres with <i>PostGIS</i>
           </p>
           <p> Hosted on Heroku & Netlify </p>
         </div>
