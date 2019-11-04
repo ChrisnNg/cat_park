@@ -509,7 +509,7 @@ const data = [
   { lat: 37.751266, lng: -122.40335500000003 }
 ];
 
-const containerStyle = { position: "absolute", width: "100%", height: "100%" };
+const containerStyle = { position: "relative", width: "100%", height: "90%" };
 class App extends Component {
   state = {
     showingInfoWindow: false,
@@ -539,6 +539,7 @@ class App extends Component {
         <Route path="/">
           <Nav />
           <Map positions={data} containerStyle={containerStyle} />
+
           <FooterPage />
         </Route>
       </Router>

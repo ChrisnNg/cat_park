@@ -3,9 +3,10 @@ import ReactDOM from "react-dom";
 
 const mapStyles = {
   map: {
-    position: "absolute",
     width: "100vw",
-    height: "100vh"
+    height: "100vh",
+    margin: "auto",
+    padding: "auto"
   }
 };
 
