@@ -8,7 +8,7 @@ import {
 
 import CurrentLocation from "./CurrentLocation";
 import three_cats from "../../../public/three_cats_icon.png";
-import cat_park_icon from "../../../public/cat_park_icon.png";
+import kitty_icon from "../../../public/kitty_icon.png";
 
 const gradient = [
   "rgba(0, 255, 255, 0)",
@@ -71,7 +71,7 @@ export class MapContainer extends React.Component {
             position={{ lat: 49.280385, lng: -123.096307 }}
             onClick={this.onMarkerClick}
             icon={{
-              url: cat_park_icon
+              url: kitty_icon
             }}
           />
 
