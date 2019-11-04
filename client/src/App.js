@@ -511,26 +511,42 @@ const data = [
 ];
 
 class App extends Component {
+  state = {
+    showingInfoWindow: false,
+    activeMarker: {},
+    selectedPlace: {}
+  };
+
+  onMarkerClick = (props, marker, e) =>
+    this.setState({
+      selectedPlace: props,
+      activeMarker: marker,
+      showingInfoWindow: true
+    });
+
+  onClose = props => {
+    if (this.state.showingInfoWindow) {
+      this.setState({
+        showingInfoWindow: false,
+        activeMarker: null
+      });
+    }
+  };
+
   render() {
     return (
       <Router>
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
-        <Switch>
-          <Route path="/">
-            <Nav />
-            <div id="map">
-              <Map
-                center={{ lat: 37.775, lng: -122.434 }}
-                zoom={14}
-                positions={data}
-              />
-            </div>
-            <div id="footer-id">
-              <FooterPage />
-            </div>
-          </Route>
-        </Switch>
+        <Route path="/">
+          <Nav />
+          <div id="map">
+            <Map positions={data} />
+          </div>
+          <div id="footer-id">
+            <FooterPage />
+          </div>
+        </Route>
       </Router>
     );
   }
