@@ -3,23 +3,19 @@ import "./About.css";
 import "../../public/three_cats.png";
 
 import chrispfp from "../../public/chrispfp.jpg";
-import anthonypfp from "../../public/anthonypfp.png";
 import thomaspfp from "../../public/thomaspfp.png";
 import three_cats from "../../public/three_cats.png";
 
 import ig_icon from "../../public/insta-icon.png";
 import fb_icon from "../../public/fb-icon.png";
 import li_icon from "../../public/linked-icon.png";
-import Image from "react-bootstrap/Image";
+
+import kitty_large from "../../public/kitty-large.png";
 
 const AboutPage = () => {
   return (
     <section id="aboutUs">
       <header className="text-center">
-        <div className="three_cats container">
-          <Image fluid src={three_cats} alt="three_cats" />
-        </div>
-
         <h1 className="aboutUsTitle">About Us!</h1>
         <div>
           <p>
@@ -56,7 +52,7 @@ const AboutPage = () => {
       </header>
       <div>
         <p className="text-center">
-          Follow us on social media to get our latest updates!
+          <i>Follow us on social media to get our latest updates!</i>
         </p>
       </div>
 
@@ -83,18 +79,18 @@ const AboutPage = () => {
           <div className="col-sm">
             {" "}
             <div>
-              <img className="pfp" src={anthonypfp} alt="anthony-pfp" />
+              <img className="pfp" src={three_cats} alt="three_cats" />
             </div>
-            <b>Anthony Zhu</b>
+            <b>Authors</b>
             <div className="socialMediaIcons">
-              <a href="https://www.facebook.com/xoxobbq">
-                <img src={fb_icon} alt="Anthony-fb" />
+              <a href="https://www.facebook.com/thomas.bogdanov">
+                <img src={kitty_large} alt="kitty_large" />
               </a>
-              <a href="https://www.linkedin.com/in/anthony-zhu-3abb9b183/">
-                <img src={li_icon} alt="Anthony-linkedin" />
+              <a href="https://www.linkedin.com/in/thomas-bogdanov-a98004147/">
+                <img src={kitty_large} alt="kitty_large" />
               </a>
-              <a href="https://www.instagram.com/zhudriven/">
-                <img src={ig_icon} alt="Anthony-ig" />
+              <a href="https://www.instagram.com/bulletsafety/">
+                <img src={kitty_large} alt="kitty_large" />
               </a>
             </div>
           </div>
