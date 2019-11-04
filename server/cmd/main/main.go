@@ -47,12 +47,12 @@ func main() {
 	switch *wordPtr {
 	case "ResetDB":
 		fmt.Println("Resetting Database . . .")
-		db.DropTableIfExists(models.Users{}, models.Parkings{}, models.Crimes{})
-		db.AutoMigrate(models.Users{}, models.Parkings{}, models.Crimes{})
+		db.DropTableIfExists(models.Users{}, models.Crimes{})
+		db.AutoMigrate(models.Users{}, models.Crimes{})
 		fmt.Println("Reset Complete!")
 	case "DropTables":
 		fmt.Println("Dropping Tables . . .")
-		db.DropTableIfExists(models.Users{}, models.Parkings{}, models.Crimes{})
+		db.DropTableIfExists(models.Users{}, models.Crimes{})
 		fmt.Println("Tables Dropped!")
 	case "SeedTables":
 		fmt.Println("Seeding Tables . . .")
@@ -64,6 +64,7 @@ func main() {
 		r := mux.NewRouter()
 		routes.RegisterParkingSpotRoutes(r)
 		http.Handle("/", r)
+		http.Handle("/APITest/", r)
 		fmt.Println("Server listening on port 8000!")
 		log.Fatal(http.ListenAndServe(":8000", r))
 	default:
