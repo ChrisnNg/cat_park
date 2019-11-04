@@ -28,8 +28,5 @@
 .modal-header {
   background-color: #17a2b8;
   background-image: url("https://www.transparenttextures.com/patterns/crossword.png");
-  -webkit-border-radius: 5% !important;
-  -moz-border-radius: 5% !important;
-  border-radius: 5% !important;
-  margin: -0.3%;
+  margin: -0.15%;
 }
