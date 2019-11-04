@@ -3,9 +3,8 @@ import "./App.css";
 import Nav from "./components/Nav.js";
 import FooterPage from "./components/Footer.js";
 import Map from "./components/map/Map.js";
-import { render } from "react-dom";
 
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
 const data = [
   { lat: 37.782551, lng: -122.44536800000003 },
