@@ -47,10 +47,10 @@ type Parkings struct {
 }
 
 func GetAllCrimes() []Crimes {
-	crimeQuery := `SELECT * FROM Crimes where Type = ?`
+	// crimeQuery := `SELECT * FROM Crimes where Type = ?`
 	crimes := make([]Crimes, 0)
-	// db.Find(&crimes)
-	db.Raw(crimeQuery, "Other Theft").Scan(&crimes)
+	db.Limit(50).Find(&crimes)
+	// db.Limit(50)Raw(crimeQuery, "Other Theft").Scan(&crimes)
 	return crimes
 }
 

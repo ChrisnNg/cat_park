@@ -16,14 +16,6 @@ var (
 )
 
 func Connect() {
-<<<<<<< HEAD
-
-	err := godotenv.Load("/home/kirako431/lighthouse/Final/go/projects/cat_park/.env")
-  if err != nil {
-    log.Fatal("Error loading .env file")
-	}
-=======
->>>>>>> cf05fa6fbec698abcc28c3e4d59a6b1d7fc3d755
 	EnvHost := os.Getenv("Host")
 	EnvPort := os.Getenv("Port")
 	EnvUser := os.Getenv("User")
