@@ -47,25 +47,24 @@ type Parkings struct {
 }
 
 func GetAllCrimes() []Crimes {
-	// query := `SELECT ST_AsGeoJSON(geom) AS geojson FROM CRIMES LIMIT 10`
-	// fmt.Println(query)
-	// fmt.Println("1")
+	crimeQuery := `SELECT * FROM Crimes where Type = ?`
 	crimes := make([]Crimes, 0)
-	// fmt.Println("2")
-	db.Find(&crimes)
-	// fmt.Println("3")
+	// db.Find(&crimes)
+	db.Raw(crimeQuery, "Other Theft").Scan(&crimes)
 	return crimes
 }
 
 func GetAllParkings() []Parkings {
+	parkingQuery := `SELECT * FROM Parkings where ST_DWithin(geom::geography, ST_MakePoint(-123.157002968364, 49.2639857828638)::geography, 50);`
 	parkings := make([]Parkings, 0)
-	db.Find(&parkings)
+	// db.Find(&parkings)
+	db.Raw(parkingQuery).Scan(&parkings)
 	return parkings
 }
 
 func ResetDB() {
 	// db.DropTableIfExists(Users{}, Crimes{})
-	db.AutoMigrate(Parkings{})
+	db.AutoMigrate(Parkings{}, Crimes{})
 }
 
 func DropTables() {
