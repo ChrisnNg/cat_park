@@ -61,11 +61,11 @@ export class MapContainer extends React.Component {
     axios.get(`http://localhost:8001/Data/Crime/`).then(res => {
       const crimes = res.data;
       let crimesdata = [{ lat: 49.281637, lng: -123.1124 }];
+      crimes.map((obj, index) => {
+        crimesdata[index] = obj.Geom;
+      });
+      console.log("configured geodata", crimesdata);
       this.setState({ heatMapData: crimesdata });
-      console.log("axios req done and state set");
-      console.log(crimes);
-      console.log("setnewheatmap", this.state.heatMapData);
-      console.log(crimesdata);
     });
   }
 
