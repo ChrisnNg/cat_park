@@ -47,10 +47,10 @@ type Parkings struct {
 }
 
 func GetAllCrimes() []Crimes {
-	// crimeQuery := `SELECT * FROM Crimes where Type = ?`
-	crimeQuery := `SELECT * FROM Crimes where ST_DWithin(geom::geography, ST_MakePoint(-123.157002968364, 49.2639857828638)::geography, 100) LIMIT 300;`
+	crimeQuery := `SELECT * FROM Crimes order by random() limit 5000;`
+	// crimeQuery := `SELECT * FROM Crimes where ST_DWithin(geom::geography, ST_MakePoint(-123.157002968364, 49.2639857828638)::geography, 100000);`
 	crimes := make([]Crimes, 0)
-	// db.Limit(50).Find(&crimes)
+	// db.Limit(5000).random().Find(&crimes)
 	db.Raw(crimeQuery).Scan(&crimes)
 	return crimes
 }

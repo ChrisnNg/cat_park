@@ -1,0 +1,5 @@
+#floating-panel {
+  position: absolute;
+  top: 94%;
+  z-index: 51;
+}
