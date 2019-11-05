@@ -52,7 +52,8 @@ func GetAllCrimes() []Crimes {
 	// fmt.Println("1")
 	crimes := make([]Crimes, 0)
 	// fmt.Println("2")
-	db.Find(&crimes)
+	// db.Find(&crimes)
+	db.Raw(`SELECT * FROM Crimes where ST_DWithin(geom::geography, ST_MakePoint(-123.114370, 49.281295)::geography, 10000);`).Scan(&crimes)
 	// fmt.Println("3")
 	return crimes
 }

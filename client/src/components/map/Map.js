@@ -31,15 +31,19 @@ const gradient = [
 ];
 
 export class MapContainer extends React.Component {
-  state = {
-    showingInfoWindow: false, //Hides or the shows the infoWindow
-    activeMarker: {}, //Shows the active marker upon click
-    selectedPlace: {}, //Shows the infoWindow to the selected place upon a marker
-    heatMapData: [
-      { lat: 37.752986, lng: -122.40311199999996 },
-      { lat: 37.751266, lng: -122.40335500000003 }
-    ]
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      showingInfoWindow: false, //Hides or the shows the infoWindow
+      activeMarker: {}, //Shows the active marker upon click
+      selectedPlace: {}, //Shows the infoWindow to the selected place upon a marker
+      heatMapData: [
+        { lat: 37.752986, lng: -122.40311199999996 },
+        { lat: 37.751266, lng: -122.40335500000003 }
+      ],
+      string: "statename"
+    };
+  }
 
   onMarkerClick = (props, marker, e) =>
     this.setState({
@@ -57,31 +61,32 @@ export class MapContainer extends React.Component {
     }
   };
 
-  componentDidMount() {
+  componentWillMount() {
     axios.get(`http://localhost:8001/Data/Crime/`).then(res => {
       const crimes = res.data;
-      let crimesdata = [{}];
+      let crimesdata = [];
 
       crimes.forEach((obj, index) => {
-        crimesdata[index] = obj.Geom;
+        crimesdata.push(obj.Geom);
       });
       console.log("before new geodata", this.state.heatMapData);
-      // this.setState({ heatMapData: crimesdata });
-      this.setState({
-        heatMapData: [
-          { lng: -123.11775263480308, lat: 49.281974611792165 },
-          { lng: -123.1177526133855, lat: 49.281965616636214 },
-          { lng: -123.1177526133855, lat: 49.281965616636214 },
-          { lng: -123.11775259196796, lat: 49.28195662148025 },
-          { lng: -123.11775257055041, lat: 49.28194762632427 },
-          { lng: -123.11775257055041, lat: 49.28194762632427 },
-          { lng: -123.11775257055041, lat: 49.28194762632427 },
-          { lng: -123.11775257055041, lat: 49.28194762632427 },
-          { lng: -123.11773879944955, lat: 49.28193864517899 },
-          { lng: -123.11772504976622, lat: 49.28193865918805 }
-        ]
-      });
-      console.log("configured geodata", this.state);
+      this.setState({ heatMapData: crimesdata });
+
+      // this.setState({
+      //   heatMapData: [
+      //     { lng: -123.11775263480308, lat: 49.281974611792165 },
+      //     { lng: -123.1177526133855, lat: 49.281965616636214 },
+      //     { lng: -123.1177526133855, lat: 49.281965616636214 },
+      //     { lng: -123.11775259196796, lat: 49.28195662148025 },
+      //     { lng: -123.11775257055041, lat: 49.28194762632427 },
+      //     { lng: -123.11775257055041, lat: 49.28194762632427 },
+      //     { lng: -123.11775257055041, lat: 49.28194762632427 },
+      //     { lng: -123.11775257055041, lat: 49.28194762632427 },
+      //     { lng: -123.11773879944955, lat: 49.28193864517899 }
+      //   ]
+      // });
+      console.log("configured geodata", this.state.heatMapData);
+      this.setState({ string: "newstatestring" });
     });
   }
 
@@ -108,7 +113,14 @@ export class MapContainer extends React.Component {
               url: kitty_icon
             }}
           />
-
+          <Marker
+            name={this.state.string}
+            position={{ lat: 49.280485, lng: -123.096307 }}
+            onClick={this.onMarkerClick}
+            icon={{
+              url: kitty_icon
+            }}
+          />
           <InfoWindow
             marker={this.state.activeMarker}
             visible={this.state.showingInfoWindow}
