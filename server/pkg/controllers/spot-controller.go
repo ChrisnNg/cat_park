@@ -20,6 +20,10 @@ import (
 var NewSpot models.Parkings
 // var NewCrime models.Crime
 
+func enableCors(w *http.ResponseWriter) {
+	(*w).Header().Set("Access-Control-Allow-Origin", "*")
+}
+
 func Home(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("Hello!")
 	return
@@ -41,6 +45,7 @@ func UpdateUser(w http.ResponseWriter, r *http.Request) {
 }
 
 func AllCrimeData(w http.ResponseWriter, r *http.Request) {
+	enableCors(&w)
 	newCrimes := models.GetAllCrimes()
 	fmt.Println("TESTZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZTESTZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZTESTZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ")
 	res, _ := json.Marshal(newCrimes)
@@ -51,6 +56,7 @@ func AllCrimeData(w http.ResponseWriter, r *http.Request) {
 }
 
 func AllParkingData(w http.ResponseWriter, r *http.Request) {
+	enableCors(&w)
 	newParkings := models.GetAllParkings()
 	fmt.Println("TESTZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZTESTZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZTESTZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ")
 	res, _ := json.Marshal(newParkings)
