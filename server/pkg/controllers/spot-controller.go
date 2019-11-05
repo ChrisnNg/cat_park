@@ -17,7 +17,7 @@ import (
 	// "github.com/jmoiron/sqlx"
 )
 
-var NewSpot models.Parking
+var NewSpot models.Parkings
 // var NewCrime models.Crime
 
 func Home(w http.ResponseWriter, r *http.Request) {
@@ -51,7 +51,12 @@ func AllCrimeData(w http.ResponseWriter, r *http.Request) {
 }
 
 func AllParkingData(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("AllParkingData Placeholder")
+	newParkings := models.GetAllParkings()
+	fmt.Println("TESTZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZTESTZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZTESTZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ")
+	res, _ := json.Marshal(newParkings)
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
+	w.Write(res)
 }
 
 func AddParkingSpot(w http.ResponseWriter, r *http.Request) {
