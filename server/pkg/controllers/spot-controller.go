@@ -10,11 +10,15 @@ import (
 	"encoding/json"
 	"log"
 	"net/url"
-
+	// "github.com/ChrisnNg/cat_park/server/pkg/config"
 	"github.com/ChrisnNg/cat_park/server/pkg/models"
+	// "github.com/paulmach/go.geojson"
+	_ "github.com/lib/pq"
+	// "github.com/jmoiron/sqlx"
 )
 
-var Spot models.Parkings
+var NewSpot models.Parking
+// var NewCrime models.Crime
 
 func Home(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("Hello!")
@@ -37,35 +41,21 @@ func UpdateUser(w http.ResponseWriter, r *http.Request) {
 }
 
 func AllCrimeData(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("API Data placeholder")
-	return
+	newCrimes := models.GetAllCrimes()
+	fmt.Println("TESTZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZTESTZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZTESTZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ")
+	res, _ := json.Marshal(newCrimes)
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
+	w.Write(res)
+
 }
 
 func AllParkingData(w http.ResponseWriter, r *http.Request) {
-	// type Parking struct {
-	// 	Meterhead string `json:"meterhead"`
-	// 	R_MF_9A_6P string `json:"r_mf_9a_6p"`
-	// 	R_MF_6P_10 string `json:"r_mf_6p_10"`
-	// 	R_SA_9A_6P string `json:"r_sa_9a_6p"`
-	// 	R_SA_6P_10 string `json:"r_sa_6p_10"`
-	// 	R_SU_9A_6P string `json:"r_su_9a_6p"`
-	// 	R_SU_6P_10 string `json:"r_su_6p_10"`
-	// 	RATE_MISC string `json:"rate_misc"`
-	// 	TIMEINEFFE string `json:"timeineffe"`
-	// 	T_MF_9A_6P string `json:"t_mf_9a_6p"`
-	// 	T_MF_6P_10 string `json:"t_mf_6p_10"`
-	// 	T_SA_6P_10 string `json:"t_sa_6p_10"`
-	// 	T_SU_9A_6P string `json:"t_su_9a_6p"`
-	// 	T_SU_6P_10 string `json:"t_su_6p_10"`
-	// 	TIME_MISC string `json:"time_misc"`
-	// 	CREDITCARD string `json:"creditcard"`
-	// 	PAY_PHONE string `json:"pay_phone"`
-	// 	GEOM 
-	// }
+	fmt.Println("AllParkingData Placeholder")
 }
 
 func AddParkingSpot(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("Add API data from website placeholder")
+	// fmt.Println("Add API data from website placeholder")
 	return
 }
 
@@ -94,30 +84,18 @@ func APITest(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// For control over HTTP client headers,
-	// redirect policy, and other settings,
-	// create a Client
-	// A Client is an HTTP client
 	client := &http.Client{}
 
-	// Send the request via a client
-	// Do sends an HTTP request and
-	// returns an HTTP response
 	resp, err := client.Do(req)
 	if err != nil {
 		log.Fatal("Do: ", err)
 		return
 	}
 
-	// Callers should close resp.Body
-	// when done reading from it
-	// Defer the closing of the body
 	defer resp.Body.Close()
 
-	// Fill the record with the data from the JSON
 	var record Numverify
 
-	// Use json.Decode for reading streams of JSON data
 	if err := json.NewDecoder(resp.Body).Decode(&record); err != nil {
 		log.Println(err)
 	}
@@ -129,3 +107,33 @@ func APITest(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("LineType  = ", record.LineType)
 
 }
+
+
+
+
+
+	// type CrimesA struct {  
+	// 	Type    string  
+	// 	X   float64 `gorm:"type:decimal(17,0)"`
+	// 	Y    float64 `gorm:"type:decimal(17,0)"`
+	// 	}
+
+	// 	type CrimesB struct {  
+	// 	Type    string  `db:"type"` 
+	// 	X  float64  `db:"x"`
+	// 	Y  float64  `db:"y"`
+	// 	}
+
+	// 	rows := CrimesA{}
+	// 	err := db.Get(&rows, "Select * From crimes")
+
+	// 	data := CrimesB{}
+	// 	data.Type = rows.Type
+	// 	data.X = rows.X
+	// 	data.Y = rows.Y
+
+	// 	j,_ := json.Marshal(&data)
+	// 	w.WriteHeader(http.StatusOK)
+	// 	w.Write(j)
+
+	// row := db.QueryRow("SELECT type, ST_AsGeoJSON(geom) FROM crimes")

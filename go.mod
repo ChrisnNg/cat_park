@@ -7,6 +7,9 @@ require (
 	github.com/dewski/spatial v0.0.0-20190810150435-8df499de4abf
 	github.com/gorilla/mux v1.6.2
 	github.com/jinzhu/gorm v1.9.11
+	github.com/jmoiron/sqlx v1.2.0
 	github.com/joho/godotenv v1.3.0
 	github.com/lib/pq v1.2.0
+	github.com/paulmach/go.geojson v1.4.0
+	github.com/twpayne/go-geom v1.0.5
 )

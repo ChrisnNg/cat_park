@@ -2,15 +2,24 @@ package models
 
 import (
 	// "fmt"
-	// "github.com/ChrisnNg/cat_park/server/pkg/config"
+	"github.com/ChrisnNg/cat_park/server/pkg/config"
 	"github.com/jinzhu/gorm"
 
 	// "github.com/cridenour/go-postgis"
-	// "github.com/dewski/spatial"
+	"github.com/dewski/spatial"
+	// "github.com/paulmach/go.geojson"
+	// "github.com/twpayne/go-geom/encoding/geojson"
+	// "github.com/twpayne/go-geom"
+
 
 )
 
 var db *gorm.DB
+
+func init() {
+	config.Connect()
+	db = config.GetDB()
+}
 
 type Users struct {
 	ID       uint `gorm:"primary_key"`
@@ -21,22 +30,14 @@ type Users struct {
 	Karma    int
 }
 
-// type Parkings struct {
-// 	ID        uint `gorm:"primary_key"`
-// 	Longitude float64 `gorm:"type:decimal(10,8)"`
-// 	Latitude  float64 `gorm:"type:decimal(11,8)"`
-// 	Rating    int
-// 	Karma     int
-// 	Photo_url string
-// }
-
 type Crimes struct {
-	Type        string
+	Type        string `json:"type"`
 	X   float64 `gorm:"type:decimal(17,0)"`
 	Y    float64 `gorm:"type:decimal(17,0)"`
+	Geom spatial.Point `gorm:"type:geometry(Geometry,4326)"` 
 }
 
-type Parkings struct {
+type Parking struct {
 	METERHEAD string `json:"meterhead"`
 	R_MF_9A_6P string `json:"r_mf_9a_6p"`
 	R_MF_6P_10 string `json:"r_mf_6p_10"`
@@ -59,5 +60,26 @@ type Parkings struct {
 	METERID string `json:"meterid"`
 	Longitude float64
 	Latitude  float64
+	Geom spatial.Point `gorm:"type:geometry(Geometry,4326)"`
+}
+
+func GetAllCrimes() []Crimes {
+	// query := `SELECT ST_AsGeoJSON(geom) AS geojson FROM CRIMES LIMIT 10`
+	// fmt.Println(query)
+	// fmt.Println("1")
+	crimes := make([]Crimes, 0)
+	// fmt.Println("2")
+	db.Find(&crimes)
+	// fmt.Println("3")
+	return crimes
+}
+
+func ResetDB() {
+	// db.DropTableIfExists(Users{}, Crimes{})
+	db.AutoMigrate(Users{}, Crimes{})
+}
+
+func DropTables() {
+	db.DropTableIfExists(Users{}, Crimes{})
 }
 

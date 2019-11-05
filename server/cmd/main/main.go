@@ -7,7 +7,7 @@ import (
 	"github.com/ChrisnNg/cat_park/server/pkg/router"
 	"github.com/gorilla/mux"
 	_ "github.com/jinzhu/gorm/dialects/postgres"
-	"github.com/ChrisnNg/cat_park/server/pkg/config"
+	// "github.com/ChrisnNg/cat_park/server/pkg/config"
 	"github.com/ChrisnNg/cat_park/server/pkg/models"
 	"fmt"
 	"github.com/ChrisnNg/cat_park/server/pkg/seeds/crimeSeeds"
@@ -17,29 +17,17 @@ import (
 	// "os"
 	// "github.com/cridenour/go-postgis"
 	// "github.com/dewski/spatial"
+	// "github.com/jinzhu/gorm"
 
 )
 
+
+
+
 func main() {
 
-	config.Connect()
-	db := config.GetDB()
-
-	// path := []spatial.Point{}
-  // err := db.
-  // 	Select("geo").
-  // 	From("crimes").
-	// 	QueryStructs(&path)
-	// 	if err != nil {
-	// 		panic(err)
-	// 	}
-
-		// // Encode the path with .000000 level of precision
-		// polyline := spatial.Encode(path, 6)
-		// fmt.Println(polyline) // _p~iF~ps|U_ulLnnqC_mqNvxq`@
-	
-		// points := spatial.Decode(polyline, 6)
-		// fmt.Println(polyline) // make(map[]spatial.Point, 2)
+	// config.Connect()
+	// db := config.GetDB()
 
 	wordPtr := flag.String("task", "foo", "a string")
 	flag.Parse()
@@ -47,12 +35,11 @@ func main() {
 	switch *wordPtr {
 	case "ResetDB":
 		fmt.Println("Resetting Database . . .")
-		db.DropTableIfExists(models.Users{}, models.Crimes{})
-		db.AutoMigrate(models.Users{}, models.Crimes{})
+		models.ResetDB()
 		fmt.Println("Reset Complete!")
 	case "DropTables":
 		fmt.Println("Dropping Tables . . .")
-		db.DropTableIfExists(models.Users{}, models.Crimes{})
+		// db.DropTableIfExists(models.Users{}, models.Crimes{})
 		fmt.Println("Tables Dropped!")
 	case "SeedTables":
 		fmt.Println("Seeding Tables . . .")
@@ -66,7 +53,7 @@ func main() {
 		http.Handle("/", r)
 		http.Handle("/APITest/", r)
 		fmt.Println("Server listening on port 8000!")
-		log.Fatal(http.ListenAndServe(":8000", r))
+		log.Fatal(http.ListenAndServe(":8001", r))
 	default:
 		fmt.Println("Please enter a valid flag")
 	}
