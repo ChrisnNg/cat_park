@@ -32,8 +32,8 @@ type Users struct {
 
 type Crimes struct {
 	Type        string `json:"type"`
-	X   float64 `gorm:"type:decimal(17,0)"`
-	Y    float64 `gorm:"type:decimal(17,0)"`
+	X   float64
+	Y    float64
 	Geom spatial.Point `gorm:"type:geometry(Geometry,4326)"` 
 }
 
@@ -47,10 +47,11 @@ type Parkings struct {
 }
 
 func GetAllCrimes() []Crimes {
-	crimeQuery := `SELECT * FROM Crimes where Type = ?`
+	// crimeQuery := `SELECT * FROM Crimes where Type = ?`
+	crimeQuery := `SELECT * FROM Crimes where ST_DWithin(geom::geography, ST_MakePoint(-123.157002968364, 49.2639857828638)::geography, 100) LIMIT 300;`
 	crimes := make([]Crimes, 0)
-	// db.Find(&crimes)
-	db.Raw(crimeQuery, "Other Theft").Scan(&crimes)
+	// db.Limit(50).Find(&crimes)
+	db.Raw(crimeQuery).Scan(&crimes)
 	return crimes
 }
 
