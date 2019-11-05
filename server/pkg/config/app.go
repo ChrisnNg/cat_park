@@ -6,8 +6,9 @@ import (
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/postgres"
 	"os"
-	"github.com/joho/godotenv"
-	"log"
+	// "github.com/joho/godotenv"
+	// "log"
+	_ "github.com/joho/godotenv/autoload"
 )
 
 var (
@@ -15,11 +16,6 @@ var (
 )
 
 func Connect() {
-
-	err := godotenv.Load("/home/thomas/lighthouse/go/projects/catPark/.env")
-  if err != nil {
-    log.Fatal("Error loading .env file")
-	}
 	EnvHost := os.Getenv("Host")
 	EnvPort := os.Getenv("Port")
 	EnvUser := os.Getenv("User")
