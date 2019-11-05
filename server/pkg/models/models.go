@@ -39,25 +39,8 @@ type Crimes struct {
 
 type Parkings struct {
 	METERHEAD string `json:"meterhead"`
-	R_MF_9A_6P string `json:"r_mf_9a_6p"`
-	R_MF_6P_10 string `json:"r_mf_6p_10"`
-	R_SA_9A_6P string `json:"r_sa_9a_6p"`
-	R_SA_6P_10 string `json:"r_sa_6p_10"`
-	R_SU_9A_6P string `json:"r_su_9a_6p"`
-	R_SU_6P_10 string `json:"r_su_6p_10"`
-	RATE_MISC string `json:"rate_misc"`
 	TIMEINEFFE string `json:"timeineffe"`
-	T_MF_9A_6P string `json:"t_mf_9a_6p"`
-	T_MF_6P_10 string `json:"t_mf_6p_10"`
-	T_SA_9A_6P string `json:"t_sa_9a_6p`
-	T_SA_6P_10 string `json:"t_sa_6p_10"`
-	T_SU_9A_6P string `json:"t_su_9a_6p"`
-	T_SU_6P_10 string `json:"t_su_6p_10"`
-	TIME_MISC string `json:"time_misc"`
-	CREDITCARD string `json:"creditcard"`
-	PAY_PHONE string `json:"pay_phone"`
 	GEO_LOCAL_AREA string `json:"geo_local_area"`
-	METERID string `json:"meterid"`
 	Longitude float64
 	Latitude  float64
 	Geom spatial.Point `gorm:"type:geometry(Geometry,4326)"`
@@ -74,9 +57,15 @@ func GetAllCrimes() []Crimes {
 	return crimes
 }
 
+func GetAllParkings() []Parkings {
+	parkings := make([]Parkings, 0)
+	db.Find(&parkings)
+	return parkings
+}
+
 func ResetDB() {
-	// db.DropTableIfExists(Users{}, Crimes{}, Parkings{})
-	db.AutoMigrate(Users{}, Crimes{}, Parkings{})
+	// db.DropTableIfExists(Users{}, Crimes{})
+	db.AutoMigrate(Parkings{})
 }
 
 func DropTables() {
