@@ -11,6 +11,8 @@ import cat_park_icon from "../../../public/cat_park_icon.png";
 import kitty_icon from "../../../public/kitty_icon.png";
 import "./infoWindow.css";
 
+import axios from "axios";
+
 const gradient = [
   "rgba(0, 255, 255, 0)",
   "rgba(0, 255, 255, 1)",
@@ -32,7 +34,11 @@ export class MapContainer extends React.Component {
   state = {
     showingInfoWindow: false, //Hides or the shows the infoWindow
     activeMarker: {}, //Shows the active marker upon click
-    selectedPlace: {} //Shows the infoWindow to the selected place upon a marker
+    selectedPlace: {}, //Shows the infoWindow to the selected place upon a marker
+    heatMapData: [
+      { lat: 37.752986, lng: -122.40311199999996 },
+      { lat: 37.751266, lng: -122.40335500000003 }
+    ]
   };
 
   onMarkerClick = (props, marker, e) =>
@@ -51,10 +57,26 @@ export class MapContainer extends React.Component {
     }
   };
 
+  componentDidMount() {
+    axios.get(`http://localhost:8001/Data/Crime/`).then(res => {
+      const crimes = res.data;
+      let crimesdata = [{ lat: 49.281637, lng: -123.1124 }];
+      this.setState({ heatMapData: crimesdata });
+      console.log("axios req done and state set");
+      console.log(crimes);
+      console.log("setnewheatmap", this.state.heatMapData);
+      console.log(crimesdata);
+    });
+  }
+
   render() {
     return (
       <div className="map-container">
-        <CurrentLocation centerAroundCurrentLocation google={this.props.google}>
+        <CurrentLocation
+          centerAroundCurrentLocation
+          google={this.props.google}
+          crimesdata={this.state.crimesdata}
+        >
           <Marker
             onClick={this.onMarkerClick}
             name={"Current Location"}
@@ -83,7 +105,7 @@ export class MapContainer extends React.Component {
           </InfoWindow>
           <HeatMap
             gradient={gradient}
-            positions={this.props.positions}
+            positions={this.state.heatMapData}
             opacity={1}
             radius={20}
           />

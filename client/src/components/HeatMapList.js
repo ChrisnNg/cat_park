@@ -16,11 +16,13 @@ export default class HeatMapList extends React.Component {
 
   render() {
     return (
-      <ul>
+      <section>
         {this.state.data.map(data => (
-          <li>{data.Geom.lat}</li>
+          <p>
+            {data.Geom.lat}, {data.Geom.lng}
+          </p>
         ))}
-      </ul>
+      </section>
     );
   }
 }
