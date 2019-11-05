@@ -16,7 +16,7 @@ var (
 
 func Connect() {
 
-	err := godotenv.Load("/home/thomas/lighthouse/go/projects/catPark/.env")
+	err := godotenv.Load("/home/kirako431/lighthouse/Final/go/projects/cat_park/.env")
   if err != nil {
     log.Fatal("Error loading .env file")
 	}

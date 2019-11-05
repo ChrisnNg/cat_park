@@ -37,7 +37,7 @@ type Crimes struct {
 	Geom spatial.Point `gorm:"type:geometry(Geometry,4326)"` 
 }
 
-type Parking struct {
+type Parkings struct {
 	METERHEAD string `json:"meterhead"`
 	R_MF_9A_6P string `json:"r_mf_9a_6p"`
 	R_MF_6P_10 string `json:"r_mf_6p_10"`
@@ -75,8 +75,8 @@ func GetAllCrimes() []Crimes {
 }
 
 func ResetDB() {
-	// db.DropTableIfExists(Users{}, Crimes{})
-	db.AutoMigrate(Users{}, Crimes{})
+	// db.DropTableIfExists(Users{}, Crimes{}, Parkings{})
+	db.AutoMigrate(Users{}, Crimes{}, Parkings{})
 }
 
 func DropTables() {

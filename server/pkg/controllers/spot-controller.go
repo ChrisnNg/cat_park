@@ -17,7 +17,7 @@ import (
 	// "github.com/jmoiron/sqlx"
 )
 
-var NewSpot models.Parking
+var NewSpot models.Parkings
 // var NewCrime models.Crime
 
 func Home(w http.ResponseWriter, r *http.Request) {
