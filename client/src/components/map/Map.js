@@ -6,6 +6,9 @@ import {
   Marker
 } from "google-maps-react";
 
+import Button from "react-bootstrap/Button";
+
+// import HeatMap from "./HeatMap.js"
 import CurrentLocation from "./CurrentLocation";
 import cat_park_icon from "../../../public/cat_park_icon.png";
 import kitty_icon from "../../../public/kitty_icon.png";
@@ -39,9 +42,11 @@ export class MapContainer extends React.Component {
       selectedPlace: {}, //Shows the infoWindow to the selected place upon a marker
       heatMapData: [
         { lat: 37.752986, lng: -122.40311199999996 },
+        { lat: 37.751266, lng: -122.40335500000003 },
         { lat: 37.751266, lng: -122.40335500000003 }
       ],
-      string: "statename"
+      string: "statename",
+      isHeatmapVisible: false
     };
   }
 
@@ -61,6 +66,11 @@ export class MapContainer extends React.Component {
     }
   };
 
+  handleToggle = () => {
+    this.setState({ isHeatmapVisible: !this.state.isHeatmapVisible });
+    console.log("button clicked");
+  };
+
   componentWillMount() {
     axios.get(`http://localhost:8001/Data/Crime/`).then(res => {
       const crimes = res.data;
@@ -77,22 +87,28 @@ export class MapContainer extends React.Component {
       //     { lng: -123.11775263480308, lat: 49.281974611792165 },
       //     { lng: -123.1177526133855, lat: 49.281965616636214 },
       //     { lng: -123.1177526133855, lat: 49.281965616636214 },
-      //     { lng: -123.11775259196796, lat: 49.28195662148025 },
-      //     { lng: -123.11775257055041, lat: 49.28194762632427 },
-      //     { lng: -123.11775257055041, lat: 49.28194762632427 },
-      //     { lng: -123.11775257055041, lat: 49.28194762632427 },
-      //     { lng: -123.11775257055041, lat: 49.28194762632427 },
-      //     { lng: -123.11773879944955, lat: 49.28193864517899 }
+      //     { lng: -123.1177526133855, lat: 49.281965616636214 },
       //   ]
       // });
       console.log("configured geodata", this.state.heatMapData);
       this.setState({ string: "newstatestring" });
     });
   }
-
+  // this.state.toggleHeatmap
   render() {
+    let map = (
+      <HeatMap
+        gradient={gradient}
+        positions={this.state.heatMapData}
+        opacity={1}
+        radius={20}
+      />
+    );
     return (
       <div className="map-container">
+        <div id="floating-panel">
+          <button onClick={this.handleToggle}>Toggle Heatmap</button>
+        </div>
         <CurrentLocation
           centerAroundCurrentLocation
           google={this.props.google}
@@ -131,12 +147,7 @@ export class MapContainer extends React.Component {
               </h4>
             </div>
           </InfoWindow>
-          <HeatMap
-            gradient={gradient}
-            positions={this.state.heatMapData}
-            opacity={1}
-            radius={20}
-          />
+          {this.state.isHeatmapVisible ? map : null}
         </CurrentLocation>
       </div>
     );

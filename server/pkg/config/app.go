@@ -16,14 +16,6 @@ var (
 )
 
 func Connect() {
-<<<<<<< HEAD
-
-	err := godotenv.Load()
-  if err != nil {
-    log.Fatal("Error loading .env file")
-	}
-=======
->>>>>>> master
 	EnvHost := os.Getenv("Host")
 	EnvPort := os.Getenv("Port")
 	EnvUser := os.Getenv("User")

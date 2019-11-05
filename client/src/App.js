@@ -9,6 +9,11 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import HeatMapList from "./components/HeatMapList.js";
 
 const containerStyle = { position: "relative", width: "100%", height: "90%" };
+
+function toggleHeatmap() {
+  this.setState({ isHeatmapVisible: !this.state.isHeatmapVisible });
+}
+
 class App extends Component {
   render() {
     return (
