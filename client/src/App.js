@@ -6,6 +6,8 @@ import MapContainer from "./components/map/Map.js";
 
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
+import HeatMapList from "./components/HeatMapList.js";
+
 const data = [
   { lat: 37.782551, lng: -122.44536800000003 },
   { lat: 37.782745, lng: -122.44458600000002 },
@@ -516,6 +518,7 @@ class App extends Component {
       <Router>
         <Route path="/">
           <Nav />
+          <HeatMapList />
           <MapContainer positions={data} containerStyle={containerStyle} />
           <FooterPage />
         </Route>
