@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 import Nav from "./components/Nav.js";
 import FooterPage from "./components/Footer.js";
-import Map from "./components/map/Map.js";
+import MapContainer from "./components/map/Map.js";
 
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
@@ -511,35 +511,12 @@ const data = [
 
 const containerStyle = { position: "relative", width: "100%", height: "90%" };
 class App extends Component {
-  state = {
-    showingInfoWindow: false,
-    activeMarker: {},
-    selectedPlace: {}
-  };
-
-  onMarkerClick = (props, marker, e) =>
-    this.setState({
-      selectedPlace: props,
-      activeMarker: marker,
-      showingInfoWindow: true
-    });
-
-  onClose = props => {
-    if (this.state.showingInfoWindow) {
-      this.setState({
-        showingInfoWindow: false,
-        activeMarker: null
-      });
-    }
-  };
-
   render() {
     return (
       <Router>
         <Route path="/">
           <Nav />
-          <Map positions={data} containerStyle={containerStyle} />
-
+          <MapContainer positions={data} containerStyle={containerStyle} />
           <FooterPage />
         </Route>
       </Router>

@@ -9,6 +9,7 @@ import {
 import CurrentLocation from "./CurrentLocation";
 import cat_park_icon from "../../../public/cat_park_icon.png";
 import kitty_icon from "../../../public/kitty_icon.png";
+import "./infoWindow.css";
 
 const gradient = [
   "rgba(0, 255, 255, 0)",
@@ -50,11 +51,6 @@ export class MapContainer extends React.Component {
     }
   };
 
-  fetchPlaces(mapProps, map) {
-    const { google } = mapProps;
-    const service = new google.maps.places.PlacesService(map);
-  }
-
   render() {
     return (
       <div className="map-container">
@@ -78,10 +74,11 @@ export class MapContainer extends React.Component {
           <InfoWindow
             marker={this.state.activeMarker}
             visible={this.state.showingInfoWindow}
-            onClose={this.onClose}
           >
             <div>
-              <h4>{this.state.selectedPlace.name}</h4>
+              <h4 className="text-center info-window">
+                {this.state.selectedPlace.name}
+              </h4>
             </div>
           </InfoWindow>
           <HeatMap
