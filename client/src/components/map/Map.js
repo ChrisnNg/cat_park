@@ -60,12 +60,28 @@ export class MapContainer extends React.Component {
   componentDidMount() {
     axios.get(`http://localhost:8001/Data/Crime/`).then(res => {
       const crimes = res.data;
-      let crimesdata = [{ lat: 49.281637, lng: -123.1124 }];
-      crimes.map((obj, index) => {
+      let crimesdata = [{}];
+
+      crimes.forEach((obj, index) => {
         crimesdata[index] = obj.Geom;
       });
-      console.log("configured geodata", crimesdata);
-      this.setState({ heatMapData: crimesdata });
+      console.log("before new geodata", this.state.heatMapData);
+      // this.setState({ heatMapData: crimesdata });
+      this.setState({
+        heatMapData: [
+          { lng: -123.11775263480308, lat: 49.281974611792165 },
+          { lng: -123.1177526133855, lat: 49.281965616636214 },
+          { lng: -123.1177526133855, lat: 49.281965616636214 },
+          { lng: -123.11775259196796, lat: 49.28195662148025 },
+          { lng: -123.11775257055041, lat: 49.28194762632427 },
+          { lng: -123.11775257055041, lat: 49.28194762632427 },
+          { lng: -123.11775257055041, lat: 49.28194762632427 },
+          { lng: -123.11775257055041, lat: 49.28194762632427 },
+          { lng: -123.11773879944955, lat: 49.28193864517899 },
+          { lng: -123.11772504976622, lat: 49.28193865918805 }
+        ]
+      });
+      console.log("configured geodata", this.state);
     });
   }
 
@@ -75,7 +91,7 @@ export class MapContainer extends React.Component {
         <CurrentLocation
           centerAroundCurrentLocation
           google={this.props.google}
-          crimesdata={this.state.crimesdata}
+          crimesdata={this.state.heatMapData}
         >
           <Marker
             onClick={this.onMarkerClick}

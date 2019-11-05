@@ -27,9 +27,6 @@ export class CurrentLocation extends React.Component {
     if (prevProps.google !== this.props.google) {
       this.loadMap();
     }
-    if (prevProps.crimesdata !== this.props.crimesdata) {
-      this.loadMap();
-    }
     if (prevState.currentLocation !== this.state.currentLocation) {
       this.recenterMap();
     }
@@ -88,6 +85,8 @@ export class CurrentLocation extends React.Component {
       );
 
       // maps.Map() is constructor that instantiates the map
+      console.log("load map func called");
+      console.log("loaded with", this.props.crimesdata);
       this.map = new maps.Map(node, mapConfig);
     }
   }
