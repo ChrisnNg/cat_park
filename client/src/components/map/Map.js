@@ -85,33 +85,20 @@ export class MapContainer extends React.Component {
       const parkings = res.data;
       let parkingsdata = [];
 
-      let meter = (
-        <Marker
-          name={parkings[0]["meterhead"]}
-          position={parkings[0]["Geom"]}
-          icon={{
-            url: kitty_icon
-          }}
-        />
-      );
+      parkings.forEach((obj, index) => {
+        parkingsdata.push(
+          <Marker
+            name={obj["meterhead"]}
+            position={obj["Geom"]}
+            onClick={this.onMarkerClick}
+            icon={{
+              url: kitty_icon
+            }}
+          />
+        );
+      });
 
-      console.log("parkingsdata=", parkingsdata);
-
-      this.setState({ isParkingsReady: meter });
-      //   parkings.forEach((obj, index) => {
-      //     parkingsdata.push(obj.Geom);
-      //   });
-
-      //   <Marker
-      //   name={"Test Marker"}
-      //   position={{ lat: 49.280385, lng: -123.096307 }}
-      //   onClick={this.onMarkerClick}
-      //   icon={{
-      //     url: kitty_icon
-      //   }}
-      // />
-
-      //   this.setState({ isParkingsReady: parkingsdata });
+      this.setState({ isParkingsReady: parkingsdata });
     });
   }
 
@@ -170,7 +157,7 @@ export class MapContainer extends React.Component {
             </div>
           </InfoWindow>
           {this.state.isHeatmapVisible ? map : null}
-          {this.state.isParkingsReady ? this.state.isParkingsReady : null}
+          {this.state.isParkingsReady ? parkingMarkers : null}
         </CurrentLocation>
       </div>
     );
