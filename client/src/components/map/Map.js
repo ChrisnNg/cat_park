@@ -45,7 +45,6 @@ export class MapContainer extends React.Component {
         { lat: 37.751266, lng: -122.40335500000003 },
         { lat: 37.751266, lng: -122.40335500000003 }
       ],
-      string: "statename",
       isHeatmapVisible: false
     };
   }
@@ -68,7 +67,6 @@ export class MapContainer extends React.Component {
 
   handleToggle = () => {
     this.setState({ isHeatmapVisible: !this.state.isHeatmapVisible });
-    console.log("button clicked");
   };
 
   componentWillMount() {
@@ -79,22 +77,11 @@ export class MapContainer extends React.Component {
       crimes.forEach((obj, index) => {
         crimesdata.push(obj.Geom);
       });
-      console.log("before new geodata", this.state.heatMapData);
       this.setState({ heatMapData: crimesdata });
-
-      // this.setState({
-      //   heatMapData: [
-      //     { lng: -123.11775263480308, lat: 49.281974611792165 },
-      //     { lng: -123.1177526133855, lat: 49.281965616636214 },
-      //     { lng: -123.1177526133855, lat: 49.281965616636214 },
-      //     { lng: -123.1177526133855, lat: 49.281965616636214 },
-      //   ]
-      // });
-      console.log("configured geodata", this.state.heatMapData);
       this.setState({ string: "newstatestring" });
     });
   }
-  // this.state.toggleHeatmap
+
   render() {
     let map = (
       <HeatMap
