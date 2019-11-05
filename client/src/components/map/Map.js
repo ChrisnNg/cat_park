@@ -13,7 +13,7 @@ import CurrentLocation from "./CurrentLocation";
 import cat_park_icon from "../../../public/cat_park_icon.png";
 import kitty_icon from "../../../public/kitty_icon.png";
 import "./infoWindow.css";
-
+import "./Map_Buttons.css";
 import axios from "axios";
 
 const gradient = [
@@ -94,7 +94,7 @@ export class MapContainer extends React.Component {
     return (
       <div className="map-container">
         <div id="floating-panel">
-          <button onClick={this.handleToggle}>Toggle Heatmap</button>
+          <Button onClick={this.handleToggle}>Toggle Crime Heatmap</Button>
         </div>
         <CurrentLocation
           centerAroundCurrentLocation
