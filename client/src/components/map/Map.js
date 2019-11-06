@@ -97,6 +97,7 @@ export class MapContainer extends React.Component {
               anchor: new google.maps.Point(32, 32),
               scaledSize: new google.maps.Size(14, 22)
             }}
+            animation={this.props.google.maps.Animation.DROP}
           />
         );
       });
@@ -133,6 +134,7 @@ export class MapContainer extends React.Component {
               url: cat_park_icon,
               anchor: new google.maps.Point(32, 32)
             }}
+            animation={this.props.google.maps.Animation.BOUNCE}
           />
           <Marker
             name={"Test Marker"}
