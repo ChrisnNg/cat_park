@@ -84,7 +84,7 @@ export class MapContainer extends React.Component {
     axios.get(`http://localhost:8001/Data/Parking/`).then(res => {
       const parkings = res.data;
       let parkingsdata = [];
-
+      let google = this.props.google;
       parkings.forEach((obj, index) => {
         parkingsdata.push(
           <Marker
@@ -93,7 +93,9 @@ export class MapContainer extends React.Component {
             position={obj["Geom"]}
             onClick={this.onMarkerClick}
             icon={{
-              url: kitty_icon
+              url: kitty_icon,
+              anchor: new google.maps.Point(32, 32),
+              scaledSize: new google.maps.Size(14, 22)
             }}
           />
         );
@@ -113,6 +115,7 @@ export class MapContainer extends React.Component {
       />
     );
 
+    let google = this.props.google;
     let parkingMarkers = this.state.isParkingsReady;
     return (
       <div className="map-container">
@@ -128,7 +131,8 @@ export class MapContainer extends React.Component {
             onClick={this.onMarkerClick}
             name={"Current Location"}
             icon={{
-              url: cat_park_icon
+              url: cat_park_icon,
+              anchor: new google.maps.Point(32, 32)
             }}
           />
           <Marker
