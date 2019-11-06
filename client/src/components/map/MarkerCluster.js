@@ -64,7 +64,8 @@ const markerCluster = props => {
     });
 
     const clusterer = new MarkerClusterer(map, mapMarkers, {
-      imagePath_: "../../../public/kitty_icon.png",
+      imagePath:
+        "https://github.com/googlemaps/v3-utility-library/blob/master/markerclusterer/images/m1.png?raw=true",
       maxZoom: 20
     });
 
