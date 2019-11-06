@@ -56,7 +56,7 @@ func GetAllCrimes() []Crimes {
 }
 
 func GetAllParkings() []Parkings {
-	parkingQuery := `SELECT * FROM Parkings where ST_DWithin(geom::geography, ST_MakePoint(-123.157002968364, 49.2639857828638)::geography, 1000);`
+	parkingQuery := `SELECT * FROM Parkings where ST_DWithin(geom::geography, ST_MakePoint(-123.114889, 49.281229)::geography, 500);`
 	parkings := make([]Parkings, 0)
 	// db.Find(&parkings)
 	db.Raw(parkingQuery).Scan(&parkings)

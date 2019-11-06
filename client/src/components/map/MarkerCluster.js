@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import PropTypes from "prop-types";
-import kitty_icon from "../../../public/kitty_icon.png";
+import kitty_icon from "../../../public/kitty_park_2.png";
 import createMarkerClusterer from "./MarkerClusterer";
-import m1 from "../../../public/m1.png";
+
 const evtNames = [
   "click",
   "dblclick",
@@ -65,7 +65,7 @@ const markerCluster = props => {
 
     const clusterer = new MarkerClusterer(map, mapMarkers, {
       imagePath:
-        "https://github.com/googlemaps/v3-utility-library/blob/master/markerclusterer/images/m1.png?raw=true",
+        "https://github.com/googlemaps/v3-utility-library/blob/master/markerclusterer/images/m2.png?raw=true",
       maxZoom: 18
     });
 

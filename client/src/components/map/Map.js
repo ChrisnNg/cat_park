@@ -163,7 +163,7 @@ export class MapContainer extends React.Component {
             }}
             animation={this.props.google.maps.Animation.BOUNCE}
           />
-          <Marker
+          {/* <Marker
             name={"Test Marker"}
             position={{ lat: 49.280385, lng: -123.096307 }}
             onClick={this.onMarkerClick}
@@ -178,7 +178,7 @@ export class MapContainer extends React.Component {
             icon={{
               url: kitty_icon
             }}
-          />
+          /> */}
           <InfoWindow
             marker={this.state.activeMarker}
             visible={this.state.showingInfoWindow}
