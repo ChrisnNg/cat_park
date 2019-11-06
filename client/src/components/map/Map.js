@@ -8,7 +8,7 @@ import {
 } from "google-maps-react";
 
 import Button from "react-bootstrap/Button";
-
+import MarkerCluster from "./MarkerCluster";
 // import HeatMap from "./HeatMap.js"
 import CurrentLocation from "./CurrentLocation";
 import cat_park_icon from "../../../public/cat_park_icon.png";
@@ -95,17 +95,22 @@ export class MapContainer extends React.Component {
       let google = this.props.google;
       parkings.forEach((obj, index) => {
         parkingsdata.push(
-          <Marker
-            key={index}
-            name={obj["meterhead"]}
-            position={obj["Geom"]}
-            onClick={this.onMarkerClick}
-            icon={{
-              url: kitty_icon,
-              scaledSize: new google.maps.Size(14, 22)
-            }}
-            animation={this.props.google.maps.Animation.DROP}
-          />
+          // <Marker
+          //   key={index}
+          //   name={obj["meterhead"]}
+          //   position={obj["Geom"]}
+          //   onClick={this.onMarkerClick}
+          //   icon={{
+          //     url: kitty_icon,
+          //     scaledSize: new google.maps.Size(14, 22)
+          //   }}
+          //   animation={this.props.google.maps.Animation.DROP}
+          // />
+
+          {
+            position: obj["Geom"],
+            name: obj["meterhead"]
+          }
         );
       });
 
@@ -124,7 +129,9 @@ export class MapContainer extends React.Component {
     );
 
     let google = this.props.google;
-    let parkingMarkers = this.state.isParkingsReady;
+    let parkingMarkers = this.state.isParkingsReady
+      ? this.state.isParkingsReady
+      : [];
 
     if (!this.props.loaded) {
       return <div>Loading...</div>;
@@ -135,11 +142,18 @@ export class MapContainer extends React.Component {
         <div id="floating-panel">
           <Button onClick={this.handleToggle}>Toggle Crime Heatmap</Button>
         </div>
-        <Map
-          google={this.props.google}
+        <CurrentLocation
+          google={google}
           crimesdata={this.state.heatMapData}
           onClick={this.handleClick}
         >
+          <MarkerCluster
+            markers={parkingMarkers}
+            google={google}
+            // click={this.onMarkerClick}
+            // mouseover={this.onMouseOver}
+            // mouseout={this.onMouseOut}
+          />
           <Marker
             onClick={this.onMarkerClick}
             name={"Current Location"}
@@ -176,8 +190,8 @@ export class MapContainer extends React.Component {
             </div>
           </InfoWindow>
           {this.state.isHeatmapVisible ? map : null}
-          {this.state.isParkingsReady ? parkingMarkers : null}
-        </Map>
+          {/* {this.state.isParkingsReady ? parkingMarkers : null} */}
+        </CurrentLocation>
       </div>
     );
   }
