@@ -123,7 +123,6 @@ export class MapContainer extends React.Component {
           <Button onClick={this.handleToggle}>Toggle Crime Heatmap</Button>
         </div>
         <CurrentLocation
-          centerAroundCurrentLocation
           google={this.props.google}
           crimesdata={this.state.heatMapData}
         >
