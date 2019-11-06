@@ -3,7 +3,8 @@ import {
   HeatMap,
   GoogleApiWrapper,
   InfoWindow,
-  Marker
+  Marker,
+  Map
 } from "google-maps-react";
 
 import Button from "react-bootstrap/Button";
@@ -66,6 +67,13 @@ export class MapContainer extends React.Component {
     }
   };
 
+  handleClick = (mapProps, map, clickEvent) => {
+    console.log("clickyhandleclicky");
+    console.log(mapProps);
+    console.log(map);
+    console.log(clickEvent.latLng.lat(), clickEvent.latLng.lng());
+  };
+
   handleToggle = () => {
     this.setState({ isHeatmapVisible: !this.state.isHeatmapVisible });
   };
@@ -117,14 +125,20 @@ export class MapContainer extends React.Component {
 
     let google = this.props.google;
     let parkingMarkers = this.state.isParkingsReady;
+
+    if (!this.props.loaded) {
+      return <div>Loading...</div>;
+    }
+
     return (
       <div className="map-container">
         <div id="floating-panel">
           <Button onClick={this.handleToggle}>Toggle Crime Heatmap</Button>
         </div>
-        <CurrentLocation
+        <Map
           google={this.props.google}
           crimesdata={this.state.heatMapData}
+          onClick={this.handleClick}
         >
           <Marker
             onClick={this.onMarkerClick}
@@ -163,7 +177,7 @@ export class MapContainer extends React.Component {
           </InfoWindow>
           {this.state.isHeatmapVisible ? map : null}
           {this.state.isParkingsReady ? parkingMarkers : null}
-        </CurrentLocation>
+        </Map>
       </div>
     );
   }
