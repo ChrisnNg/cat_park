@@ -88,6 +88,7 @@ export class MapContainer extends React.Component {
       parkings.forEach((obj, index) => {
         parkingsdata.push(
           <Marker
+            key={index}
             name={obj["meterhead"]}
             position={obj["Geom"]}
             onClick={this.onMarkerClick}
