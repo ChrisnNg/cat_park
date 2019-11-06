@@ -66,7 +66,7 @@ const markerCluster = props => {
     const clusterer = new MarkerClusterer(map, mapMarkers, {
       imagePath:
         "https://github.com/googlemaps/v3-utility-library/blob/master/markerclusterer/images/m1.png?raw=true",
-      maxZoom: 20
+      maxZoom: 18
     });
 
     // Clealognup function. Note, this is only returned if we create the markers

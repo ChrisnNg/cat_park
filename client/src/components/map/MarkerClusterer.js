@@ -107,7 +107,7 @@ const createMarkerClusterer = google => {
     /**
      * @private
      */
-    this.minClusterSize_ = options["minimumClusterSize"] || 1;
+    this.minClusterSize_ = options["minimumClusterSize"] || 2;
 
     /**
      * @type {?number}
