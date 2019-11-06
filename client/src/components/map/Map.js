@@ -94,7 +94,6 @@ export class MapContainer extends React.Component {
             onClick={this.onMarkerClick}
             icon={{
               url: kitty_icon,
-              anchor: new google.maps.Point(32, 32),
               scaledSize: new google.maps.Size(14, 22)
             }}
             animation={this.props.google.maps.Animation.DROP}
