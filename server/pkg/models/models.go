@@ -46,18 +46,18 @@ type Parkings struct {
 	Geom spatial.Point `gorm:"type:geometry(Geometry,4326)"`
 }
 
-func GetAllCrimes() []Crimes {
-	crimeQuery := `SELECT * FROM Crimes order by random() limit 5000;`
+func GetAllCrimes(crimeType string) []Crimes {
+	crimeQuery := `SELECT * FROM Crimes WHERE type=? order by random() limit 2000;`
 	// crimeQuery := `SELECT * FROM Crimes where ST_DWithin(geom::geography, ST_MakePoint(-123.157002968364, 49.2639857828638)::geography, 100000);`
 	crimes := make([]Crimes, 0)
 	// db.Limit(5000).random().Find(&crimes)
-	db.Raw(crimeQuery).Scan(&crimes)
+	db.Raw(crimeQuery, crimeType).Scan(&crimes)
 	return crimes
 }
 
 
 func GetAllParkings(lng string, lat string) []Parkings {
-	parkingQuery := `SELECT * FROM Parkings where ST_DWithin(geom::geography, ST_MakePoint(?, ?)::geography, 50);`
+	parkingQuery := `SELECT * FROM Parkings where ST_DWithin(geom::geography, ST_MakePoint(?, ?)::geography, 300);`
 	parkings := make([]Parkings, 0)
 	// db.Find(&parkings)
 	db.Raw(parkingQuery, lng, lat).Scan(&parkings)
