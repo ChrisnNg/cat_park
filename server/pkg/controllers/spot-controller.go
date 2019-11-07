@@ -45,7 +45,8 @@ func UpdateUser(w http.ResponseWriter, r *http.Request) {
 
 func AllCrimeData(w http.ResponseWriter, r *http.Request) {
 	enableCors(&w)
-	newCrimes := models.GetAllCrimes()
+	crimeType := r.URL.Query().Get("crimeType")
+	newCrimes := models.GetAllCrimes(crimeType)
 	res, _ := json.Marshal(newCrimes)
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -57,8 +58,6 @@ func AllParkingData(w http.ResponseWriter, r *http.Request) {
 	enableCors(&w)
 	lng := r.URL.Query().Get("lng")
 	lat := r.URL.Query().Get("lat")
-	// fmt.Println(lng)
-	// fmt.Println(lat)
 	newParkings := models.GetAllParkings(lng, lat)
 	res, _ := json.Marshal(newParkings)
 	w.Header().Set("Content-Type", "application/json")
