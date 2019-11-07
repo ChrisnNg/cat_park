@@ -85,6 +85,24 @@ export class MapContainer extends React.Component {
     }
   }
 
+  handleHeatMapToAllCrimes = () => {
+    axios
+      .get(`http://localhost:8001/Data/Crimes/`)
+      .then(res => {
+        const crimes = res.data;
+        let crimesdata = [];
+
+        crimes.forEach((obj, index) => {
+          crimesdata.push(obj.Geom);
+        });
+        this.setState({ heatMapData: crimesdata, isHeatmapVisible: false });
+        crimesdata = [];
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
+  };
+
   handleHeatMapToTheftFromVehicle = () => {
     axios
       .get(`http://localhost:8001/Data/Crime/?crimeType=Theft%20from%20Vehicle`)
@@ -104,7 +122,6 @@ export class MapContainer extends React.Component {
   };
 
   handleHeatMapToTheftOfVehicle = () => {
-    console.log("cativate button");
     axios
       .get(`http://localhost:8001/Data/Crime/?crimeType=Theft%20of%20Vehicle`)
       .then(res => {
@@ -116,7 +133,24 @@ export class MapContainer extends React.Component {
         });
         this.setState({ heatMapData: crimesdata, isHeatmapVisible: false });
         crimesdata = [];
-        console.log("theft of veh cativated");
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
+  };
+
+  handleHeatMapToMischief = () => {
+    axios
+      .get(`http://localhost:8001/Data/Crime/?crimeType=Mischief`)
+      .then(res => {
+        const crimes = res.data;
+        let crimesdata = [];
+
+        crimes.forEach((obj, index) => {
+          crimesdata.push(obj.Geom);
+        });
+        this.setState({ heatMapData: crimesdata, isHeatmapVisible: false });
+        crimesdata = [];
       })
       .catch(function(error) {
         console.log(error);
@@ -258,11 +292,15 @@ export class MapContainer extends React.Component {
       <div className="map-container">
         <div id="floating-panel">
           <Button onClick={this.handleToggle}>Toggle Crime Heatmap</Button>
+          <Button onClick={this.handleHeatMapToAllCrimes}>Change to All</Button>
           <Button onClick={this.handleHeatMapToTheftFromVehicle}>
             Change to Theft from car
           </Button>
           <Button onClick={this.handleHeatMapToTheftOfVehicle}>
             Change to Theft of car
+          </Button>
+          <Button onClick={this.handleHeatMapToMischief}>
+            Change to Mischief
           </Button>
         </div>
         <Map
