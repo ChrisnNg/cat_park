@@ -50,7 +50,8 @@ export class MapContainer extends React.Component {
       isHeatmapVisible: false,
       isParkingsReady: false,
       currentLocation: { lat: 59.281229, lng: -123.114889 },
-      loading: true
+      loading: true,
+      rerender: false
     };
   }
 
@@ -90,19 +91,25 @@ export class MapContainer extends React.Component {
     console.log(clickEvent.latLng.lat(), clickEvent.latLng.lng());
     console.log(this.props);
 
-    axios.get(`http://localhost:8001/Data/Parking/`).then(res => {
-      const parkings = res.data;
-      let parkingsdata = [];
+    axios
+      .get(
+        `http://localhost:8001/Data/Parking/?lng=${clickEvent.latLng.lng()}&lat=${clickEvent.latLng.lat()}`
+      )
+      .then(res => {
+        const parkings = res.data;
+        let parkingsdata = [];
 
-      parkings.forEach((obj, index) => {
-        parkingsdata.push({
-          position: obj["Geom"],
-          name: obj["meterhead"]
+        parkings.forEach((obj, index) => {
+          parkingsdata.push({
+            position: obj["Geom"],
+            name: obj["meterhead"]
+          });
         });
+        console.log(parkingsdata.length);
+        this.setState({ isParkingsReady: parkingsdata });
+        parkingsdata = [];
+        this.setState({ rerender: !this.state.rerender });
       });
-
-      this.setState({ isParkingsReady: parkingsdata });
-    });
   };
 
   handleToggle = () => {
@@ -114,6 +121,7 @@ export class MapContainer extends React.Component {
       this.recenterMap();
     }
   }
+  F;
 
   componentDidMount(props) {
     navigator.geolocation.getCurrentPosition(
@@ -186,6 +194,7 @@ export class MapContainer extends React.Component {
       return null;
     }
 
+    console.log("cluster this!", <markerCluster />);
     let map = (
       <HeatMap
         gradient={gradient}
@@ -218,13 +227,16 @@ export class MapContainer extends React.Component {
             lng: -123.114984
           }}
         >
-          <MarkerCluster
-            markers={parkingMarkers}
-            google={google}
-            // click={this.onMarkerClick}
-            // mouseover={this.onMouseOver}
-            // mouseout={this.onMouseOut}
-          />
+          {this.state.rerender ? (
+            <MarkerCluster
+              markers={parkingMarkers}
+              google={google}
+              // click={this.onMarkerClick}
+              // mouseover={this.onMouseOver}
+              // mouseout={this.onMouseOut}
+            />
+          ) : null}
+
           <Marker
             onClick={this.onMarkerClick}
             name={"Current Location"}

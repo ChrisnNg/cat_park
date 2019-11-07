@@ -47,7 +47,7 @@ type Parkings struct {
 }
 
 func GetAllCrimes() []Crimes {
-	crimeQuery := `SELECT * FROM Crimes order by random() limit 5000;`
+	crimeQuery := `SELECT * FROM Crimes WHERE type='Mischief' order by random() limit 5000;`
 	// crimeQuery := `SELECT * FROM Crimes where ST_DWithin(geom::geography, ST_MakePoint(-123.157002968364, 49.2639857828638)::geography, 100000);`
 	crimes := make([]Crimes, 0)
 	// db.Limit(5000).random().Find(&crimes)
@@ -57,7 +57,7 @@ func GetAllCrimes() []Crimes {
 
 
 func GetAllParkings(lng string, lat string) []Parkings {
-	parkingQuery := `SELECT * FROM Parkings where ST_DWithin(geom::geography, ST_MakePoint(?, ?)::geography, 50);`
+	parkingQuery := `SELECT * FROM Parkings where ST_DWithin(geom::geography, ST_MakePoint(?, ?)::geography, 300);`
 	parkings := make([]Parkings, 0)
 	// db.Find(&parkings)
 	db.Raw(parkingQuery, lng, lat).Scan(&parkings)
