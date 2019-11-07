@@ -104,6 +104,7 @@ export class MapContainer extends React.Component {
   };
 
   handleHeatMapToTheftOfVehicle = () => {
+    console.log("cativate button");
     axios
       .get(`http://localhost:8001/Data/Crime/?crimeType=Theft%20of%20Vehicle`)
       .then(res => {
@@ -115,6 +116,7 @@ export class MapContainer extends React.Component {
         });
         this.setState({ heatMapData: crimesdata, isHeatmapVisible: false });
         crimesdata = [];
+        console.log("theft of veh cativated");
       })
       .catch(function(error) {
         console.log(error);
@@ -182,7 +184,7 @@ export class MapContainer extends React.Component {
 
   componentWillMount() {
     axios
-      .get(`http://localhost:8001/Data/Crime/?crimeType=Mischief`)
+      .get(`http://localhost:8001/Data/Crimes/`)
       .then(res => {
         const crimes = res.data;
         let crimesdata = [];
@@ -190,6 +192,7 @@ export class MapContainer extends React.Component {
         crimes.forEach((obj, index) => {
           crimesdata.push(obj.Geom);
         });
+        console.log("activated all crimes hm");
         this.setState({ heatMapData: crimesdata });
       })
       .catch(function(error) {
@@ -258,7 +261,7 @@ export class MapContainer extends React.Component {
           <Button onClick={this.handleHeatMapToTheftFromVehicle}>
             Change to Theft from car
           </Button>
-          <Button onClick={this.handleHeatMapToTheftofVehicle}>
+          <Button onClick={this.handleHeatMapToTheftOfVehicle}>
             Change to Theft of car
           </Button>
         </div>

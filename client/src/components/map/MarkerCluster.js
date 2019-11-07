@@ -32,7 +32,6 @@ const markerCluster = props => {
   const MarkerClusterer = createMarkerClusterer(google);
 
   useEffect(() => {
-    console.log("asdadsasd", map);
     if (map) {
       // first state
       // do not load clusters
@@ -53,9 +52,6 @@ const markerCluster = props => {
       });
 
       setClusterer(_clusterer);
-      console.log(
-        "=============================================================="
-      );
 
       // const allClusters = [];
       // allClusters.push(clusterer);
@@ -79,7 +75,6 @@ const markerCluster = props => {
   }, [map]);
 
   useEffect(() => {
-    console.log("happen?", markers.length, clusterer);
     if (clusterer && markers) {
       const mapMarkers = markers.map(marker => {
         const entry = new google.maps.Marker({
