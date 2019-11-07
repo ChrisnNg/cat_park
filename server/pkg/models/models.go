@@ -55,6 +55,7 @@ func GetAllCrimes() []Crimes {
 	return crimes
 }
 
+
 func GetAllParkings(lng string, lat string) []Parkings {
 	parkingQuery := `SELECT * FROM Parkings where ST_DWithin(geom::geography, ST_MakePoint(?, ?)::geography, 50);`
 	parkings := make([]Parkings, 0)

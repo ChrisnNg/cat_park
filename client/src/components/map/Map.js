@@ -3,11 +3,12 @@ import {
   HeatMap,
   GoogleApiWrapper,
   InfoWindow,
-  Marker
+  Marker,
+  Map
 } from "google-maps-react";
 
 import Button from "react-bootstrap/Button";
-
+import MarkerCluster from "./MarkerCluster";
 // import HeatMap from "./HeatMap.js"
 import CurrentLocation from "./CurrentLocation";
 import cat_park_icon from "../../../public/cat_park_icon.png";
@@ -36,6 +37,7 @@ const gradient = [
 export class MapContainer extends React.Component {
   constructor(props) {
     super(props);
+
     this.state = {
       showingInfoWindow: false, //Hides or the shows the infoWindow
       activeMarker: {}, //Shows the active marker upon click
@@ -45,7 +47,10 @@ export class MapContainer extends React.Component {
         { lat: 37.751266, lng: -122.40335500000003 },
         { lat: 37.751266, lng: -122.40335500000003 }
       ],
-      isHeatmapVisible: false
+      isHeatmapVisible: false,
+      isParkingsReady: false,
+      currentLocation: { lat: 59.281229, lng: -123.114889 },
+      loading: true
     };
   }
 
@@ -65,24 +70,122 @@ export class MapContainer extends React.Component {
     }
   };
 
+  recenterMap() {
+    const map = this.map;
+    const current = this.state.currentLocation;
+
+    const google = this.props.google;
+    const maps = google.maps;
+
+    if (map) {
+      let center = new maps.LatLng(current.lat, current.lng);
+      map.panTo(center);
+    }
+  }
+
+  handleClick = (mapProps, map, clickEvent) => {
+    console.log("clickyhandleclicky");
+    console.log(mapProps);
+    console.log(map);
+    console.log(clickEvent.latLng.lat(), clickEvent.latLng.lng());
+    console.log(this.props);
+
+    axios.get(`http://localhost:8001/Data/Parking/`).then(res => {
+      const parkings = res.data;
+      let parkingsdata = [];
+
+      parkings.forEach((obj, index) => {
+        parkingsdata.push({
+          position: obj["Geom"],
+          name: obj["meterhead"]
+        });
+      });
+
+      this.setState({ isParkingsReady: parkingsdata });
+    });
+  };
+
   handleToggle = () => {
     this.setState({ isHeatmapVisible: !this.state.isHeatmapVisible });
   };
 
-  componentWillMount() {
-    axios.get(`http://localhost:8001/Data/Crime/`).then(res => {
-      const crimes = res.data;
-      let crimesdata = [];
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.currentLocation !== this.state.currentLocation) {
+      this.recenterMap();
+    }
+  }
 
-      crimes.forEach((obj, index) => {
-        crimesdata.push(obj.Geom);
+  componentDidMount(props) {
+    navigator.geolocation.getCurrentPosition(
+      position => {
+        let { latitude, longitude } = position.coords;
+        // latitude = -123.114889;
+        // longitude = 49.281229;
+        console.log("current loc", latitude, longitude);
+        console.log("accur", position);
+        this.setState({
+          currentLocation: { lat: latitude, lng: longitude },
+          loading: false
+        });
+      },
+      () => {
+        this.setState({ loading: false });
+      }
+    );
+  }
+
+  componentWillMount() {
+    axios
+      .get(`http://localhost:8001/Data/Crime/`)
+      .then(res => {
+        const crimes = res.data;
+        let crimesdata = [];
+
+        crimes.forEach((obj, index) => {
+          crimesdata.push(obj.Geom);
+        });
+        this.setState({ heatMapData: crimesdata });
+      })
+      .catch(function(error) {
+        console.log(error);
       });
-      this.setState({ heatMapData: crimesdata });
-      this.setState({ string: "newstatestring" });
+
+    axios.get(`http://localhost:8001/Data/Parking/`).then(res => {
+      const parkings = res.data;
+      let parkingsdata = [];
+      let google = this.props.google;
+      parkings.forEach((obj, index) => {
+        parkingsdata.push(
+          // <Marker
+          //   key={index}
+          //   name={obj["meterhead"]}
+          //   position={obj["Geom"]}
+          //   onClick={this.onMarkerClick}
+          //   icon={{
+          //     url: kitty_icon,
+          //     scaledSize: new google.maps.Size(14, 22)
+          //   }}
+          //   animation={this.props.google.maps.Animation.DROP}
+          // />
+
+          {
+            position: obj["Geom"],
+            name: obj["meterhead"]
+          }
+        );
+      });
+
+      this.setState({ isParkingsReady: parkingsdata });
     });
   }
 
   render() {
+    const { loading, currentLocation } = this.state;
+
+    if (loading) {
+      return null;
+    }
+
     let map = (
       <HeatMap
         gradient={gradient}
@@ -91,24 +194,46 @@ export class MapContainer extends React.Component {
         radius={20}
       />
     );
+
+    let google = this.props.google;
+    let parkingMarkers = this.state.isParkingsReady
+      ? this.state.isParkingsReady
+      : [];
+
+    if (!this.props.loaded) {
+      return <div>Loading...</div>;
+    }
+
     return (
       <div className="map-container">
         <div id="floating-panel">
           <Button onClick={this.handleToggle}>Toggle Crime Heatmap</Button>
         </div>
-        <CurrentLocation
-          centerAroundCurrentLocation
-          google={this.props.google}
+        <Map
+          google={google}
           crimesdata={this.state.heatMapData}
+          onClick={this.handleClick}
+          initialCenter={{
+            lat: 49.2812874,
+            lng: -123.114984
+          }}
         >
+          <MarkerCluster
+            markers={parkingMarkers}
+            google={google}
+            // click={this.onMarkerClick}
+            // mouseover={this.onMouseOver}
+            // mouseout={this.onMouseOut}
+          />
           <Marker
             onClick={this.onMarkerClick}
             name={"Current Location"}
             icon={{
               url: cat_park_icon
             }}
+            animation={this.props.google.maps.Animation.BOUNCE}
           />
-          <Marker
+          {/* <Marker
             name={"Test Marker"}
             position={{ lat: 49.280385, lng: -123.096307 }}
             onClick={this.onMarkerClick}
@@ -123,7 +248,7 @@ export class MapContainer extends React.Component {
             icon={{
               url: kitty_icon
             }}
-          />
+          /> */}
           <InfoWindow
             marker={this.state.activeMarker}
             visible={this.state.showingInfoWindow}
@@ -135,7 +260,8 @@ export class MapContainer extends React.Component {
             </div>
           </InfoWindow>
           {this.state.isHeatmapVisible ? map : null}
-        </CurrentLocation>
+          {/* {this.state.isParkingsReady ? parkingMarkers : null} */}
+        </Map>
       </div>
     );
   }
