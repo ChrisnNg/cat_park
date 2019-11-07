@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import kitty_icon from "../../../public/kitty_park_2.png";
 import createMarkerClusterer from "./MarkerClusterer";
@@ -28,78 +28,93 @@ const markerCluster = props => {
     }
   };
 
+  const [clusterer, setClusterer] = useState(null);
+  const MarkerClusterer = createMarkerClusterer(google);
+
+  useEffect(() => {
+    console.log("asdadsasd", map);
+    if (map) {
+      // first state
+      // do not load clusters
+      // do not clear
+
+      // second state
+      // load clusers
+      // do not clear
+
+      // third state
+      // clear clusters that are already created
+      // load clusters
+
+      const _clusterer = new MarkerClusterer(map, [], {
+        imagePath:
+          "https://github.com/googlemaps/v3-utility-library/blob/master/markerclusterer/images/m2.png?raw=true",
+        maxZoom: 18
+      });
+
+      setClusterer(_clusterer);
+      console.log(
+        "=============================================================="
+      );
+
+      // const allClusters = [];
+      // allClusters.push(clusterer);
+      // setTimeout(() => {
+      //   console.log("allclusters=", allClusters);
+      //   // clusterer.clearMarkers();
+      // }, 3000);
+
+      // console.log("rerender", rerender);
+      // if (rerender) {
+      //   console.log("clear marker triggered");
+      //   clusterer.clearMarkers();
+      // }
+
+      // Clealognup function. Note, this is only returned if we create the markers
+      // return () => {
+      //   console.log("Cleaning up markers");
+      //   clusterer.clearMarkers();
+      // };
+    }
+  }, [map]);
+
+  useEffect(() => {
+    console.log("happen?", markers.length, clusterer);
+    if (clusterer && markers) {
+      const mapMarkers = markers.map(marker => {
+        const entry = new google.maps.Marker({
+          position: {
+            lat: marker.position.lat,
+            lng: marker.position.lng
+          },
+          map: map,
+          name: marker.name,
+          icon: kitty_icon
+        });
+
+        evtNames.forEach(e => {
+          entry.addListener(e, () =>
+            handleEvent({
+              event: e,
+              marker: marker,
+              entry: entry
+            })
+          );
+        });
+
+        return entry;
+      });
+
+      clusterer.clearMarkers();
+      clusterer.addMarkers(mapMarkers);
+    }
+  }, [markers]);
+
   // This hook works like ComponentWillMount
   // The  hook isn't really needed, this whole thing worked without it,
   // I added the hook so that I could implement a cleanup function
   // useEffect(() => {
 
-  const MarkerClusterer = createMarkerClusterer(google);
-
-  if (map && markers) {
-    const mapMarkers = markers.map(marker => {
-      const entry = new google.maps.Marker({
-        position: {
-          lat: marker.position.lat,
-          lng: marker.position.lng
-        },
-        map: map,
-        name: marker.name,
-        icon: kitty_icon
-      });
-
-      evtNames.forEach(e => {
-        entry.addListener(e, () =>
-          handleEvent({
-            event: e,
-            marker: marker,
-            entry: entry
-          })
-        );
-      });
-
-      return entry;
-    });
-
-    // first state
-    // do not load clusters
-    // do not clear
-
-    // second state
-    // load clusers
-    // do not clear
-
-    // third state
-    // clear clusters that are already created
-    // load clusters
-
-    const clusterer = new MarkerClusterer(map, mapMarkers, {
-      imagePath:
-        "https://github.com/googlemaps/v3-utility-library/blob/master/markerclusterer/images/m2.png?raw=true",
-      maxZoom: 18
-    });
-    console.log(
-      "=============================================================="
-    );
-
-    const allClusters = [];
-    allClusters.push(clusterer);
-    setTimeout(() => {
-      console.log("allclusters=", allClusters);
-      // clusterer.clearMarkers();
-    }, 3000);
-
-    // console.log("rerender", rerender);
-    // if (rerender) {
-    //   console.log("clear marker triggered");
-    //   clusterer.clearMarkers();
-    // }
-
-    // Clealognup function. Note, this is only returned if we create the markers
-    // return () => {
-    //   console.log("Cleaning up markers");
-    //   clusterer.clearMarkers();
-    // };
-  }
   // }, [map, google, markers]);
 
   // Do we need to render anything??

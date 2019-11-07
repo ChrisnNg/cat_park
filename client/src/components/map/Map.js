@@ -85,6 +85,42 @@ export class MapContainer extends React.Component {
     }
   }
 
+  handleHeatMapToTheftFromVehicle = () => {
+    axios
+      .get(`http://localhost:8001/Data/Crime/?crimeType=Theft%20from%20Vehicle`)
+      .then(res => {
+        const crimes = res.data;
+        let crimesdata = [];
+
+        crimes.forEach((obj, index) => {
+          crimesdata.push(obj.Geom);
+        });
+        this.setState({ heatMapData: crimesdata, isHeatmapVisible: false });
+        crimesdata = [];
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
+  };
+
+  handleHeatMapToTheftOfVehicle = () => {
+    axios
+      .get(`http://localhost:8001/Data/Crime/?crimeType=Theft%20of%20Vehicle`)
+      .then(res => {
+        const crimes = res.data;
+        let crimesdata = [];
+
+        crimes.forEach((obj, index) => {
+          crimesdata.push(obj.Geom);
+        });
+        this.setState({ heatMapData: crimesdata, isHeatmapVisible: false });
+        crimesdata = [];
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
+  };
+
   handleClick = (mapProps, map, clickEvent) => {
     console.log("clickyhandleclicky");
     console.log(mapProps);
@@ -106,6 +142,7 @@ export class MapContainer extends React.Component {
             name: obj["meterhead"]
           });
         });
+
         console.log(parkingsdata.length);
         this.setState({ isParkingsReady: parkingsdata });
         parkingsdata = [];
@@ -218,6 +255,12 @@ export class MapContainer extends React.Component {
       <div className="map-container">
         <div id="floating-panel">
           <Button onClick={this.handleToggle}>Toggle Crime Heatmap</Button>
+          <Button onClick={this.handleHeatMapToTheftFromVehicle}>
+            Change to Theft from car
+          </Button>
+          <Button onClick={this.handleHeatMapToTheftofVehicle}>
+            Change to Theft of car
+          </Button>
         </div>
         <Map
           google={google}
@@ -232,6 +275,7 @@ export class MapContainer extends React.Component {
             markers={parkingMarkers}
             google={google}
             rerender={this.state.rerender}
+            map={map}
             // click={this.onMarkerClick}
             // mouseover={this.onMouseOver}
             // mouseout={this.onMouseOut}
