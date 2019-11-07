@@ -17,6 +17,7 @@ import "./infoWindow.css";
 import "./Map_Buttons.css";
 import axios from "axios";
 import "./Map.css";
+require("dotenv").config();
 
 const gradient = [
   "rgba(0, 255, 255, 0)",
@@ -430,6 +431,6 @@ export class MapContainer extends React.Component {
 }
 
 export default GoogleApiWrapper({
-  apiKey: "AIzaSyBwQh_n8MYTnuJxA3ZGCDtvbWwjaXoIYKo",
+  apiKey: process.env.REACT_APP_APIKEY,
   libraries: ["visualization"]
 })(MapContainer);
