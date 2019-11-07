@@ -16,6 +16,7 @@ import kitty_icon from "../../../public/kitty_icon.png";
 import "./infoWindow.css";
 import "./Map_Buttons.css";
 import axios from "axios";
+import "./Map.css";
 
 const gradient = [
   "rgba(0, 255, 255, 0)",
