@@ -46,13 +46,8 @@ type Parkings struct {
 	Geom spatial.Point `gorm:"type:geometry(Geometry,4326)"`
 }
 
-<<<<<<< HEAD
-func GetAllCrimes() []Crimes {
-	crimeQuery := `SELECT * FROM Crimes WHERE type='Mischief' order by random() limit 5000;`
-=======
 func GetAllCrimes(crimeType string) []Crimes {
 	crimeQuery := `SELECT * FROM Crimes WHERE type=? order by random() limit 2000;`
->>>>>>> 6e519dae66bb6b2794beb3a0ba5f2eee53d7fe4a
 	// crimeQuery := `SELECT * FROM Crimes where ST_DWithin(geom::geography, ST_MakePoint(-123.157002968364, 49.2639857828638)::geography, 100000);`
 	crimes := make([]Crimes, 0)
 	// db.Limit(5000).random().Find(&crimes)

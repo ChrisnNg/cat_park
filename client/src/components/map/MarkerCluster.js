@@ -15,7 +15,7 @@ const evtNames = [
 ];
 
 const markerCluster = props => {
-  const { map, google, markers } = props;
+  const { map, google, markers, rerender } = props;
 
   const handleEvent = ({ event, marker, entry }) => {
     if (props[event]) {
@@ -60,18 +60,45 @@ const markerCluster = props => {
       return entry;
     });
 
+    // first state
+    // do not load clusters
+    // do not clear
+
+    // second state
+    // load clusers
+    // do not clear
+
+    // third state
+    // clear clusters that are already created
+    // load clusters
+
     const clusterer = new MarkerClusterer(map, mapMarkers, {
       imagePath:
         "https://github.com/googlemaps/v3-utility-library/blob/master/markerclusterer/images/m2.png?raw=true",
       maxZoom: 18
     });
+    console.log(
+      "=============================================================="
+    );
 
-    console.log(clusterer);
+    const allClusters = [];
+    allClusters.push(clusterer);
+    setTimeout(() => {
+      console.log("allclusters=", allClusters);
+      // clusterer.clearMarkers();
+    }, 3000);
+
+    // console.log("rerender", rerender);
+    // if (rerender) {
+    //   console.log("clear marker triggered");
+    //   clusterer.clearMarkers();
+    // }
+
     // Clealognup function. Note, this is only returned if we create the markers
-    return () => {
-      console.log("Cleaning up markers");
-      clusterer.clearMarkers();
-    };
+    // return () => {
+    //   console.log("Cleaning up markers");
+    //   clusterer.clearMarkers();
+    // };
   }
   // }, [map, google, markers]);
 

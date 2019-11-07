@@ -51,7 +51,7 @@ export class MapContainer extends React.Component {
       isParkingsReady: false,
       currentLocation: { lat: 59.281229, lng: -123.114889 },
       loading: true,
-      rerender: false
+      rerender: true
     };
   }
 
@@ -109,6 +109,7 @@ export class MapContainer extends React.Component {
         this.setState({ isParkingsReady: parkingsdata });
         parkingsdata = [];
         this.setState({ rerender: !this.state.rerender });
+        console.log("current state", this.state.rerender);
       });
   };
 
@@ -121,7 +122,6 @@ export class MapContainer extends React.Component {
       this.recenterMap();
     }
   }
-  F;
 
   componentDidMount(props) {
     navigator.geolocation.getCurrentPosition(
@@ -144,7 +144,7 @@ export class MapContainer extends React.Component {
 
   componentWillMount() {
     axios
-      .get(`http://localhost:8001/Data/Crime/`)
+      .get(`http://localhost:8001/Data/Crime/?crimeType=Mischief`)
       .then(res => {
         const crimes = res.data;
         let crimesdata = [];
@@ -194,7 +194,7 @@ export class MapContainer extends React.Component {
       return null;
     }
 
-    console.log("cluster this!", <markerCluster />);
+    // console.log("cluster this!", <markerCluster />);
     let map = (
       <HeatMap
         gradient={gradient}
@@ -227,15 +227,14 @@ export class MapContainer extends React.Component {
             lng: -123.114984
           }}
         >
-          {this.state.rerender ? (
-            <MarkerCluster
-              markers={parkingMarkers}
-              google={google}
-              // click={this.onMarkerClick}
-              // mouseover={this.onMouseOver}
-              // mouseout={this.onMouseOut}
-            />
-          ) : null}
+          <MarkerCluster
+            markers={parkingMarkers}
+            google={google}
+            rerender={this.state.rerender}
+            // click={this.onMarkerClick}
+            // mouseover={this.onMouseOver}
+            // mouseout={this.onMouseOut}
+          />
 
           <Marker
             onClick={this.onMarkerClick}

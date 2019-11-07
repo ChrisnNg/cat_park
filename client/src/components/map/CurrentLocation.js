@@ -85,8 +85,8 @@ export class CurrentLocation extends React.Component {
       );
 
       // maps.Map() is constructor that instantiates the map
-      console.log("load map func called");
-      console.log("loaded with", this.props.crimesdata);
+      // console.log("load map func called");
+      // console.log("loaded with", this.props.crimesdata);
       this.map = new maps.Map(node, mapConfig);
     }
   }
