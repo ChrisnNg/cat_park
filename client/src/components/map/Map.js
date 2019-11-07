@@ -273,7 +273,14 @@ export class MapContainer extends React.Component {
           crimesdata.push(obj.Geom);
         });
         console.log("activated all crimes hm");
-        this.setState({ heatMapData: crimesdata });
+        this.setState({
+          heatMapData: crimesdata,
+          bgColor0: "#3f51b5",
+          bgColor1: "#F1C40F",
+          bgColor2: "#3f51b5",
+          bgColor3: "#3f51b5",
+          bgColor4: "#3f51b5"
+        });
       })
       .catch(function(error) {
         console.log(error);
