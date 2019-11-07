@@ -86,34 +86,6 @@ export default function Nav(props) {
   const handleShowLogin = () => setShowLogin(true);
   const handleShowRegister = () => setShowRegister(true);
 
-  const TriggerMenu = () => {
-    const popupState = usePopupState({
-      variant: "popover",
-      popupId: "demoMenu"
-    });
-    return (
-      <div>
-        <Button
-          className="nav-menu"
-          variant="contained"
-          {...bindTrigger(popupState)}
-        >
-          <MenuIcon />
-        </Button>
-        <Menu
-          {...bindMenu(popupState)}
-          getContentAnchorEl={null}
-          anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
-          transformOrigin={{ vertical: "top", horizontal: "left" }}
-        >
-          <MenuItem onClick={popupState.close}>Find Parking</MenuItem>
-          <MenuItem onClick={popupState.close}>Directions</MenuItem>
-          <MenuItem onClick={popupState.close}>About us</MenuItem>
-        </Menu>
-      </div>
-    );
-  };
-
   return (
     <div className={classes.root}>
       <FormGroup>
@@ -179,8 +151,6 @@ export default function Nav(props) {
               </Button>
             </Modal.Footer>
           </Modal>
-          {/* trigger menu */}
-          <TriggerMenu />
           {/* Nav Logo */}
           <div className="center-nav">
             <img
