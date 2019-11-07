@@ -3,11 +3,12 @@ import {
   HeatMap,
   GoogleApiWrapper,
   InfoWindow,
-  Marker
+  Marker,
+  Map
 } from "google-maps-react";
 
 import Button from "react-bootstrap/Button";
-
+import MarkerCluster from "./MarkerCluster";
 // import HeatMap from "./HeatMap.js"
 import CurrentLocation from "./CurrentLocation";
 import cat_park_icon from "../../../public/cat_park_icon.png";
@@ -45,7 +46,8 @@ export class MapContainer extends React.Component {
         { lat: 37.751266, lng: -122.40335500000003 },
         { lat: 37.751266, lng: -122.40335500000003 }
       ],
-      isHeatmapVisible: false
+      isHeatmapVisible: false,
+      isParkingsReady: false
     };
   }
 
@@ -65,6 +67,13 @@ export class MapContainer extends React.Component {
     }
   };
 
+  handleClick = (mapProps, map, clickEvent) => {
+    console.log("clickyhandleclicky");
+    console.log(mapProps);
+    console.log(map);
+    console.log(clickEvent.latLng.lat(), clickEvent.latLng.lng());
+  };
+
   handleToggle = () => {
     this.setState({ isHeatmapVisible: !this.state.isHeatmapVisible });
   };
@@ -78,7 +87,34 @@ export class MapContainer extends React.Component {
         crimesdata.push(obj.Geom);
       });
       this.setState({ heatMapData: crimesdata });
-      this.setState({ string: "newstatestring" });
+    });
+
+    axios.get(`http://localhost:8001/Data/Parking/`).then(res => {
+      const parkings = res.data;
+      let parkingsdata = [];
+      let google = this.props.google;
+      parkings.forEach((obj, index) => {
+        parkingsdata.push(
+          // <Marker
+          //   key={index}
+          //   name={obj["meterhead"]}
+          //   position={obj["Geom"]}
+          //   onClick={this.onMarkerClick}
+          //   icon={{
+          //     url: kitty_icon,
+          //     scaledSize: new google.maps.Size(14, 22)
+          //   }}
+          //   animation={this.props.google.maps.Animation.DROP}
+          // />
+
+          {
+            position: obj["Geom"],
+            name: obj["meterhead"]
+          }
+        );
+      });
+
+      this.setState({ isParkingsReady: parkingsdata });
     });
   }
 
@@ -91,24 +127,43 @@ export class MapContainer extends React.Component {
         radius={20}
       />
     );
+
+    let google = this.props.google;
+    let parkingMarkers = this.state.isParkingsReady
+      ? this.state.isParkingsReady
+      : [];
+
+    if (!this.props.loaded) {
+      return <div>Loading...</div>;
+    }
+
     return (
       <div className="map-container">
         <div id="floating-panel">
           <Button onClick={this.handleToggle}>Toggle Crime Heatmap</Button>
         </div>
         <CurrentLocation
-          centerAroundCurrentLocation
-          google={this.props.google}
+          google={google}
           crimesdata={this.state.heatMapData}
+          onClick={this.handleClick}
         >
+          <MarkerCluster
+            markers={parkingMarkers}
+            google={google}
+            // click={this.onMarkerClick}
+            // mouseover={this.onMouseOver}
+            // mouseout={this.onMouseOut}
+          />
           <Marker
             onClick={this.onMarkerClick}
             name={"Current Location"}
             icon={{
-              url: cat_park_icon
+              url: cat_park_icon,
+              anchor: new google.maps.Point(32, 32)
             }}
+            animation={this.props.google.maps.Animation.BOUNCE}
           />
-          <Marker
+          {/* <Marker
             name={"Test Marker"}
             position={{ lat: 49.280385, lng: -123.096307 }}
             onClick={this.onMarkerClick}
@@ -123,7 +178,7 @@ export class MapContainer extends React.Component {
             icon={{
               url: kitty_icon
             }}
-          />
+          /> */}
           <InfoWindow
             marker={this.state.activeMarker}
             visible={this.state.showingInfoWindow}
@@ -135,6 +190,7 @@ export class MapContainer extends React.Component {
             </div>
           </InfoWindow>
           {this.state.isHeatmapVisible ? map : null}
+          {/* {this.state.isParkingsReady ? parkingMarkers : null} */}
         </CurrentLocation>
       </div>
     );
