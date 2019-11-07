@@ -89,6 +89,20 @@ export class MapContainer extends React.Component {
     console.log(map);
     console.log(clickEvent.latLng.lat(), clickEvent.latLng.lng());
     console.log(this.props);
+
+    axios.get(`http://localhost:8001/Data/Parking/`).then(res => {
+      const parkings = res.data;
+      let parkingsdata = [];
+
+      parkings.forEach((obj, index) => {
+        parkingsdata.push({
+          position: obj["Geom"],
+          name: obj["meterhead"]
+        });
+      });
+
+      this.setState({ isParkingsReady: parkingsdata });
+    });
   };
 
   handleToggle = () => {
