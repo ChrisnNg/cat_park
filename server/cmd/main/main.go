@@ -38,7 +38,7 @@ func main() {
 		routes.RegisterParkingSpotRoutes(r)
 		http.Handle("/", r)
 		http.Handle("/APITest/", r)
-		fmt.Println("Server listening on port 8000!")
+		fmt.Println("Server listening on port 8001!")
 		log.Fatal(http.ListenAndServe(":8001", r))
 	default:
 		fmt.Println("Please enter a valid flag")

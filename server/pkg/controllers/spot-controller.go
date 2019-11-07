@@ -5,8 +5,6 @@ import (
 	"fmt"
 	"net/http"
 	"encoding/json"
-	"log"
-	"net/url"
 	"github.com/ChrisnNg/cat_park/server/pkg/models"
 	_ "github.com/lib/pq"
 )
@@ -47,6 +45,15 @@ func AllCrimeData(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusOK)
 	w.Write(res)
 
+}
+
+func AllCrimeQuery(w http.ResponseWriter, r *http.Request){
+	enableCors(&w)
+	allCrimes := models.GetAllCrimeQuery()
+	res, _ := json.Marshal(allCrimes)
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
+	w.Write(res)
 }
 
 func AllParkingData(w http.ResponseWriter, r *http.Request) {
