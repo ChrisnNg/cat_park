@@ -52,7 +52,11 @@ export class MapContainer extends React.Component {
       isParkingsReady: false,
       currentLocation: { lat: 59.281229, lng: -123.114889 },
       loading: true,
-      rerender: true
+      rerender: true,
+      bgColor1: "#17A589",
+      bgColor2: "#17A589",
+      bgColor3: "#17A589",
+      bgColor4: "#17A589"
     };
   }
 
@@ -95,7 +99,14 @@ export class MapContainer extends React.Component {
         crimes.forEach((obj, index) => {
           crimesdata.push(obj.Geom);
         });
-        this.setState({ heatMapData: crimesdata, isHeatmapVisible: false });
+        this.setState({
+          heatMapData: crimesdata,
+          isHeatmapVisible: false,
+          bgColor1: "#F1C40F ",
+          bgColor2: "#17A589",
+          bgColor3: "#17A589",
+          bgColor4: "#17A589"
+        });
         crimesdata = [];
       })
       .catch(function(error) {
@@ -113,7 +124,14 @@ export class MapContainer extends React.Component {
         crimes.forEach((obj, index) => {
           crimesdata.push(obj.Geom);
         });
-        this.setState({ heatMapData: crimesdata, isHeatmapVisible: false });
+        this.setState({
+          heatMapData: crimesdata,
+          isHeatmapVisible: false,
+          bgColor1: "#17A589 ",
+          bgColor2: "#F1C40F",
+          bgColor3: "#17A589",
+          bgColor4: "#17A589"
+        });
         crimesdata = [];
       })
       .catch(function(error) {
@@ -131,7 +149,14 @@ export class MapContainer extends React.Component {
         crimes.forEach((obj, index) => {
           crimesdata.push(obj.Geom);
         });
-        this.setState({ heatMapData: crimesdata, isHeatmapVisible: false });
+        this.setState({
+          heatMapData: crimesdata,
+          isHeatmapVisible: false,
+          bgColor1: "#17A589 ",
+          bgColor2: "#17A589",
+          bgColor3: "#F1C40F",
+          bgColor4: "#17A589"
+        });
         crimesdata = [];
       })
       .catch(function(error) {
@@ -149,7 +174,14 @@ export class MapContainer extends React.Component {
         crimes.forEach((obj, index) => {
           crimesdata.push(obj.Geom);
         });
-        this.setState({ heatMapData: crimesdata, isHeatmapVisible: false });
+        this.setState({
+          heatMapData: crimesdata,
+          isHeatmapVisible: false,
+          bgColor1: "#17A589 ",
+          bgColor2: "#17A589",
+          bgColor3: "#17A589",
+          bgColor4: "#F1C40F"
+        });
         crimesdata = [];
       })
       .catch(function(error) {
@@ -291,15 +323,34 @@ export class MapContainer extends React.Component {
     return (
       <div className="map-container">
         <div id="floating-panel">
-          <Button onClick={this.handleToggle}>Toggle Crime Heatmap</Button>
-          <Button onClick={this.handleHeatMapToAllCrimes}>Change to All</Button>
-          <Button onClick={this.handleHeatMapToTheftFromVehicle}>
+          <Button
+            onClick={this.handleToggle}
+            style={{ backgroundColor: this.state.bgColor1 }}
+          >
+            Toggle Crime Heatmap
+          </Button>
+          <Button
+            onClick={this.handleHeatMapToAllCrimes}
+            style={{ backgroundColor: this.state.bgColor1 }}
+          >
+            Change to All
+          </Button>
+          <Button
+            onClick={this.handleHeatMapToTheftFromVehicle}
+            style={{ backgroundColor: this.state.bgColor2 }}
+          >
             Change to Theft from car
           </Button>
-          <Button onClick={this.handleHeatMapToTheftOfVehicle}>
+          <Button
+            onClick={this.handleHeatMapToTheftOfVehicle}
+            style={{ backgroundColor: this.state.bgColor3 }}
+          >
             Change to Theft of car
           </Button>
-          <Button onClick={this.handleHeatMapToMischief}>
+          <Button
+            onClick={this.handleHeatMapToMischief}
+            style={{ backgroundColor: this.state.bgColor4 }}
+          >
             Change to Mischief
           </Button>
         </div>
