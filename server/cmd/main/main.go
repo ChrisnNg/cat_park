@@ -7,28 +7,14 @@ import (
 	"github.com/ChrisnNg/cat_park/server/pkg/router"
 	"github.com/gorilla/mux"
 	_ "github.com/jinzhu/gorm/dialects/postgres"
-	// "github.com/ChrisnNg/cat_park/server/pkg/config"
 	"github.com/ChrisnNg/cat_park/server/pkg/models"
 	"fmt"
 	"github.com/ChrisnNg/cat_park/server/pkg/seeds/crimeSeeds"
 	"github.com/ChrisnNg/cat_park/server/pkg/seeds/userSeeds"
 	"github.com/ChrisnNg/cat_park/server/pkg/seeds/locationSeeds"
-	// _ "github.com/joho/godotenv/autoload"
-	// "os"
-	// "github.com/cridenour/go-postgis"
-	// "github.com/dewski/spatial"
-	// "github.com/jinzhu/gorm"
-
 )
 
-
-
-
 func main() {
-
-	// config.Connect()
-	// db := config.GetDB()
-
 	wordPtr := flag.String("task", "foo", "a string")
 	flag.Parse()
 
