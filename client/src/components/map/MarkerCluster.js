@@ -17,7 +17,6 @@ const evtNames = [
 const markerCluster = props => {
   const { map, google, markers } = props;
 
-  console.log("GOOGLE?", google);
   const handleEvent = ({ event, marker, entry }) => {
     if (props[event]) {
       props[event]({
@@ -36,8 +35,6 @@ const markerCluster = props => {
 
   const MarkerClusterer = createMarkerClusterer(google);
 
-  console.log("AYYY LMAO", MarkerClusterer);
-  console.log(markers);
   if (map && markers) {
     const mapMarkers = markers.map(marker => {
       const entry = new google.maps.Marker({

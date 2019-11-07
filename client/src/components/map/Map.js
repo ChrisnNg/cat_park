@@ -104,9 +104,11 @@ export class MapContainer extends React.Component {
   componentDidMount(props) {
     navigator.geolocation.getCurrentPosition(
       position => {
-        const { latitude, longitude } = position.coords;
-
+        let { latitude, longitude } = position.coords;
+        // latitude = -123.114889;
+        // longitude = 49.281229;
         console.log("current loc", latitude, longitude);
+        console.log("accur", position);
         this.setState({
           currentLocation: { lat: latitude, lng: longitude },
           loading: false
@@ -197,8 +199,10 @@ export class MapContainer extends React.Component {
           google={google}
           crimesdata={this.state.heatMapData}
           onClick={this.handleClick}
-          initialCenter={currentLocation}
-          centerAroundCurrentLocation={false}
+          initialCenter={{
+            lat: 49.2812874,
+            lng: -123.114984
+          }}
         >
           <MarkerCluster
             markers={parkingMarkers}
@@ -211,8 +215,7 @@ export class MapContainer extends React.Component {
             onClick={this.onMarkerClick}
             name={"Current Location"}
             icon={{
-              url: cat_park_icon,
-              anchor: new google.maps.Point(32, 32)
+              url: cat_park_icon
             }}
             animation={this.props.google.maps.Animation.BOUNCE}
           />
