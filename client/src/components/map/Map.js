@@ -375,6 +375,7 @@ export class MapContainer extends React.Component {
             lat: 49.2812874,
             lng: -123.114984
           }}
+          zoom={15}
         >
           <MarkerCluster
             markers={parkingMarkers}
