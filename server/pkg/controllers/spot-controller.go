@@ -2,8 +2,7 @@ package controllers
 
 import (
 	// "encoding/json"
-	// "fmt"
-	// "github.com/ChrisnNg/cat_park/server/pkg/helpers"
+	"github.com/ChrisnNg/cat_park/server/pkg/helpers"
 	// "github.com/gorilla/mux"
 	"fmt"
 	"net/http"
@@ -47,7 +46,6 @@ func UpdateUser(w http.ResponseWriter, r *http.Request) {
 func AllCrimeData(w http.ResponseWriter, r *http.Request) {
 	enableCors(&w)
 	newCrimes := models.GetAllCrimes()
-	fmt.Println("TESTZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZTESTZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZTESTZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ")
 	res, _ := json.Marshal(newCrimes)
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -57,8 +55,11 @@ func AllCrimeData(w http.ResponseWriter, r *http.Request) {
 
 func AllParkingData(w http.ResponseWriter, r *http.Request) {
 	enableCors(&w)
-	newParkings := models.GetAllParkings()
-	fmt.Println("TESTZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZTESTZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZTESTZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ")
+	lng := r.URL.Query().Get("lng")
+	lat := r.URL.Query().Get("lat")
+	// fmt.Println(lng)
+	// fmt.Println(lat)
+	newParkings := models.GetAllParkings(lng, lat)
 	res, _ := json.Marshal(newParkings)
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -66,8 +67,12 @@ func AllParkingData(w http.ResponseWriter, r *http.Request) {
 }
 
 func AddParkingSpot(w http.ResponseWriter, r *http.Request) {
-	// fmt.Println("Add API data from website placeholder")
-	return
+	AddParkingSpot := &models.Parkings{}
+	helpers.ParseBody(r, AddParkingSpot)
+	p:= AddParkingSpot.AddParkingSpot()
+	res,_ := json.Marshal(p)
+	w.WriteHeader(http.StatusOK)
+	w.Write(res)
 }
 
 func APITest(w http.ResponseWriter, r *http.Request) {

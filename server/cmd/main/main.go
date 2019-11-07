@@ -39,7 +39,7 @@ func main() {
 		fmt.Println("Reset Complete!")
 	case "DropTables":
 		fmt.Println("Dropping Tables . . .")
-		// db.DropTableIfExists(models.Users{}, models.Crimes{})
+		models.DropTables()
 		fmt.Println("Tables Dropped!")
 	case "SeedTables":
 		fmt.Println("Seeding Tables . . .")

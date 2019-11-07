@@ -1,7 +1,7 @@
 package models
 
 import (
-	// "fmt"
+	"fmt"
 	"github.com/ChrisnNg/cat_park/server/pkg/config"
 	"github.com/jinzhu/gorm"
 
@@ -55,12 +55,23 @@ func GetAllCrimes() []Crimes {
 	return crimes
 }
 
-func GetAllParkings() []Parkings {
-	parkingQuery := `SELECT * FROM Parkings where ST_DWithin(geom::geography, ST_MakePoint(-123.114889, 49.281229)::geography, 500);`
+
+func GetAllParkings(lng string, lat string) []Parkings {
+	parkingQuery := `SELECT * FROM Parkings where ST_DWithin(geom::geography, ST_MakePoint(?, ?)::geography, 50);`
 	parkings := make([]Parkings, 0)
 	// db.Find(&parkings)
-	db.Raw(parkingQuery).Scan(&parkings)
+	db.Raw(parkingQuery, lng, lat).Scan(&parkings)
 	return parkings
+}
+
+func (p *Parkings) AddParkingSpot() *Parkings {
+	if db.NewRecord(p) {
+		db.Create(&p)
+		return p
+	} else {
+	fmt.Println("This record is already in the database!")
+	return nil
+	}
 }
 
 func ResetDB() {
