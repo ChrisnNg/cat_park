@@ -53,10 +53,11 @@ export class MapContainer extends React.Component {
       currentLocation: { lat: 59.281229, lng: -123.114889 },
       loading: true,
       rerender: true,
-      bgColor1: "#17A589",
-      bgColor2: "#17A589",
-      bgColor3: "#17A589",
-      bgColor4: "#17A589"
+      bgColor0: "#3f51b5",
+      bgColor1: "#3f51b5",
+      bgColor2: "#3f51b5",
+      bgColor3: "#3f51b5",
+      bgColor4: "#3f51b5"
     };
   }
 
@@ -102,10 +103,11 @@ export class MapContainer extends React.Component {
         this.setState({
           heatMapData: crimesdata,
           isHeatmapVisible: false,
-          bgColor1: "#F1C40F ",
-          bgColor2: "#17A589",
-          bgColor3: "#17A589",
-          bgColor4: "#17A589"
+          bgColor0: "#3f51b5",
+          bgColor1: "#F1C40F",
+          bgColor2: "#3f51b5",
+          bgColor3: "#3f51b5",
+          bgColor4: "#3f51b5"
         });
         crimesdata = [];
       })
@@ -127,10 +129,11 @@ export class MapContainer extends React.Component {
         this.setState({
           heatMapData: crimesdata,
           isHeatmapVisible: false,
-          bgColor1: "#17A589 ",
+          bgColor0: "#3f51b5",
+          bgColor1: "#3f51b5",
           bgColor2: "#F1C40F",
-          bgColor3: "#17A589",
-          bgColor4: "#17A589"
+          bgColor3: "#3f51b5",
+          bgColor4: "#3f51b5"
         });
         crimesdata = [];
       })
@@ -152,10 +155,11 @@ export class MapContainer extends React.Component {
         this.setState({
           heatMapData: crimesdata,
           isHeatmapVisible: false,
-          bgColor1: "#17A589 ",
-          bgColor2: "#17A589",
+          bgColor0: "#3f51b5",
+          bgColor1: "#3f51b5",
+          bgColor2: "#3f51b5",
           bgColor3: "#F1C40F",
-          bgColor4: "#17A589"
+          bgColor4: "#3f51b5"
         });
         crimesdata = [];
       })
@@ -177,9 +181,10 @@ export class MapContainer extends React.Component {
         this.setState({
           heatMapData: crimesdata,
           isHeatmapVisible: false,
-          bgColor1: "#17A589 ",
-          bgColor2: "#17A589",
-          bgColor3: "#17A589",
+          bgColor0: "#3f51b5",
+          bgColor1: "#3f51b5",
+          bgColor2: "#3f51b5",
+          bgColor3: "#3f51b5",
           bgColor4: "#F1C40F"
         });
         crimesdata = [];
@@ -220,7 +225,10 @@ export class MapContainer extends React.Component {
   };
 
   handleToggle = () => {
-    this.setState({ isHeatmapVisible: !this.state.isHeatmapVisible });
+    this.setState({
+      isHeatmapVisible: !this.state.isHeatmapVisible,
+      bgColor0: "#F1C40F"
+    });
   };
 
   componentDidUpdate(prevProps, prevState) {
@@ -325,7 +333,7 @@ export class MapContainer extends React.Component {
         <div id="floating-panel">
           <Button
             onClick={this.handleToggle}
-            style={{ backgroundColor: this.state.bgColor1 }}
+            style={{ backgroundColor: this.state.bgColor0 }}
           >
             Toggle Crime Heatmap
           </Button>
