@@ -4,14 +4,7 @@ import (
 	"fmt"
 	"github.com/ChrisnNg/cat_park/server/pkg/config"
 	"github.com/jinzhu/gorm"
-
-	// "github.com/cridenour/go-postgis"
 	"github.com/dewski/spatial"
-	// "github.com/paulmach/go.geojson"
-	// "github.com/twpayne/go-geom/encoding/geojson"
-	// "github.com/twpayne/go-geom"
-
-
 )
 
 var db *gorm.DB
@@ -48,9 +41,7 @@ type Parkings struct {
 
 func GetAllCrimes(crimeType string) []Crimes {
 	crimeQuery := `SELECT * FROM Crimes WHERE type=? order by random() limit 2000;`
-	// crimeQuery := `SELECT * FROM Crimes where ST_DWithin(geom::geography, ST_MakePoint(-123.157002968364, 49.2639857828638)::geography, 100000);`
 	crimes := make([]Crimes, 0)
-	// db.Limit(5000).random().Find(&crimes)
 	db.Raw(crimeQuery, crimeType).Scan(&crimes)
 	return crimes
 }
@@ -59,7 +50,6 @@ func GetAllCrimes(crimeType string) []Crimes {
 func GetAllParkings(lng string, lat string) []Parkings {
 	parkingQuery := `SELECT * FROM Parkings where ST_DWithin(geom::geography, ST_MakePoint(?, ?)::geography, 300);`
 	parkings := make([]Parkings, 0)
-	// db.Find(&parkings)
 	db.Raw(parkingQuery, lng, lat).Scan(&parkings)
 	return parkings
 }

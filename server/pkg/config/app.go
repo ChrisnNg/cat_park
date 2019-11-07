@@ -2,12 +2,9 @@ package config
 
 import (
 	"fmt"
-
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/postgres"
 	"os"
-	// "github.com/joho/godotenv"
-	// "log"
 	_ "github.com/joho/godotenv/autoload"
 )
 
