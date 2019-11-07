@@ -229,6 +229,11 @@ export class MapContainer extends React.Component {
       isHeatmapVisible: !this.state.isHeatmapVisible,
       bgColor0: "#F1C40F"
     });
+    if (this.state.bgColor0 === "#F1C40F") {
+      this.setState({
+        bgColor0: "#3f51b5"
+      });
+    }
   };
 
   componentDidUpdate(prevProps, prevState) {
