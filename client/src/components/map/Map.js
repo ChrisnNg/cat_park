@@ -17,6 +17,8 @@ import "./infoWindow.css";
 import "./Map_Buttons.css";
 import axios from "axios";
 import "./Map.css";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 require("dotenv").config();
 
 const gradient = [
@@ -61,6 +63,10 @@ export class MapContainer extends React.Component {
       bgColor4: "#3f51b5"
     };
   }
+  notify = () => {
+    console.log("toasted");
+    return toast("Wow so easy !");
+  };
 
   onMarkerClick = (props, marker, e) =>
     this.setState({
@@ -345,7 +351,7 @@ export class MapContainer extends React.Component {
       <div className="map-container">
         <div id="floating-panel">
           <Button
-            onClick={this.handleToggle}
+            onClick={this.notify}
             style={{ backgroundColor: this.state.bgColor0 }}
           >
             Toggle Crime Heatmap
@@ -432,6 +438,7 @@ export class MapContainer extends React.Component {
           {this.state.isHeatmapVisible ? map : null}
           {/* {this.state.isParkingsReady ? parkingMarkers : null} */}
         </Map>
+        <ToastContainer />
       </div>
     );
   }
