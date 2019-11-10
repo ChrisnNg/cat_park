@@ -100,7 +100,7 @@ export class MapContainer extends React.Component {
       .then(res => {
         const crimes = res.data;
         let crimesdata = [];
-
+        toast(`Loaded all crimes - ${this.state.count} records`);
         crimes.forEach((obj, index) => {
           crimesdata.push(obj.Geom);
         });
@@ -114,6 +114,7 @@ export class MapContainer extends React.Component {
           bgColor4: "#3f51b5",
           count: crimesdata.length
         });
+        toast(`Loaded all crimes - ${this.state.count} records`);
         crimesdata = [];
       })
       .catch(function(error) {
@@ -141,6 +142,7 @@ export class MapContainer extends React.Component {
           bgColor4: "#3f51b5",
           count: crimesdata.length
         });
+        toast(`Loaded all thefts from vehicles - ${this.state.count} records`);
         crimesdata = [];
       })
       .catch(function(error) {
@@ -169,6 +171,7 @@ export class MapContainer extends React.Component {
           count: crimesdata.length
         });
         crimesdata = [];
+        toast(`Loaded all thefts of vehicles - ${this.state.count} records`);
       })
       .catch(function(error) {
         console.log(error);
@@ -196,6 +199,7 @@ export class MapContainer extends React.Component {
           count: crimesdata.length
         });
         crimesdata = [];
+        toast(`Loaded mischief - ${this.state.count} records`);
       })
       .catch(function(error) {
         console.log(error);
@@ -300,36 +304,25 @@ export class MapContainer extends React.Component {
         console.log(error);
       });
 
-    axios.get(`http://localhost:8001/Data/Parking/`).then(res => {
-      const parkings = res.data;
-      let parkingsdata = [];
-      let google = this.props.google;
-      parkings.forEach((obj, index) => {
-        parkingsdata.push(
-          // <Marker
-          //   key={index}
-          //   name={obj["meterhead"]}
-          //   position={obj["Geom"]}
-          //   onClick={this.onMarkerClick}
-          //   icon={{
-          //     url: kitty_icon,
-          //     scaledSize: new google.maps.Size(14, 22)
-          //   }}
-          //   animation={this.props.google.maps.Animation.DROP}
-          // />
-
-          {
-            position: obj["Geom"],
-            name: obj["meterhead"]
-          }
-        );
-      });
-      toast(`Loaded all parking meters - ${parkingsdata.length} meters`, {
-        //toast is positioned on bottom right
-        position: "bottom-right"
-      });
-      this.setState({ isParkingsReady: parkingsdata });
-    });
+    // call to get all markeres now replaced by onclick call
+    // axios
+    //   .get(`http://localhost:8001/Data/Parking/`)
+    //   .then(res => {
+    //     const parkings = res.data;
+    //     let parkingsdata = [];
+    //     parkings.forEach((obj, index) => {
+    //       parkingsdata.push(
+    //         {
+    //           position: obj["Geom"],
+    //           name: obj["meterhead"]
+    //         }
+    //       );
+    //     });
+    //     this.setState({ isParkingsReady: parkingsdata });
+    //   })
+    //   .catch(function(error) {
+    //     console.log(error);
+    //   });
   }
 
   render() {
