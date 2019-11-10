@@ -60,13 +60,10 @@ export class MapContainer extends React.Component {
       bgColor1: "#3f51b5",
       bgColor2: "#3f51b5",
       bgColor3: "#3f51b5",
-      bgColor4: "#3f51b5"
+      bgColor4: "#3f51b5",
+      count: null
     };
   }
-  notify = () => {
-    console.log("toasted");
-    return toast("Wow so easy !");
-  };
 
   onMarkerClick = (props, marker, e) =>
     this.setState({
@@ -114,7 +111,8 @@ export class MapContainer extends React.Component {
           bgColor1: "#F1C40F",
           bgColor2: "#3f51b5",
           bgColor3: "#3f51b5",
-          bgColor4: "#3f51b5"
+          bgColor4: "#3f51b5",
+          count: crimesdata.length
         });
         crimesdata = [];
       })
@@ -140,7 +138,8 @@ export class MapContainer extends React.Component {
           bgColor1: "#3f51b5",
           bgColor2: "#F1C40F",
           bgColor3: "#3f51b5",
-          bgColor4: "#3f51b5"
+          bgColor4: "#3f51b5",
+          count: crimesdata.length
         });
         crimesdata = [];
       })
@@ -166,7 +165,8 @@ export class MapContainer extends React.Component {
           bgColor1: "#3f51b5",
           bgColor2: "#3f51b5",
           bgColor3: "#F1C40F",
-          bgColor4: "#3f51b5"
+          bgColor4: "#3f51b5",
+          count: crimesdata.length
         });
         crimesdata = [];
       })
@@ -192,7 +192,8 @@ export class MapContainer extends React.Component {
           bgColor1: "#3f51b5",
           bgColor2: "#3f51b5",
           bgColor3: "#3f51b5",
-          bgColor4: "#F1C40F"
+          bgColor4: "#F1C40F",
+          count: crimesdata.length
         });
         crimesdata = [];
       })
@@ -232,6 +233,10 @@ export class MapContainer extends React.Component {
   };
 
   handleToggle = () => {
+    if (!this.state.isHeatmapVisible) {
+      toast(`Rendered ${this.state.count} records as a heat map`);
+    }
+
     this.setState({
       isHeatmapVisible: !this.state.isHeatmapVisible,
       bgColor0: "#F1C40F"
@@ -269,6 +274,7 @@ export class MapContainer extends React.Component {
   }
 
   componentWillMount() {
+    toast(`Loading all records of crimes`);
     axios
       .get(`http://localhost:8001/Data/Crimes/`)
       .then(res => {
@@ -285,8 +291,10 @@ export class MapContainer extends React.Component {
           bgColor1: "#F1C40F",
           bgColor2: "#3f51b5",
           bgColor3: "#3f51b5",
-          bgColor4: "#3f51b5"
+          bgColor4: "#3f51b5",
+          count: crimesdata.length
         });
+        toast(`Loaded all crimes - ${this.state.count} records`);
       })
       .catch(function(error) {
         console.log(error);
@@ -316,7 +324,10 @@ export class MapContainer extends React.Component {
           }
         );
       });
-
+      toast(`Loaded all parking meters - ${parkingsdata.length} meters`, {
+        //toast is positioned on bottom right
+        position: "bottom-right"
+      });
       this.setState({ isParkingsReady: parkingsdata });
     });
   }
@@ -351,7 +362,7 @@ export class MapContainer extends React.Component {
       <div className="map-container">
         <div id="floating-panel">
           <Button
-            onClick={this.notify}
+            onClick={this.handleToggle}
             style={{ backgroundColor: this.state.bgColor0 }}
           >
             Toggle Crime Heatmap
