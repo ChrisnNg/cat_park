@@ -100,7 +100,7 @@ export class MapContainer extends React.Component {
       .then(res => {
         const crimes = res.data;
         let crimesdata = [];
-        toast(`Loaded all crimes - ${this.state.count} records`);
+        toast.info(`🚚 Loaded all crimes - ${this.state.count} records`);
         crimes.forEach((obj, index) => {
           crimesdata.push(obj.Geom);
         });
@@ -114,7 +114,7 @@ export class MapContainer extends React.Component {
           bgColor4: "#3f51b5",
           count: crimesdata.length
         });
-        toast(`Loaded all crimes - ${this.state.count} records`);
+        toast.info(`🚚 Loaded all crimes - ${this.state.count} records`);
         crimesdata = [];
       })
       .catch(function(error) {
@@ -142,7 +142,9 @@ export class MapContainer extends React.Component {
           bgColor4: "#3f51b5",
           count: crimesdata.length
         });
-        toast(`Loaded all thefts from vehicles - ${this.state.count} records`);
+        toast.info(
+          `Loaded all thefts from vehicles - ${this.state.count} records`
+        );
         crimesdata = [];
       })
       .catch(function(error) {
@@ -171,7 +173,9 @@ export class MapContainer extends React.Component {
           count: crimesdata.length
         });
         crimesdata = [];
-        toast(`Loaded all thefts of vehicles - ${this.state.count} records`);
+        toast.info(
+          `🚚 Loaded all thefts of vehicles - ${this.state.count} records`
+        );
       })
       .catch(function(error) {
         console.log(error);
@@ -199,7 +203,7 @@ export class MapContainer extends React.Component {
           count: crimesdata.length
         });
         crimesdata = [];
-        toast(`Loaded mischief - ${this.state.count} records`);
+        toast.info(`🚚 Loaded mischief - ${this.state.count} records`);
       })
       .catch(function(error) {
         console.log(error);
@@ -238,7 +242,8 @@ export class MapContainer extends React.Component {
 
   handleToggle = () => {
     if (!this.state.isHeatmapVisible) {
-      toast(`Rendered ${this.state.count} records as a heat map`);
+      toast.success(`
+      🗺️ Rendering ${this.state.count} records as a heat map`);
     }
 
     this.setState({
@@ -278,7 +283,10 @@ export class MapContainer extends React.Component {
   }
 
   componentWillMount() {
-    toast(`Loading all records of crimes`);
+    this.toastId = toast.info(`⌛ Loading all records of crimes`, {
+      autoClose: false
+    });
+    console.log(this.toastId, "toastid");
     axios
       .get(`http://localhost:8001/Data/Crimes/`)
       .then(res => {
@@ -298,7 +306,12 @@ export class MapContainer extends React.Component {
           bgColor4: "#3f51b5",
           count: crimesdata.length
         });
-        toast(`Loaded all crimes - ${this.state.count} records`);
+        toast.update(this.toastId, {
+          render: `⭐ Loaded all crimes - ${this.state.count} records`,
+          type: toast.TYPE.SUCCESS,
+          autoClose: 5000
+        });
+        // toast(`Loaded all crimes - ${this.state.count} records`);
       })
       .catch(function(error) {
         console.log(error);
