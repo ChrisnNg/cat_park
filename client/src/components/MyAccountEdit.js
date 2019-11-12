@@ -70,7 +70,7 @@ const MyAccountEdit = props => {
             fullWidth
             name="current-password"
             label="Current Password"
-            type="current-password"
+            type="password"
             id="current-password"
           />
           <TextField
@@ -80,7 +80,7 @@ const MyAccountEdit = props => {
             fullWidth
             name="new-password"
             label="New Password"
-            type="new-password"
+            type="password"
             id="new-password"
           />
           <TextField
@@ -90,7 +90,7 @@ const MyAccountEdit = props => {
             fullWidth
             name="confirm-password"
             label="Confirm Password"
-            type="confirm-password"
+            type="password"
             id="confirm-password"
           />
 
