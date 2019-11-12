@@ -253,11 +253,18 @@ export class MapContainer extends React.Component {
   }
 
   componentDidMount(props) {
+    function error(err) {
+      console.warn(`Error ${err.code}: ${err.message}`);
+    }
+    let options = {
+      enableHighAccuracy: true
+    };
     navigator.geolocation.getCurrentPosition(
       position => {
         let { latitude, longitude } = position.coords;
         // latitude = -123.114889;
         // longitude = 49.281229;
+        console.log(position.coords);
         this.setState({
           currentLocation: { lat: latitude, lng: longitude },
           loading: false
@@ -265,7 +272,9 @@ export class MapContainer extends React.Component {
       },
       () => {
         this.setState({ loading: false });
-      }
+      },
+      error,
+      options
     );
   }
 
