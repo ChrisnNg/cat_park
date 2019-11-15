@@ -2,6 +2,15 @@
 
 cat_park was created by Chris and Thomas (CaT) to solve the problems of finding parking in metro Vancouver. Included in this app are all the parking meters in Vancouver and a crime heatmap to see where it is safer to park relative to the area. This app was designed with mobile useage in mind and thus includes responsive UI.
 
+## Demo:
+
+- Making a radial query of 350 meters(Adjustable) on click:
+  !["Radial Queries!"](https://github.com/ChrisnNg/cat_park/blob/master/client/public/gifs/RadialQuery.gif?raw=true)
+- Parking Clusterer for less clutter:
+  !["Clusterer!"](https://github.com/ChrisnNg/cat_park/blob/master/client/public/gifs/ParkingClusterer.gif?raw=true)
+- Crime heat map with different options:
+  !["Crime!"](https://github.com/ChrisnNg/cat_park/blob/master/client/public/gifs/CrimeHeatMap.gif?raw=true)
+
 ## Usage:
 
 - Click on a area within Vancouver to see all parking meters within a diameter of 300 meters.
