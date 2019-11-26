@@ -8,10 +8,15 @@ export default class HeatMapList extends React.Component {
   };
 
   componentDidMount() {
-    axios.get(`http://localhost:8001/Data/Crime/`).then(res => {
-      const data = res.data;
-      this.setState({ data });
-    });
+    axios
+      .get(`http://localhost:8001/Data/Crime/`)
+      .then(res => {
+        const data = res.data;
+        this.setState({ data });
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
   }
 
   render() {

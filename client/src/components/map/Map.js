@@ -226,6 +226,9 @@ export class MapContainer extends React.Component {
 
         this.setState({ isParkingsReady: parkingsdata });
         parkingsdata = [];
+      })
+      .catch(function(error) {
+        console.log(error);
       });
   };
 
