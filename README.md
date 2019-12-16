@@ -1,6 +1,11 @@
 # cat_park
 
-If you can't park, use cat_park! This project was created by Chris and Thomas (CaT) to solve the problems of finding parking in metro Vancouver. Included in this app are all the parking meters in Vancouver and a crime heatmap to see where it is safer to park relative to the area. This app was designed with mobile useage in mind and thus includes responsive UI.
+If you can't park, use cat_park! This project was created by Chris and Thomas (CaT) to solve the problems of finding parking in metro Vancouver.         Using the Vancouver Police Department's open data set, we created an
+        interactive heat map using 534,506 records of crimes. Our backend is
+        made with Golang and each click on the map sends a spatial query request
+        into our Postgres with Postgis database and fetches and renders a custom
+        cluster marker set for all parking meters within 500 meters of the
+        click.
 
 ## Demo:
 
