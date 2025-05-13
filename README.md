@@ -1,4 +1,15 @@
-# cat_park
+### Cat Park | Smart Parking Safety Heatmap
+
+Data-driven web app identifying low-crime parking zones across Vancouver
+
+**Key Features:**  
+- 📍 Crime Visualization - Mapped 500,000+ crime records to parking locations using PostGIS
+- 🚗 Interactive Filters - Toggle crime categories (theft/vandalism/etc.) in real-time
+- 🛡️ Safety Scoring - Algorithm weights recency and severity of nearby incidents
+- ⚡ High-Performance - Golang backend processes spatial queries in <100ms
+
+Tech Stack:
+`React.js` | `Golang` | `Postgres/PostGIS` | `Google Maps API`
 
 If you can't park, use cat_park! This project was created by Chris and Thomas (CaT) to solve the problems of finding parking in metro Vancouver.         Using the Vancouver Police Department's open data set, we created an
         interactive heat map using 534,506 records of crimes. Our backend is
@@ -20,17 +31,6 @@ If you can't park, use cat_park! This project was created by Chris and Thomas (C
 
 - Click on a area within Vancouver to see all parking meters within a diameter of 300 meters.
 - Toggle on the crime heatmap with the button in the bottom left corner. By default, the heatmap will render all crimes. You may however change it to different types of crime via the buttons beside.
-
-## Future plans
-
-This app was built within two weeks for Chris and Thomas' Final project for Lighthouse Labs. As so, we plan to continue working on it to fully implement our ideas that we have planned out previously.
-
-### Roadmap
-
-1. user account creation
-2. favorite spots for each user
-3. deployment on Heroku and Netlify
-4. testing
 
 ## FAQ
 
